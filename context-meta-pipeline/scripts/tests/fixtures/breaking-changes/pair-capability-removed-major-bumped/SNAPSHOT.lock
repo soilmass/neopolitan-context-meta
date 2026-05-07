@@ -1,0 +1,8 @@
+snapshot_version: "2.0.0"
+plugin: "fixture"
+skills:
+  bl-atom:
+    version: "2.0.0"
+    archetype: atom
+    path: "x"
+    health: "fresh"

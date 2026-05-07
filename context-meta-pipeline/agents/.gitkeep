@@ -1,0 +1,3 @@
+# Intentionally empty — slot for plugin-bundled subagents per the Claude Code
+# plugin spec. Add `*.md` agent definition files here when this plugin starts
+# shipping subagents. Empty in v0.1.x.

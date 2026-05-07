@@ -1,0 +1,3 @@
+baseline: ../../baselines/atom-baseline.md
+expected_exit: 1
+pass_exercised: Pass 3 (capability removal) without MAJOR bump → blocks merge

@@ -1,0 +1,22 @@
+# notification-channels.yaml — declarative configuration for
+# scripts/notify-dependents.py.
+#
+# v0.7.0 ships this file with `channels: []` (empty). Operator populates
+# when external consumers exist (per governance/DEPRECATION-COMMUNICATION.md
+# build trigger).
+#
+# Schema:
+#   channels:
+#     - name: <channel-name>
+#       type: changelog | banner | webhook | email
+#       target: <varies by type>
+#         # changelog: path to a CHANGELOG.md
+#         # banner: path to a SKILL.md whose description gets prepended
+#         # webhook: URL (NOT exercised by notify-dependents.py; emits JSON)
+#         # email: recipient address (also JSON-emit only)
+#       enabled: true | false
+#
+# notify-dependents.py emits per-channel JSON describing the notification.
+# It does NOT actually send (channel-wiring is per-consumer-team setup).
+
+channels: []

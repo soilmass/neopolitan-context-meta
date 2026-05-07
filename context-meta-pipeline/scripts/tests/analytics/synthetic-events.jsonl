@@ -1,0 +1,12 @@
+# Synthetic JSONL events for analytics-rollup.py smoke test.
+# Lines starting with # and blank lines are skipped. Schema per scripts/telemetry-hook.py.
+{"ts": "2026-05-06T09:00:00Z", "event": "skill_fired", "skill": "skill-author", "session_id": "s1", "prompt_hash": "aaa111", "outcome": "success"}
+{"ts": "2026-05-06T09:01:00Z", "event": "skill_fired", "skill": "skill-audit", "session_id": "s1", "prompt_hash": "bbb222", "outcome": "success"}
+{"ts": "2026-05-06T09:30:00Z", "event": "skill_fired", "skill": "skill-author", "session_id": "s2", "prompt_hash": "ccc333", "outcome": "success"}
+{"ts": "2026-05-06T09:31:00Z", "event": "skill_fired", "skill": "skill-refactor", "session_id": "s2", "prompt_hash": "ddd444", "outcome": "partial"}
+{"ts": "2026-05-06T09:31:30Z", "event": "skill_fired", "skill": "skill-retire", "session_id": "s2", "prompt_hash": "eee555", "outcome": "success"}
+{"ts": "2026-05-06T10:00:00Z", "event": "skill_fired", "skill": "library-audit", "session_id": "s3", "prompt_hash": "fff666", "outcome": "success"}
+{"ts": "2026-05-06T10:01:00Z", "event": "skill_fired", "skill": "skill-audit", "session_id": "s3", "prompt_hash": "ggg777", "outcome": "success"}
+{"ts": "2026-05-06T10:02:00Z", "event": "skill_fired", "skill": "skill-evaluate", "session_id": "s3", "prompt_hash": "hhh888", "outcome": "error"}
+{"ts": "2026-05-06T11:00:00Z", "event": "skill_fired", "skill": "family-bootstrap", "session_id": "s4", "prompt_hash": "iii999", "outcome": "success"}
+{"ts": "2026-05-06T11:05:00Z", "event": "skill_fired", "skill": "skill-author", "session_id": "s4", "prompt_hash": "jjjaaa", "outcome": "success"}

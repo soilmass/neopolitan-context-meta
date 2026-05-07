@@ -1,0 +1,7 @@
+{
+  "name": "context-meta-pipeline",
+  "version": "0.7.0",
+  "description": "Skill-lifecycle meta-pipeline: author, bootstrap families, audit health, refactor archetype-mixed skills, and retire deprecated skills. Ships governance docs and three Python validators.",
+  "keywords": ["skills", "skill-library", "meta", "governance", "lifecycle"],
+  "license": "Apache-2.0"
+}

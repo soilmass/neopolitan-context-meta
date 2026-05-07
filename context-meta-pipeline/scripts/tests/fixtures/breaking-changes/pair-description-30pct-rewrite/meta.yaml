@@ -1,0 +1,3 @@
+baseline: ../../baselines/atom-baseline.md
+expected_exit: 1
+pass_exercised: Pass 1 (frontmatter description rewritten >30% by character count)

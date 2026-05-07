@@ -1,0 +1,9 @@
+name: validate-then-audit
+description: >
+  Run validate-metadata.py --all then audit-skill.py --all in sequence.
+  Both must pass for the library to be ship-ready.
+steps:
+  - run: python3 scripts/validate-metadata.py --all
+    expected_exit: 0
+  - run: python3 scripts/audit-skill.py --all
+    expected_exit: 0

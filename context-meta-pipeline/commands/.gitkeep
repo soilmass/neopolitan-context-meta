@@ -1,0 +1,3 @@
+# Intentionally empty — slot for plugin-bundled slash commands per the Claude
+# Code plugin spec. Add `*.md` command files here when this plugin starts
+# shipping commands. Empty in v0.1.x.

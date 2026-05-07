@@ -1,0 +1,102 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Library self-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run verify.sh
+        run: ./verify.sh
+
+  lint:
+    name: Lint + typecheck (informational)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dev dependencies
+        run: pip install -r requirements.txt ruff mypy
+
+      - name: ruff
+        run: ruff check scripts/
+
+      - name: mypy --strict
+        run: mypy --strict scripts/*.py
+
+  extension-seams:
+    name: Extension-seam contract checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run extension-seam checks (verify.sh step 9)
+        run: |
+          ./verify.sh 2>&1 | tee /tmp/verify.log
+          # Step 9 is the extension-seam check; failure surfaces in summary.
+          grep -q "all 3 extension seams hold" /tmp/verify.log
+
+  detect-breaking-changes:
+    name: Breaking-change detector (PRs only)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # need history for git show <baseline>
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime dependencies
+        run: pip install -r requirements.txt
+
+      - name: Detect breaking changes against base
+        run: |
+          # Find every modified SKILL.md in this PR and run the detector against
+          # its version on the base branch. Failure (exit 1) blocks merge;
+          # exit 2 (properly handled) is informational.
+          changed=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- 'skills/*/SKILL.md' || true)
+          if [ -z "$changed" ]; then
+            echo "No SKILL.md changes; skipping detector."
+            exit 0
+          fi
+          set -e
+          for f in $changed; do
+            echo "=== $f ==="
+            python3 scripts/detect-breaking-changes.py \
+              --skill "$f" \
+              --baseline-ref "${{ github.event.pull_request.base.sha }}" \
+              --snapshot SNAPSHOT.lock
+          done

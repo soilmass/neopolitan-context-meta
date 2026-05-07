@@ -1,0 +1,360 @@
+# routing-eval.yaml — held-out routing-evaluation prompts.
+#
+# Format per skill-audit/references/routing-eval-protocol.md:
+#   - prompt: <natural-language input>
+#     expected: <skill-name | none for true negatives>
+#     source:   held_out | in_distribution
+#     rationale: <why this prompt should fire that skill>
+#
+# Status (v0.2.0): starter set. The deferred build trigger for the full
+# routing-eval suite is "library reaches 25 skills OR first description-
+# change regression slips through" — neither has fired. This starter
+# exists so:
+#   1. skill-audit Stage 4 has a real input format to point at,
+#   2. when the build trigger fires, the file is already in place,
+#   3. the audit-skill.py runner can probe whether the suite exists.
+#
+# v0.2.0 has 5 skills and 30 prompts: ~6 positive prompts per skill plus
+# negative cases that should NOT route (true negatives). When new skills
+# land, append prompts (≥5 positive, ≥3 negative) per
+# routing-eval-protocol.md.
+
+version: 1
+generated: "2026-05-06"
+prompts:
+
+  # ============================================================
+  # skill-author — positive prompts (held-out)
+  # ============================================================
+  - prompt: "I want to write a new SKILL.md for our pdf-reading atom"
+    expected: skill-author
+    source: held_out
+    rationale: "Single new skill authoring; clear archetype (atom)."
+
+  - prompt: "Help me draft a tool skill that orchestrates a deploy workflow"
+    expected: skill-author
+    source: held_out
+    rationale: "Single tool skill, not a family — skill-author owns this."
+
+  - prompt: "Add a router for our git family — just one skill"
+    expected: skill-author
+    source: held_out
+    rationale: "One router skill; family already exists. Router-only authoring."
+
+  - prompt: "Author a policy overlay called acme-postgres-conventions"
+    expected: skill-author
+    source: held_out
+    rationale: "Policy archetype, single skill, no family bootstrap needed."
+
+  - prompt: "Create a SKILL.md from this brief: <…>"
+    expected: skill-author
+    source: held_out
+    rationale: "Generic single-skill authoring intent."
+
+  - prompt: "I have a markdown spec for a new atom; turn it into a SKILL.md"
+    expected: skill-author
+    source: held_out
+    rationale: "Spec → SKILL.md = skill-author Stage 1 intake."
+
+  # ============================================================
+  # family-bootstrap — positive prompts
+  # ============================================================
+  - prompt: "Bootstrap a complete kubectl skill family from the upstream docs"
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Whole new family with router + atoms — orchestrator's job."
+
+  - prompt: "We need a postgres family in the library. Here are the canonical docs."
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Multi-skill family from authority docs; family-bootstrap Stage 1."
+
+  - prompt: "Stand up the aws domain — Tier 1 atoms plus a router"
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Multiple atoms + router = whole family."
+
+  - prompt: "Move the deferred docker domain to In Scope and build out Tier 1"
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Deferred → In Scope is a bootstrap operation."
+
+  - prompt: "Build out a brand-new skill family for terraform with 7 Tier 1 atoms"
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Explicit family + Tier 1 cardinality matches family-bootstrap output."
+
+  - prompt: "Generate a router and 6-9 atoms for ansible per the official documentation"
+    expected: family-bootstrap
+    source: held_out
+    rationale: "Stage 3 taxonomy sizing constraint named explicitly."
+
+  # ============================================================
+  # skill-audit — positive prompts
+  # ============================================================
+  - prompt: "Run the health checks on all skills in the library"
+    expected: skill-audit
+    source: held_out
+    rationale: "Whole-library audit; skill-audit --all."
+
+  - prompt: "Why is git-history-rewriting being mis-routed? Diagnose it."
+    expected: skill-audit
+    source: held_out
+    rationale: "Triggering accuracy investigation = skill-audit Stage 4."
+
+  - prompt: "Check description drift across the library"
+    expected: skill-audit
+    source: held_out
+    rationale: "Drift gate is Stage 3 of skill-audit."
+
+  - prompt: "Has anything gone unhealthy since the last release?"
+    expected: skill-audit
+    source: held_out
+    rationale: "Health-gate rollup; skill-audit is the read-only health tool."
+
+  - prompt: "Audit the postgres family before we ship the next version"
+    expected: skill-audit
+    source: held_out
+    rationale: "Family-scoped audit run."
+
+  - prompt: "Generate the warning banners for any skill failing health gates"
+    expected: skill-audit
+    source: held_out
+    rationale: "Banner emission is skill-audit Stage 5 output."
+
+  # ============================================================
+  # skill-refactor — positive prompts
+  # ============================================================
+  - prompt: "git-rebase-discipline mixes mechanism and policy. Three-way refactor it."
+    expected: skill-refactor
+    source: held_out
+    rationale: "Explicit three-way refactor — skill-refactor's flagship pattern."
+
+  - prompt: "Split git-history-rewriting into two atoms — one for rebase, one for revert"
+    expected: skill-refactor
+    source: held_out
+    rationale: "Split refactor; one of the four refactor types."
+
+  - prompt: "Move the `revert` capability from git-history-rewriting to git-recovery"
+    expected: skill-refactor
+    source: held_out
+    rationale: "Move refactor — explicit cap migration between atoms."
+
+  - prompt: "skill-audit flagged this skill for archetype mixing. Fix the structure."
+    expected: skill-refactor
+    source: held_out
+    rationale: "Direct handoff from skill-audit drift-gate failure → refactor."
+
+  - prompt: "Two siblings have overlapping descriptions. Should we merge them?"
+    expected: skill-refactor
+    source: held_out
+    rationale: "Merge refactor consideration; even if the answer is 'add anti-triggers instead', skill-refactor is the diagnosis tool."
+
+  - prompt: "Restructure the docker family — atoms are doing too much"
+    expected: skill-refactor
+    source: held_out
+    rationale: "Family-level restructure with split decisions."
+
+  # ============================================================
+  # skill-retire — positive prompts
+  # ============================================================
+  - prompt: "Archive the git-filter-branch atom — filter-repo replaces it"
+    expected: skill-retire
+    source: held_out
+    rationale: "Replaced retirement reason; named replacement."
+
+  - prompt: "Retire pdf-legacy-extraction; nobody maintains it"
+    expected: skill-retire
+    source: held_out
+    rationale: "Health-failure retirement; explicit retire intent."
+
+  - prompt: "Mark this absorbed-into-sibling skill as retired with a redirect note"
+    expected: skill-retire
+    source: held_out
+    rationale: "Absorbed retirement reason; redirect note is Stage 3 output."
+
+  - prompt: "The aws-classic-iam atom's domain stopped existing. Archive it."
+    expected: skill-retire
+    source: held_out
+    rationale: "Domain-gone retirement reason."
+
+  # ============================================================
+  # Negative prompts — should NOT route to any specific skill
+  # ============================================================
+  - prompt: "What's the weather today?"
+    expected: none
+    source: held_out
+    rationale: "Off-domain — no skill should fire."
+
+  - prompt: "Help me write a Python decorator"
+    expected: none
+    source: held_out
+    rationale: "Programming task; no meta-pipeline skill applies."
+
+  - prompt: "Explain SemVer to me"
+    expected: none
+    source: held_out
+    rationale: "Conceptual question, not a lifecycle operation; should not trigger skill-author."
+
+  # ============================================================
+  # v0.5.2 additions — prompts covering the 8 new v0.5.0 skills
+  # ============================================================
+
+  # library-bootstrap
+  - prompt: "Scaffold a new context-postgres library from scratch"
+    expected: library-bootstrap
+    source: held_out
+    rationale: "Whole new library, not just a family. library-bootstrap, not family-bootstrap."
+
+  - prompt: "Set up a new sibling plugin under the marketplace for our docker work"
+    expected: library-bootstrap
+    source: held_out
+    rationale: "New plugin = new library; this is bootstrap territory."
+
+  # library-audit
+  - prompt: "Audit the whole library — coverage, snapshot, all skills"
+    expected: library-audit
+    source: held_out
+    rationale: "Library-shape audit (composes audit-skill + coverage-check). Distinct from per-skill audit."
+
+  - prompt: "Verify coverage.md and SNAPSHOT.lock are still in sync after these edits"
+    expected: library-audit
+    source: held_out
+    rationale: "Cross-skill consistency check; library-audit composes the relevant scripts."
+
+  # skill-evaluate
+  - prompt: "Run the held-out routing-eval prompts and report accuracy"
+    expected: skill-evaluate
+    source: held_out
+    rationale: "Triggering-accuracy gate (Gate 3) mechanizer."
+
+  - prompt: "How well does the LLM route prompts to the right skill these days?"
+    expected: skill-evaluate
+    source: held_out
+    rationale: "Routing accuracy question; skill-evaluate runs the suite."
+
+  # skill-migrate
+  - prompt: "Author the MIGRATION-v2.md for the major bump on git-history-rewriting"
+    expected: skill-migrate
+    source: held_out
+    rationale: "MAJOR-bump migration guide authoring; skill-migrate wraps migration-guide-gen.py."
+
+  - prompt: "Generate the structural diff doc for the upcoming v3 release of skill-author"
+    expected: skill-migrate
+    source: held_out
+    rationale: "Structural diff for migration; skill-migrate's purpose."
+
+  # skill-snapshot-diff
+  - prompt: "Diff our SNAPSHOT.lock against last week's tag for the release notes"
+    expected: skill-snapshot-diff
+    source: held_out
+    rationale: "Snapshot diff for release notes — the canonical use."
+
+  - prompt: "What changed in SNAPSHOT.lock between v0.4.1 and HEAD?"
+    expected: skill-snapshot-diff
+    source: held_out
+    rationale: "Snapshot diff query."
+
+  # skill-policy-overlay
+  - prompt: "Author a house-postgres-conventions overlay on top of postgres-history-rewriting"
+    expected: skill-policy-overlay
+    source: held_out
+    rationale: "Policy overlay authoring; explicit house-* naming."
+
+  - prompt: "We need to encode our team's git-rebase rules as a policy overlay"
+    expected: skill-policy-overlay
+    source: held_out
+    rationale: "Policy overlay; team conventions."
+
+  # cross-domain-orchestrator-author
+  - prompt: "Compose an orchestrator that uses both the git family and the test family for our deploy workflow"
+    expected: cross-domain-orchestrator-author
+    source: held_out
+    rationale: "Cross-family orchestrator within one library."
+
+  # cross-library-orchestrator
+  - prompt: "Author an orchestrator that spans context-git and context-cloud for our deploy"
+    expected: cross-library-orchestrator
+    source: held_out
+    rationale: "Cross-library orchestrator (two installed libraries)."
+
+  # meta (router) — the bare-domain prompts
+  - prompt: "what should i do next about my skills"
+    expected: meta
+    source: held_out
+    rationale: "Vague; router should disambiguate (the router's protocol asks one question)."
+
+  # ============================================================
+  # v0.6.1 expansion — gate_eval_coverage requires ≥3 positive
+  # prompts per skill in SNAPSHOT.lock. The 9 skills below were
+  # under-covered after v0.5.2; this section brings each to ≥3.
+  # ============================================================
+
+  # meta (router) — additional positive prompts
+  - prompt: "I'm not sure which lifecycle skill to invoke; help me pick"
+    expected: meta
+    source: held_out
+    rationale: "Disambiguation request; router exists exactly for this."
+
+  - prompt: "route this to the right skill in the meta-pipeline"
+    expected: meta
+    source: held_out
+    rationale: "Explicit routing request; router fires."
+
+  # cross-domain-orchestrator-author — additional positives
+  - prompt: "Author an orchestrator that combines git-collaboration with test-validation in our deploy"
+    expected: cross-domain-orchestrator-author
+    source: held_out
+    rationale: "Cross-family orchestrator authoring within one library."
+
+  - prompt: "We need a skill that orchestrates two existing families end-to-end"
+    expected: cross-domain-orchestrator-author
+    source: held_out
+    rationale: "Cross-family orchestrator authoring."
+
+  # cross-library-orchestrator — additional positives
+  - prompt: "Build an orchestrator that pulls one skill from context-git and one from context-test"
+    expected: cross-library-orchestrator
+    source: held_out
+    rationale: "Cross-library orchestrator (multiple installed libraries)."
+
+  - prompt: "Orchestrate a workflow that spans two installed Claude Code plugins"
+    expected: cross-library-orchestrator
+    source: held_out
+    rationale: "Cross-library orchestration."
+
+  # library-audit — additional positive (already 2)
+  - prompt: "Run the library-shape health check across all skills + coverage + snapshot"
+    expected: library-audit
+    source: held_out
+    rationale: "Library-wide health composition; library-audit's purpose."
+
+  # library-bootstrap — additional positive (already 2)
+  - prompt: "Initialize a brand-new library called context-database from scratch"
+    expected: library-bootstrap
+    source: held_out
+    rationale: "Whole new library scaffolding; library-bootstrap fires."
+
+  # skill-evaluate — additional positive (already 2)
+  - prompt: "Score this list of held-out prompts against the routing layer"
+    expected: skill-evaluate
+    source: held_out
+    rationale: "Routing-eval execution; skill-evaluate runs the suite."
+
+  # skill-migrate — additional positive (already 2)
+  - prompt: "Author a migration guide for the upcoming v3 of skill-refactor"
+    expected: skill-migrate
+    source: held_out
+    rationale: "MIGRATION-v<N>.md authoring; skill-migrate's domain."
+
+  # skill-policy-overlay — additional positive (already 2)
+  - prompt: "Encode our team's git-rebase rules as an overlay on git-history-rewriting"
+    expected: skill-policy-overlay
+    source: held_out
+    rationale: "Policy overlay authoring; team-conventions over a mechanism."
+
+  # skill-snapshot-diff — additional positive (already 2)
+  - prompt: "Show me what changed in SNAPSHOT.lock between yesterday and HEAD"
+    expected: skill-snapshot-diff
+    source: held_out
+    rationale: "Snapshot diff query; skill-snapshot-diff handles."

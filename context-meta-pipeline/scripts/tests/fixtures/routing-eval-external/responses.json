@@ -1,0 +1,14 @@
+[
+  {
+    "prompt": "I want to write a new SKILL.md for our pdf-reading atom",
+    "actual": "skill-author"
+  },
+  {
+    "prompt": "Audit the whole library — coverage, snapshot, all skills",
+    "actual": "library-audit"
+  },
+  {
+    "prompt": "Diff our SNAPSHOT.lock against last week's tag for the release notes",
+    "actual": "skill-snapshot-diff"
+  }
+]

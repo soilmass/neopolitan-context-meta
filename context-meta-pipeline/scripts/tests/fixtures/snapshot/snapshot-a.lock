@@ -1,0 +1,18 @@
+snapshot_version: "0.1.0"
+plugin: "context-meta-pipeline"
+skills:
+  skill-author:
+    version: "0.1.0"
+    archetype: tool
+    path: "skills/skill-author/SKILL.md"
+    health: "fresh"
+  skill-audit:
+    version: "0.1.0"
+    archetype: tool
+    path: "skills/skill-audit/SKILL.md"
+    health: "fresh"
+  skill-old:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/skill-old/SKILL.md"
+    health: "healthy"

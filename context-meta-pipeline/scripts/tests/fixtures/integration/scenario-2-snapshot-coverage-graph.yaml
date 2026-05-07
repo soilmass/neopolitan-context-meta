@@ -1,0 +1,12 @@
+name: snapshot-coverage-graph
+description: >
+  Cross-script snapshot integrity: snapshot-hash --verify, coverage-check on
+  the library's own coverage.md, dependency-graph emits valid JSON.
+steps:
+  - run: python3 scripts/snapshot-hash.py --verify
+    expected_exit: 0
+  - run: python3 scripts/coverage-check.py --file coverage.md
+    expected_exit: 0
+  - run: python3 scripts/dependency-graph.py --format json
+    expected_exit: 0
+    expects_pattern: '"nodes"'

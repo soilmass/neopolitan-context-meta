@@ -1,0 +1,5 @@
+# Runtime dependencies for the four scripts under scripts/.
+# Pinned conservatively — PyYAML is the only runtime dep and is widely
+# packaged. Bump on a deliberate cycle, not opportunistically.
+
+PyYAML>=6.0,<7

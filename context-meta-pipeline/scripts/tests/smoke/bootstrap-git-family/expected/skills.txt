@@ -1,0 +1,18 @@
+# Expected skills produced by the family-bootstrap procedure on the
+# input.yaml in this fixture.
+#
+# Format: <name> <archetype>
+#
+# This is the output of family-bootstrap Stages 4 (per-skill authoring)
+# and 5 (weaving). Stage 6 produces the per-family coverage.md (see
+# expected/coverage-skeleton.md).
+
+git                    router
+git-basics             atom
+git-branching          atom
+git-history-rewriting  atom
+git-recovery           atom
+git-collaboration      atom
+git-inspection         atom
+git-config             atom
+git-hooks              atom

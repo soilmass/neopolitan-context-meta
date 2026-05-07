@@ -1,0 +1,3 @@
+baseline: ../../baselines/atom-baseline.md
+expected_exit: 0
+pass_exercised: identity (no change)

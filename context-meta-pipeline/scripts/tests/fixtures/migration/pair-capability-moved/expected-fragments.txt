@@ -1,0 +1,2 @@
+## Capability changes
+Removed capability:

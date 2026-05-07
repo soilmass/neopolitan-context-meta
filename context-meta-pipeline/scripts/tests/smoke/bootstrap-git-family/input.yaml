@@ -1,0 +1,28 @@
+# Stage 1 input: domain-intake.yaml that the v0.4.0 dogfood used.
+# Per family-bootstrap/references/domain-intake-checklist.md.
+
+domain: git
+
+authority:
+  url: "https://git-scm.com/book/en/v2"
+  author: "Scott Chacon and Ben Straub"
+  title: "Pro Git, 2nd Edition"
+
+scope:
+  in: >
+    Common-usage git operations covering the local working copy, branching
+    and merging, history rewriting, recovery, remote collaboration, log
+    inspection, and configuration. Hooks specifically (the runtime extension
+    point) is one Tier 1 atom because operators interact with hooks
+    directly often enough to warrant separation from configuration.
+  out:
+    - Server administration (gitolite, gitea, github admin) — separate domain.
+    - Submodules — Tier 2 (specced, not built initially).
+    - Plumbing internals (refs, packfiles, refspec) — Tier 3 (deferred).
+    - Workflows (gitflow, trunk-based, etc.) — policy overlay territory,
+      not mechanism.
+
+expected_size: 8
+
+adjacent_families: []
+existing_overlap: []

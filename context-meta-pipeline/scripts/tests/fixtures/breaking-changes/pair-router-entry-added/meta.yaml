@@ -1,0 +1,3 @@
+baseline: ../../baselines/router-baseline.md
+expected_exit: 0
+pass_exercised: Routing-table entry ADDED is not breaking (additive); detector should pass

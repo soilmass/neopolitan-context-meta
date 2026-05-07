@@ -1,0 +1,56 @@
+# intake.yaml — handoff fixture for family-bootstrap → skill-author Stage 4.
+#
+# Per family-bootstrap SKILL.md §"Stage 4 — Atom authoring (delegated)":
+# the orchestrator iterates over the Tier 1 atoms in the family taxonomy
+# and invokes skill-author once per atom with a pre-filled intake.yaml.
+#
+# This fixture captures the contract: a 4-atom family taxonomy.md row-set
+# produces exactly 4 skill-author invocations, each with one intake.yaml.
+# The handoff is correct when a count of intake.yaml records here equals
+# the count in expected-count.txt.
+#
+# Schema per skill-author/references/frontmatter-spec.md and the Stage 1
+# intake spec.
+
+family: deploy
+
+atoms:
+  - archetype: atom
+    name: deploy-blue-green
+    purpose: >
+      Owns blue/green deployment cutover for stateless services.
+    family: deploy
+    siblings:
+      - deploy-canary
+      - deploy-rolling
+      - deploy-rollback
+
+  - archetype: atom
+    name: deploy-canary
+    purpose: >
+      Owns progressive canary deployments with traffic-percentage steps.
+    family: deploy
+    siblings:
+      - deploy-blue-green
+      - deploy-rolling
+      - deploy-rollback
+
+  - archetype: atom
+    name: deploy-rolling
+    purpose: >
+      Owns instance-by-instance rolling deployments without service downtime.
+    family: deploy
+    siblings:
+      - deploy-blue-green
+      - deploy-canary
+      - deploy-rollback
+
+  - archetype: atom
+    name: deploy-rollback
+    purpose: >
+      Owns rollback to the previous-known-good deployment after a bad release.
+    family: deploy
+    siblings:
+      - deploy-blue-green
+      - deploy-canary
+      - deploy-rolling

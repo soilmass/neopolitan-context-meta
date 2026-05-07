@@ -1,0 +1,15 @@
+{
+  "name": "neopolitan-context-meta",
+  "description": "Meta-pipeline for skill libraries — the lifecycle skills that author, audit, refactor, and retire other skills.",
+  "owner": { "name": "Neopolitan", "email": "edisonsteele@gmail.com" },
+  "plugins": [
+    {
+      "name": "context-meta-pipeline",
+      "source": "./context-meta-pipeline",
+      "version": "0.7.0",
+      "license": "Apache-2.0",
+      "description": "Five-skill lifecycle pipeline (skill-author, family-bootstrap, skill-audit, skill-refactor, skill-retire) plus governance docs and Python validators. Skills that govern skills.",
+      "keywords": ["skills", "meta", "governance", "library", "pipeline", "lifecycle"]
+    }
+  ]
+}

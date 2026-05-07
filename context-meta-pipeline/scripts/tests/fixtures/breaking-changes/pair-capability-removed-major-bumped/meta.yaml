@@ -1,0 +1,4 @@
+baseline: ../../baselines/atom-baseline.md
+expected_exit: 2
+pass_exercised: Pass 3 (capability removal) WITH MAJOR bump + migration → informational only
+snapshot: ./SNAPSHOT.lock

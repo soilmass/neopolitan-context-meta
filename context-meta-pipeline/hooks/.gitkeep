@@ -1,0 +1,3 @@
+# Intentionally empty — slot for plugin-bundled hooks per the Claude Code
+# plugin spec. Add hook configuration here when this plugin starts shipping
+# hooks. Empty in v0.1.x.

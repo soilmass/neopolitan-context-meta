@@ -1,0 +1,138 @@
+# SNAPSHOT.lock — last known-good library state
+#
+# Updated by:
+#   skill-author Stage 4
+#   family-bootstrap Stage 6
+#   skill-refactor Stage 4
+#   skill-retire Stage 4
+#   library-bootstrap Stage 7 (v0.5.0+)
+#   library-audit Stage 5 (v0.5.0+; advisory only)
+#   scripts/rollback-skill.py
+#
+# DO NOT edit by hand except during bootstrap.
+#
+# Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
+# - fresh: just shipped, no skill-audit run yet
+# - healthy: last skill-audit run passed all four gates
+# - flagged: ≥1 gate failing; banner emitted
+# - unhealthy: multiple gates failing for ≥2 consecutive audits
+# - rolled-back: rollback-skill.py reverted to a prior version
+# - retired: not canonical (also see `retired:` block below if any exist)
+
+snapshot_version: "0.7.0"
+generated: "2026-05-06"
+plugin: "context-meta-pipeline"
+
+skills:
+  # Per-cluster router (added v0.5.0)
+  meta:
+    version: "0.1.1"
+    archetype: router
+    path: "skills/meta/SKILL.md"
+    health: "healthy"
+    sha256: "fa8ae45545b22b3f65d083093896351c948ea2dea6be238690cc4053272d682c"
+  # Per-skill lifecycle (8)
+  skill-author:
+    version: "0.1.7"
+    archetype: tool
+    path: "skills/skill-author/SKILL.md"
+    health: "healthy"
+    sha256: "8108c550a2d773e8a1881530833043a1e654bb0b04f1da148925cb0f3fca35ca"
+  skill-audit:
+    version: "0.2.4"
+    archetype: tool
+    path: "skills/skill-audit/SKILL.md"
+    health: "healthy"
+    sha256: "41095fd4258e0c52f5b9d2ceeb27d5f2c13d3e19ee9427411e9ab7ace1a63e3f"
+  skill-refactor:
+    version: "0.1.4"
+    archetype: tool
+    path: "skills/skill-refactor/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+      - skill-retire@0.1.4
+    sha256: "5dfcdc3ab6d4905d9164388e97385379932da659ecb1ce6cc27edbc2fbcaf20b"
+  skill-retire:
+    version: "0.1.4"
+    archetype: tool
+    path: "skills/skill-retire/SKILL.md"
+    health: "healthy"
+    sha256: "839e400f2c0f80b9c3c19e07106163cd5b24ce59e721ce608837a2a066c3724d"
+  skill-migrate:
+    version: "0.1.2"
+    archetype: tool
+    path: "skills/skill-migrate/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+    sha256: "2dcdcbebf8b1e65eb73a7e770a1cb1c2e97b63949ad6a501b229fd8c3fbc8575"
+  skill-evaluate:
+    version: "0.1.1"
+    archetype: tool
+    path: "skills/skill-evaluate/SKILL.md"
+    health: "healthy"
+    sha256: "119acac7111b2e5b3cd9984d5c223bc82f24033c4b50c617cbf9dd9f4edf7cf9"
+  skill-policy-overlay:
+    version: "0.1.1"
+    archetype: tool
+    path: "skills/skill-policy-overlay/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+    sha256: "44235fe3a100f663a933b3b4e27624d755d47611b019b3614433158f16112da1"
+  skill-snapshot-diff:
+    version: "0.1.1"
+    archetype: tool
+    path: "skills/skill-snapshot-diff/SKILL.md"
+    health: "healthy"
+    sha256: "3118c57fb211d053687fe0f9163c143eb96045defbdd4659337c1ff0c5c7ba37"
+  # Library lifecycle (2)
+  library-audit:
+    version: "0.1.2"
+    archetype: tool
+    path: "skills/library-audit/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-audit@0.2.4
+    sha256: "f9ea430aafdd96e18d8e0abc121e2dce20c22986dbf353f3c6cbd732ae5725f1"
+  library-bootstrap:
+    version: "0.1.2"
+    archetype: orchestrator
+    path: "skills/library-bootstrap/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - family-bootstrap@0.2.4
+    sha256: "1964217d6d5c8e9156a63cd06beca7e919ad94b09d826e7420a08e102d38c26a"
+  # Composition (3)
+  family-bootstrap:
+    version: "0.2.4"
+    archetype: orchestrator
+    path: "skills/family-bootstrap/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+    sha256: "13a903da20c3bbb347423bc4c69abb57ade3bd37cab3d201559dd05e513305b6"
+  cross-domain-orchestrator-author:
+    version: "0.1.1"
+    archetype: tool
+    path: "skills/cross-domain-orchestrator-author/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+    sha256: "5568648227f10963baf737a3331766eb96b2ed4cfadf1654421965ef0817d06b"
+  cross-library-orchestrator:
+    version: "0.1.1"
+    archetype: orchestrator
+    path: "skills/cross-library-orchestrator/SKILL.md"
+    health: "healthy"
+    depends_on:
+      - skill-author@0.1.7
+    sha256: "9ae2bd08cff8533889de2bbc07adae014677b7781a853a8a70de78866050bd33"
+# retired:
+#   <skill-name>:
+#     last_canonical: "<version>"
+#     retired: "<YYYY-MM-DD>"
+#     reason: <absorbed | replaced | domain-gone | health-failure>
+#     replacement: <skill-name or null>
+#     path: "skills/<name>/SKILL.md"
