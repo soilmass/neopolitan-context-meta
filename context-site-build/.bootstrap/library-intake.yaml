@@ -1,0 +1,41 @@
+# library-intake.yaml — Stage 1 artifact for library-bootstrap
+#
+# Produced: 2026-05-08
+# Operator: edisonsteele@gmail.com
+# Bootstrap target: context-site-build
+#
+# Per skills/library-bootstrap/SKILL.md Stage 1.
+
+name: context-site-build
+
+parent_marketplace: ../.claude-plugin/marketplace.json
+
+description: >
+  Site-build methodology library — skills that draft, audit, and
+  synthesize the deliverables of a 7-phase site/web-app build
+  (discovery → requirements → design → build → hardening → launch
+  → post-launch). Produces opinionated documentation artifacts
+  (vision, SRS, ADRs, runbooks, baseline reports, etc.) per a
+  documented SOP. Sibling consumer of the meta-pipeline plugin.
+
+keywords:
+  - site-build
+  - methodology
+  - documentation
+  - lifecycle
+  - sop
+
+first_domains:
+  - discovery
+  - requirements
+  - design
+  - build
+  - hardening
+  - launch
+  - postlaunch
+
+# Stage 1 gate evaluation
+gate:
+  name_regex: pass     # context-site-build matches ^[a-z][a-z0-9]*(?:-[a-z0-9]+){0,3}$
+  parent_marketplace_exists: true
+  first_domains_count: 7

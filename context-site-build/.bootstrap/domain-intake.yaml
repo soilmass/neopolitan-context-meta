@@ -1,0 +1,71 @@
+# domain-intake.yaml — Stage 1 artifact for family-bootstrap
+#
+# Produced: 2026-05-08
+# Operator: edisonsteele@gmail.com
+# Family target: site-build (within context-site-build library)
+#
+# Per ../context-meta-pipeline/skills/family-bootstrap/SKILL.md Stage 1.
+
+domain: site-build
+
+# The "domain" name follows the bare-domain regex (^[a-z][a-z0-9]*(?:-[a-z0-9]+){0,3}$).
+# It will become the family's router name and the prefix for atom names
+# (vision-author, persona-author, srs-author, etc. — see Stage 3 taxonomy).
+
+authority:
+  # Note: this is a PRIVATE/INTERNAL authority. See finding B3 / A59:
+  # the family-bootstrap Stage 1 gate requires "URL + named author"; the
+  # text intent ("no general consensus sources") is not violated, but the
+  # URL field is unsatisfiable for internal SOPs. Treating the canonical
+  # local path as URL-equivalent.
+  url: "internal://site-build-procedure.md"
+  path: "site-build-procedure.md"   # canonical local path on the operator's system
+  author: "Edison Steele"
+  title: "site-build-procedure.md — 7-phase site/web-app methodology"
+  visibility: internal
+  surface_in_environment: |
+    The authority is exposed in this Claude Code environment as a set of
+    user-invocable skills (draft-vision, draft-srs, draft-ost, draft-kpi-doc,
+    draft-runbook, draft-baseline-report, etc.). Each user-invocable skill
+    cites a specific section of site-build-procedure.md (e.g., "§4.2.5",
+    "§5.1", "§10.2.1"). The capabilities.json produced at Stage 2 lifts
+    from these skills as the authority's surface, with the cited section
+    numbers preserved.
+
+scope: >
+  The site-build family produces opinionated documentation artifacts
+  for every phase of a documented 7-phase methodology — Phase 1 Discovery
+  (vision, persona, KPI, OST, stakeholder map, risk register, discovery
+  deck), Phase 2 Requirements (SRS, ADR, threat model, privacy plan,
+  content matrix, master schedule, comms plan, AI feature spec), Phase 3
+  Design (design philosophy, design tokens, component states matrix,
+  handoff spec, usability synthesis), Phase 4 Build (discovery tick),
+  Phase 5 Hardening (a11y conformance, runbook templates), Phase 6
+  Launch (launch comms), Phase 7 Post-launch (stabilization report,
+  baseline report, win-regression report, hypercare digest, weekly /
+  monthly / quarterly / annual reports, diagnostic sweep, AEO baseline,
+  optimization loop, optimization backlog, change requests).
+
+  Out of scope: the methodology itself (the SOP doc is the authority,
+  not an output); per-tech-stack adapters (those are sibling libraries —
+  context-nextjs, etc.); the website code itself.
+
+expected_size:
+  tier_1: 6   # Tier 1 minimum to pass the family-bootstrap Stage 3 gate
+  tier_2: 7   # specialist deliverables
+  tier_3: 5   # long-tail / late-stage deliverables
+  total: 18   # first-pass estimate; final taxonomy lives in taxonomy.md (Stage 3)
+
+# Stage 1 gate evaluation
+gate:
+  authority_url: "internal-path-treated-as-url (B3/A59)"
+  authority_named_author: pass    # Edison Steele
+  domain_name_regex: pass         # site-build
+  domain_not_taken: pass          # SNAPSHOT.lock skills: {} — no conflicts
+  scope_paragraph: pass
+
+# The gate evaluates as PASS with one logged finding:
+#   B3 / A59 — internal authorities lack a public URL but satisfy the
+#   gate's intent. Documented in coverage.md ledgers; meta-pipeline
+#   should add a `internal:` URI scheme to family-bootstrap docs as
+#   part of L7 backfill.
