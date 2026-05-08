@@ -632,6 +632,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--archetype", choices=ARCHETYPES, help="override archetype detection")
     parser.add_argument("--format", choices=("text", "json"), default="text")
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="plugin root (default: cwd)")
+    parser.add_argument(
+        "--allow-empty",
+        action="store_true",
+        help="exit 0 with a notice when skills/ is empty (fresh-bootstrap libraries; mirrors coverage-check.py A31 fix)",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -639,6 +644,12 @@ def main(argv: list[str] | None = None) -> int:
         if args.all:
             targets = discover_all(args.root)
             if not targets:
+                if args.allow_empty:
+                    if args.format == "json":
+                        print('{"reports": [], "library": [], "notice": "no skills yet — fresh library"}')
+                    else:
+                        sys.stderr.write(f"notice: no SKILL.md files under {args.root}/skills/ — fresh library (--allow-empty)\n")
+                    return 0
                 sys.stderr.write(f"error: no SKILL.md files found under {args.root}/skills/\n")
                 return 2
         else:

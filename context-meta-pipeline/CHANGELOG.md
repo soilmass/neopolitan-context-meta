@@ -8,7 +8,72 @@ Format follows the conventions documented in `GOVERNANCE.md`. Categories: Breaki
 
 ## [Unreleased]
 
-(Pending the next release.)
+First real-consumer dogfood findings (A57-A60) and fixes. The
+`context-site-build` library was scaffolded via `library-bootstrap`
++ `family-bootstrap` + `skill-author` × 7 on 2026-05-08, surfacing 4
+findings across 3 lifecycle stages. P6 in `docs/PATH-TO-V1.md` moves
+from "blocked on consumer library" to "consumer library exists; first
+audit + refactor + retire pass pending."
+
+### Added
+
+- **`validate-metadata.py:--allow-empty`** — opt-in flag that returns
+  exit 0 with a notice when `skills/` is empty under `--all`.
+  Architectural mirror of the v0.5.2 A31 fix to `coverage-check.py`.
+  Surfaced as A57. Existing CI behavior preserved (flag is opt-in);
+  `library-skeleton.md` verify.sh template should be updated next
+  time it's edited.
+
+- **`skills/family-bootstrap/references/methodology-domains.md`** —
+  new reference doc covering the methodology-domain case (heavyweight
+  document deliverables, phase-organized capability count). Surfaced
+  as A58 when the operator's initial mental model cut the site-build
+  methodology into one family per phase, falling below Stage 2's
+  ≥10-capability gate on most phases. Documents the
+  one-family-with-phase-organized-tiers pattern.
+
+### Changed
+
+- **`skills/family-bootstrap/references/domain-intake-checklist.md`** —
+  added "Authorities for internal SOPs" subsection documenting the
+  `internal://` URI convention plus optional `path:` field for
+  internal / private authorities. Surfaced as A59 when the site-build
+  SOP (a private authored document) couldn't satisfy the literal URL
+  requirement of the Stage 1 gate. Cross-references the new
+  `methodology-domains.md` reference.
+
+- **`skills/skill-author/references/audit-ritual.md`** — added
+  "Common drift signals on fresh atoms" subsection. Surfaced as A60
+  when 4 of 7 freshly-authored atoms in the context-site-build dogfood
+  reproduced the v0.2.0 family-bootstrap drift-gate-failure pattern
+  ("8 of 9 freshly-bootstrapped skills failed the drift gate
+  immediately"). The new subsection enumerates common offenders
+  (phase-name suffixes, temporal hedges, verb-form mismatches,
+  abstract framing) and the fix discipline (tighten description, not
+  body).
+
+### Health
+
+- All 14 skills remain `healthy` in SNAPSHOT.lock. No SKILL.md
+  bodies / frontmatter changed in [Unreleased]; only references and
+  one script. Per-skill version bumps deferred to v0.7.1 release.
+
+### Notes
+
+- A57-A60 are the first findings produced by an **external consumer
+  library**, not in-memory dogfood. Per `docs/PATH-TO-V1.md` P6, this
+  kind of finding is the load-bearing signal v1.0 has been waiting
+  for.
+- All 4 findings have suggested patches; A57 is shipped, A58/A59/A60
+  shipped as reference doc updates. SKILL.md body / frontmatter
+  changes deferred to v0.7.1 (the per-skill version bumps will mark
+  family-bootstrap → 0.2.5, skill-author → 0.1.8 to claim the
+  reference updates).
+- v1.0 P6 status: **partial** — one consumer library exists with
+  ≥3 atoms authored + audited. Refactor + retire still need real
+  signal (premature on a freshly-bootstrapped family). Per A56's
+  discipline-restoration commitment, manufactured refactor / retire
+  exercises were declined.
 
 ---
 
