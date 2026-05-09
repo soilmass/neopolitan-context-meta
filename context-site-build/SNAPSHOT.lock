@@ -11,17 +11,19 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.1.2"
-generated: "2026-05-08"
+snapshot_version: "0.2.0"
+generated: "2026-05-09"
 plugin: "context-site-build"
 
 skills:
-  # site-build family (per-family router + Tier 1 atoms)
+  # site-build family — per-family router
   site-build:
-    version: "0.1.1"
+    version: "0.1.2"
     archetype: router
     path: "skills/site-build/SKILL.md"
     health: "healthy"
+
+  # Tier 1 atoms (authored v0.1.0; current v0.1.1 after self-review pass)
   vision-author:
     version: "0.1.1"
     archetype: atom
@@ -51,4 +53,58 @@ skills:
     version: "0.1.1"
     archetype: atom
     path: "skills/baseline-report-author/SKILL.md"
+    health: "healthy"
+
+  # Tier 2 atoms (authored v0.2.0)
+  kpi-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/kpi-author/SKILL.md"
+    health: "healthy"
+  risk-register-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/risk-register-author/SKILL.md"
+    health: "healthy"
+  threat-model-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/threat-model-author/SKILL.md"
+    health: "healthy"
+  privacy-plan-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/privacy-plan-author/SKILL.md"
+    health: "healthy"
+  master-schedule-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/master-schedule-author/SKILL.md"
+    health: "healthy"
+
+  # Tier 3 atoms (authored v0.2.0)
+  ost-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/ost-author/SKILL.md"
+    health: "healthy"
+  stakeholder-map-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/stakeholder-map-author/SKILL.md"
+    health: "healthy"
+  design-philosophy-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/design-philosophy-author/SKILL.md"
+    health: "healthy"
+  weekly-metric-report-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/weekly-metric-report-author/SKILL.md"
+    health: "healthy"
+  change-request-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/change-request-author/SKILL.md"
     health: "healthy"
