@@ -11,7 +11,7 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.2.0"
+snapshot_version: "0.3.0"
 generated: "2026-05-09"
 plugin: "context-site-build"
 
@@ -107,4 +107,87 @@ skills:
     version: "0.1.0"
     archetype: atom
     path: "skills/change-request-author/SKILL.md"
+    health: "healthy"
+
+  # site-design family — per-family router (authored v0.3.0)
+  site-design:
+    version: "0.1.0"
+    archetype: router
+    path: "skills/site-design/SKILL.md"
+    health: "healthy"
+
+  # site-design Tier 1 atoms (authored v0.3.0)
+  mood-board-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/mood-board-author/SKILL.md"
+    health: "healthy"
+  art-direction-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/art-direction-author/SKILL.md"
+    health: "healthy"
+  concept-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/concept-author/SKILL.md"
+    health: "healthy"
+  motion-language-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/motion-language-author/SKILL.md"
+    health: "healthy"
+  design-tokens-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/design-tokens-author/SKILL.md"
+    health: "healthy"
+  component-states-matrix-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/component-states-matrix-author/SKILL.md"
+    health: "healthy"
+  engineering-handoff-spec-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/engineering-handoff-spec-author/SKILL.md"
+    health: "healthy"
+
+  # site-design Tier 2 atoms (authored v0.3.0)
+  concept-prototyping-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/concept-prototyping-author/SKILL.md"
+    health: "healthy"
+  wireframe-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/wireframe-author/SKILL.md"
+    health: "healthy"
+  prototype-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/prototype-author/SKILL.md"
+    health: "healthy"
+  usability-synthesis-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/usability-synthesis-author/SKILL.md"
+    health: "healthy"
+  a11y-annotations-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/a11y-annotations-author/SKILL.md"
+    health: "healthy"
+
+  # site-design Tier 3 atoms (authored v0.3.0)
+  design-system-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/design-system-author/SKILL.md"
+    health: "healthy"
+  discovery-tick-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/discovery-tick-author/SKILL.md"
     health: "healthy"

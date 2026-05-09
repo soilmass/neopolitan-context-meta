@@ -1,0 +1,92 @@
+# site-design-intake.yaml — Stage 1 artifact for family-bootstrap
+#
+# Produced: 2026-05-09
+# Operator: edisonsteele@gmail.com
+# Family target: site-design (within context-site-build library)
+#
+# Per ../context-meta-pipeline/skills/family-bootstrap/SKILL.md Stage 1.
+
+domain: site-design
+
+# Bare-domain mental-model name passes the naming regex
+# (^[a-z][a-z0-9]*(?:-[a-z0-9]+){0,3}$). Atoms in the family use
+# <deliverable>-author naming, matching the site-build family's
+# convention (per the v0.7.0 first-real-consumer dogfood naming
+# decision, B6/A62).
+
+authority:
+  # Authority is composite — the SOP plus the Awwwards-tier research.
+  # The SOP covers Phase 3 design deliverables (wireframes, prototype,
+  # design system, a11y annotations, handoff). The Awwwards research
+  # adds the named upstream phases the SOP doesn't have (mood board,
+  # art direction, concept, motion language) that consistently
+  # distinguish award-winning design work from generic design work.
+  primary:
+    url: "internal://site-build-procedure.md"
+    path: "/home/edox1/Public/neopolitan/docs/claude-docs/site-build-procedure.md"
+    section: "§6 Phase 3 — Design (lines 916–1150)"
+    author: "Edison Steele"
+    title: "Website & Web Application Build Procedure (v2.0)"
+    visibility: internal
+  secondary:
+    url: "internal://docs/research/SYNTHESIS.md"
+    path: "context-site-build/docs/research/SYNTHESIS.md"
+    title: "Awwwards-Tier Synthesis (E1+E2+E3 research, 2026-05-08)"
+    notes: |
+      Adds named phases the SOP doesn't have but ~20 top agencies
+      (Active Theory, Lusion, Hello Monday, Locomotive, Pentagram,
+      Bonhomme, Build in Amsterdam, etc.) consistently treat as
+      first-class deliverables: Mood Board (Lusion Phase 1), Art
+      Direction (verbatim across most agencies), Concept (Lusion
+      Phase 2 Concept Prototyping; Active Theory's "designing with
+      code"), Motion Language (motion principles / animation
+      tokens). These are the "secret-sauce" deliverables that make
+      Awwwards-tier work distinct from generic web work.
+
+scope: >
+  The site-design family produces the deliverables of Phase 3
+  (Design) of the methodology, expanded to include the Awwwards-
+  tier upstream phases that govern visual direction before
+  wireframes begin. Tier 1 atoms cover the load-bearing creative
+  + design-system spine (mood board, art direction, concept,
+  motion language, design tokens, component states, engineering
+  handoff). Tier 2 covers wireframing, prototyping, usability
+  synthesis, concept prototyping in 3D/runtime tools, and a11y
+  annotations. Tier 3 covers the long-tail (full design system
+  doc beyond tokens+states; weekly Phase-4 continuous discovery
+  synthesis).
+
+  Out of scope: design-philosophy-author (already in site-build
+  Tier 3 — cross-link rather than duplicate); the website code
+  itself; production sprint planning (Phase 4 ceremony);
+  Phase 5/6/7 deliverables (in site-build family or future
+  site-operate family).
+
+expected_size:
+  tier_1: 7      # mood-board, art-direction, concept, motion-language,
+                 # design-tokens, component-states-matrix, engineering-handoff-spec
+  tier_2: 5      # concept-prototyping, wireframe, prototype,
+                 # usability-synthesis, a11y-annotations
+  tier_3: 2      # design-system, discovery-tick
+  total: 14      # within Stage 3 cap of 12-21
+
+# Stage 1 gate evaluation
+gate:
+  authority_url: "internal-paths-treated-as-url (B3/A59 convention)"
+  authority_named_author: pass
+  domain_name_regex: pass
+  domain_not_taken: pass         # SNAPSHOT.lock skills: site-build family + atoms; no site-design
+  scope_paragraph: pass
+  expected_size_within_cap: pass # total 14 within 12-21
+
+# Notes on cross-family relationships:
+notes: |
+  - design-philosophy-author lives in site-build (Tier 3) and is
+    cross-referenced from this family's Tier 1 atoms (the
+    philosophy is one-page strategic; Tier 1 atoms here implement
+    against it).
+  - This family's atoms hand off downstream to engineering (via
+    engineering-handoff-spec-author at the family's exit).
+  - Polish discipline + Awards submission belong to a future
+    site-operate family per docs/ARCHITECTURE-OPTIONS-v0.2.md
+    Phase 3.
