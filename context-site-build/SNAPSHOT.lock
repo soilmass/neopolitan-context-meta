@@ -1,0 +1,54 @@
+# SNAPSHOT.lock — last known-good library state for context-site-build
+#
+# Updated by:
+#   skill-author Stage 4 (per atom)
+#   family-bootstrap Stage 6 (per family)
+#   skill-refactor Stage 4
+#   skill-retire Stage 4
+#   ../context-meta-pipeline/scripts/rollback-skill.py
+#
+# DO NOT edit by hand except during bootstrap.
+#
+# Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
+
+snapshot_version: "0.1.2"
+generated: "2026-05-08"
+plugin: "context-site-build"
+
+skills:
+  # site-build family (per-family router + Tier 1 atoms)
+  site-build:
+    version: "0.1.1"
+    archetype: router
+    path: "skills/site-build/SKILL.md"
+    health: "healthy"
+  vision-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/vision-author/SKILL.md"
+    health: "healthy"
+  persona-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/persona-author/SKILL.md"
+    health: "healthy"
+  srs-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/srs-author/SKILL.md"
+    health: "healthy"
+  adr-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/adr-author/SKILL.md"
+    health: "healthy"
+  runbook-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/runbook-author/SKILL.md"
+    health: "healthy"
+  baseline-report-author:
+    version: "0.1.1"
+    archetype: atom
+    path: "skills/baseline-report-author/SKILL.md"
+    health: "healthy"

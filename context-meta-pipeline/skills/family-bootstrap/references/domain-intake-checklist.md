@@ -74,6 +74,51 @@ Pass requires:
 
 If any of these fail, halt and re-do Stage 1. Do not proceed to Stage 2.
 
+## Authorities for internal SOPs
+
+Surfaced by audit finding A59 (2026-05-08 first real-consumer dogfood).
+
+The Stage 1 gate text "authority cites a URL AND a named author"
+literally requires a URL. Internal / private SOPs satisfy the gate's
+*intent* (no general-consensus sources, named author present) but
+lack a public URL.
+
+**Convention** for internal authorities:
+
+```yaml
+authority:
+  url: "internal://<canonical-local-path>"   # e.g., internal://site-build-procedure.md
+  path: "<canonical-local-path-on-operator-system>"
+  author: "<named author>"
+  title: "<work title>"
+  visibility: internal
+```
+
+The `internal://` URI:
+- Signals the authority is not publicly resolvable.
+- Functions as a stable identifier in `domain-intake.yaml` and
+  downstream `coverage.md` references.
+- Pairs with a `path:` field giving the canonical filesystem location
+  the operator can re-confirm.
+
+The Stage 1 gate accepts `internal://` URIs *unconditionally* — the
+verification burden is on the operator (the SOP exists; the operator
+knows where) rather than on a HEAD request.
+
+When the SOP later moves to a public location, update the
+`domain-intake.yaml` `url` to the public URL and remove the
+`internal://` prefix; this is a coverage.md note rather than a
+versioned change.
+
+## Methodology vs technical domains
+
+If this is a methodology domain (heavyweight document deliverables
+per phase, 20-50 total capabilities), the common pitfall is
+bootstrapping one family per phase; the typical right cut is one
+family with phase-organized tiers. The `family-bootstrap` SKILL.md
+will cite the methodology-domains reference once it is added to the
+skill's References section in v0.7.1.
+
 ## Common intake failures
 
 - **Authority is a forum thread or a chatbot transcript.** These aren't

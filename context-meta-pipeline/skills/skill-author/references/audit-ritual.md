@@ -120,6 +120,48 @@ Stage 2 passes only when every contended sibling has either:
 No sibling is silently left as a routing competitor. That's the whole
 point of the ritual.
 
+## Common drift signals on fresh atoms
+
+Surfaced by audit finding A60 (2026-05-08 first real-consumer dogfood
+of `family-bootstrap` against the `context-site-build` library — 4 of
+7 freshly-authored atoms failed the description-drift gate on first
+audit).
+
+Drift = description tokens that don't appear in the body. Common
+offenders on fresh atoms:
+
+- **Phase-name suffixes** ("kickoff", "during Phase X start"). The
+  body usually says "Phase 1 Discovery" or "the project starts"; the
+  description grabs a more colloquial form.
+- **Temporal hedges** ("around T+8 weeks", "after stabilization
+  completes"). Bodies use precise forms; descriptions use approximate
+  ones.
+- **Verb form mismatches** ("Writes" in description / "Write" or
+  "writes the artifact" in body). Tokenizer treats different forms
+  as different stems.
+- **Abstract framing** ("the artifact that **sets** why the project
+  exists, **who** it serves"). Bodies use concrete operations
+  ("compose a one-paragraph statement"). Description's "set / who /
+  why / how" become drift tokens.
+- **Filler structure words** ("structured", "around", "during"). They
+  read smoothly in descriptions but rarely echo in bodies.
+
+**The fix is almost always to tighten the description**, not to
+inflate the body. Descriptions should use the same vocabulary as the
+body (`compose`, `assign`, `aggregate`, `cite`) rather than abstract
+synonyms (`set`, `make`, `cover`, `handle`).
+
+If a fresh family produces N atoms and >50% fail the drift gate, the
+issue is usually a shared abstract-description-template that diverges
+from each atom's concrete body. Iterate on descriptions individually;
+the gate will pass after one or two passes.
+
+This pattern was first observed in the v0.4.0 family-bootstrap
+dogfood ("8 of 9 freshly-bootstrapped skills failed the drift gate
+immediately"), motivating the Stage 6 advisory audit. The v0.7.x
+context-site-build dogfood reproduced it. The audit-at-Stage-6
+design is correct; this subsection is the operator's first-aid kit.
+
 ## Scaling notes
 
 Per `ARCHITECTURE.md` §"Routing and Contention":

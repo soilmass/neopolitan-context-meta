@@ -10,6 +10,14 @@
       "license": "Apache-2.0",
       "description": "Five-skill lifecycle pipeline (skill-author, family-bootstrap, skill-audit, skill-refactor, skill-retire) plus governance docs and Python validators. Skills that govern skills.",
       "keywords": ["skills", "meta", "governance", "library", "pipeline", "lifecycle"]
+    },
+    {
+      "name": "context-site-build",
+      "source": "./context-site-build",
+      "version": "0.1.2",
+      "license": "Apache-2.0",
+      "description": "Site-build methodology library — skills that draft, audit, and synthesize the deliverables of a 7-phase site/web-app build (discovery → requirements → design → build → hardening → launch → post-launch).",
+      "keywords": ["site-build", "methodology", "documentation", "lifecycle", "sop"]
     }
   ]
 }
