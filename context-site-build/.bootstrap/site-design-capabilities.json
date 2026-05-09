@@ -1,0 +1,48 @@
+{
+  "_comment": "Stage 2 artifact for family-bootstrap. Capabilities lifted from site-build-procedure.md §6 (Phase 3 Design) plus the Awwwards-tier methodology research in docs/research/E2-agency-methodologies.md.",
+  "_authorities": {
+    "primary": {
+      "url": "internal://site-build-procedure.md",
+      "section": "§6 Phase 3 — Design",
+      "author": "Edison Steele"
+    },
+    "secondary": {
+      "url": "internal://docs/research/E2-agency-methodologies.md",
+      "title": "Awwwards-tier methodologies (E2 research)"
+    }
+  },
+  "_produced": "2026-05-09",
+  "_total": 17,
+  "_threshold": 10,
+  "capabilities": [
+    {"name": "mood-board",                     "tier_pref": 1, "description": "Mood board + curated visual references with critique of why each works",                                "primary_cite": "research/E2 §C.1 (Lusion Phase 1)",          "sop_cite": "(implicit — not a named SOP deliverable; Awwwards-tier addition)"},
+    {"name": "art-direction",                  "tier_pref": 1, "description": "Art Direction document — visual language, palette, typography, motion vocabulary",                       "primary_cite": "research/E2 §A.3 + glossary",               "sop_cite": "(implicit — partially in §6.4 design system; Awwwards-tier elevates it to its own phase)"},
+    {"name": "concept",                        "tier_pref": 1, "description": "Concept doc — creative direction, narrative, lore, defended creative territory",                          "primary_cite": "research/E2 §A.2 + §C (Lusion, Resn, Antinomy, Active Theory)", "sop_cite": "(implicit — Awwwards-tier phase distinct from any SOP deliverable)"},
+    {"name": "motion-language",                "tier_pref": 1, "description": "Motion Language doc — timing, easing, choreography rules; motion tokens",                                 "primary_cite": "research/E3 §6.3 motion specs",             "sop_cite": "§6.4.1 (motion tokens partial)"},
+    {"name": "design-tokens",                  "tier_pref": 1, "description": "DTCG JSON → Style Dictionary → CSS-vars + Tailwind v4 @theme + TypeScript types pipeline",               "primary_cite": "research/E3 §6.1",                          "sop_cite": "§6.4.1"},
+    {"name": "component-states-matrix",        "tier_pref": 1, "description": "9-state matrix per component (default/hover/focus/focus-visible/active/disabled/loading/error/empty/skeleton)", "primary_cite": "research/E3 §6.2",                  "sop_cite": "§6.4.3"},
+    {"name": "engineering-handoff-spec",       "tier_pref": 1, "description": "Engineering Handoff Spec — Design→Engineering contract at end of Phase 3",                                "primary_cite": "research/E3 §6.6",                          "sop_cite": "§6.6"},
+    {"name": "concept-prototyping",            "tier_pref": 2, "description": "Concept prototype in 3D/runtime tools (Houdini, C4D, vvvv, WebGL) — distinct from clickable Figma proto", "primary_cite": "research/E2 §C.2 (Lusion Phase 2)",         "sop_cite": "(implicit — Awwwards-tier addition)"},
+    {"name": "wireframe-3-fidelity",           "tier_pref": 2, "description": "Wireframes across three fidelities (lo / mid / hi) — paper sketch → low-fi blocks → high-fi visual",     "primary_cite": "research/E2 §C.4 (Hello Monday's 3-fidelity ladder)", "sop_cite": "§6.2"},
+    {"name": "clickable-prototype",            "tier_pref": 2, "description": "Clickable prototype (Figma / Framer / coded) for usability testing top 3-5 user tasks",                  "primary_cite": "(N/A primary)",                              "sop_cite": "§6.3.1"},
+    {"name": "usability-synthesis",            "tier_pref": 2, "description": "Synthesize usability test notes into severity-ranked issues with recommended fixes",                      "primary_cite": "(N/A primary)",                              "sop_cite": "§6.3.3"},
+    {"name": "a11y-annotations",               "tier_pref": 2, "description": "Per-component accessibility annotations on hi-fi designs (semantic HTML, ARIA, keyboard, focus, contrast)", "primary_cite": "(N/A primary)",                          "sop_cite": "§6.4.5"},
+    {"name": "design-system",                  "tier_pref": 3, "description": "Full design-system documentation beyond tokens + states — Atomic Design hierarchy, content guidelines, maintenance discipline", "primary_cite": "(N/A primary)",                "sop_cite": "§6.4 (full)"},
+    {"name": "discovery-tick",                 "tier_pref": 3, "description": "Phase 4 weekly continuous-discovery synthesis — interviews + analytics + experiments → next-week's hypotheses", "primary_cite": "(N/A primary)",                              "sop_cite": "§7.5 + §2.3"},
+    {"name": "design-qa-checklist",            "tier_pref": "out-of-scope", "description": "Design QA gate-relevant checklist — folds into a11y-annotations + component-states-matrix + the Stage 6 family audit",  "primary_cite": "(N/A)", "sop_cite": "§6.5"},
+    {"name": "design-handoff-walkthrough",     "tier_pref": "out-of-scope", "description": "The hand-off walkthrough meeting itself — folds into engineering-handoff-spec's Capabilities Owned",                  "primary_cite": "(N/A)", "sop_cite": "§6.6"},
+    {"name": "responsive-behavior-rules",      "tier_pref": "out-of-scope", "description": "Per-component responsive behavior — folds into component-states-matrix + design-system",                                  "primary_cite": "(N/A)", "sop_cite": "§6.4.4"}
+  ],
+  "_tier_cap_check": {
+    "tier_1_count": 7,
+    "tier_1_cap": "6-9",
+    "tier_2_count": 5,
+    "tier_2_cap": "4-7",
+    "tier_3_count": 2,
+    "tier_3_cap": "2-5",
+    "out_of_scope_count": 3,
+    "in_family_total": 14,
+    "in_family_cap": "12-21",
+    "all_pass": true
+  }
+}
