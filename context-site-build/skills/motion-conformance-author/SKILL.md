@@ -8,15 +8,15 @@ description: >
   conformance.md plus the axe-core CI configuration and the manual
   keyboard / screen-reader test plan. Codifies three flavours of
   prefers-reduced-motion (hard-disable / soft-degrade / alternative-
-  experience), focus-visible parity for custom cursors, keyboard-on-
-  scroll-jacked patterns, and the lite-mode alternative experience.
-  Free-standing atom outside any family. Do NOT use for: per-component
-  a11y annotations (use a11y-annotations-author); WCAG-EM conformance
-  statement at Phase 5 close (use conformance-statement-author —
-  this atom feeds into it); design-system motion library selection
-  (use motion-language-author); cross-stack motion conventions (use
-  house-site-design-motion or house-site-design-a11y — this atom is
-  the cross-cutting tool both reference).
+  experience), focus-visible parity for custom cursors, keyboard
+  scroll bindings, and the lite-mode alternative experience. Free-
+  standing atom outside any family. Do NOT use for: per-component
+  a11y annotations (use a11y-annotations-author); WCAG-EM
+  conformance statement at Phase 5 close (use conformance-statement-
+  author — this atom feeds into it); design-system motion library
+  selection (use motion-language-author); cross-stack motion
+  conventions (use house-site-design-motion or
+  house-site-design-a11y — this atom is the tool both reference).
 license: Apache-2.0
 metadata:
   version: "0.1.0"
