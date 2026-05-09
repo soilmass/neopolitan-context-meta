@@ -1,7 +1,11 @@
 # context-site-build Coverage
 
-Last verification: 2026-05-09 (v0.3.0 — site-design family
-bootstrapped; library now hosts 2 families = 32 skills total).
+Last verification: 2026-05-09 (v0.4.0 — site-operate family
+bootstrapped; library now hosts 3 families = 47 skills total
+covering Phase 1 through Phase 7 + Awwwards-tier additions).
+
+Previous verification: 2026-05-09 (v0.3.0 — site-design family
+bootstrapped; 2 families = 32 skills).
 
 Previous verification: 2026-05-09 (v0.2.0 — site-build family
 Tier 2/3 completion; 16 atoms + 1 router).
@@ -24,12 +28,21 @@ silent gaps are the failure mode this document exists to prevent.
 |---|---|---|
 | Methodology spine — Phase 1 (Discovery) + Phase 2 (Requirements) + Phase 5/6 (Hardening + Launch spine) + Phase 7 (Post-launch spine) + cross-phase change control | `site-build` | 16 atoms (6 Tier 1, 5 Tier 2, 5 Tier 3) + 1 router. Authored v0.1.0–v0.2.0. |
 | Phase 3 Design + Awwwards-tier creative phases (mood board, art direction, concept, motion language) + Phase 4 continuous discovery synthesis | `site-design` | 14 atoms (7 Tier 1, 5 Tier 2, 2 Tier 3) + 1 router. Authored v0.3.0. |
+| Phase 5 a11y conformance + Phase 6 launch communications + Phase 7 full (stabilization, hypercare, optimization, monthly + quarterly + annual reports) + Awwwards-tier polish + awards | `site-operate` | 14 atoms (7 Tier 1, 5 Tier 2, 2 Tier 3) + 1 router. Authored v0.4.0. |
 
-The two families are siblings within `context-site-build`. They
-cross-reference at phase boundaries (e.g., `design-philosophy-author`
-in `site-build` Tier 3 hands off to `site-design`'s Tier 1 atoms;
-`art-direction-author` in `site-design` cites `vision-author` and
-`persona-author` from `site-build`).
+The three families are siblings within `context-site-build`. They
+cross-reference at phase boundaries:
+- `design-philosophy-author` (site-build Tier 3) hands off to
+  site-design's Tier 1 atoms.
+- `art-direction-author` (site-design) cites `vision-author` and
+  `persona-author` (site-build).
+- `polish-discipline-author` (site-operate) cites
+  `art-direction-author` + `motion-language-author` +
+  `component-states-matrix-author` (all site-design).
+- `awards-submission-author` (site-operate) cites virtually every
+  prior atom — the awards package is the cumulative output.
+- `optimization-loop-author` (site-operate) cites the SRS NFRs
+  (`srs-author`, site-build) as guardrail metrics.
 
 ---
 
@@ -37,10 +50,10 @@ in `site-build` Tier 3 hands off to `site-design`'s Tier 1 atoms;
 
 | Domain | Why deferred | Build trigger |
 |---|---|---|
-| `site-operate` | Phase 5 specialist (a11y conformance), Phase 6 launch comms, Phase 7 long-tail (stabilization report, hypercare digest, monthly / quarterly / annual reports, diagnostic sweep, AEO baseline, optimization loop / backlog, win-regression) plus the Awwwards-tier polish + awards phases. Coheres as a family but not yet bootstrapped. | Phase 3 of Option C per `docs/ARCHITECTURE-OPTIONS-v0.2.md` — operator decision after Phase 2 lands. |
-| Stack-specific overlays (`house-site-build-r3f`, `house-site-build-nextjs`, `house-site-build-astro`, `house-site-design-figma`) | Stack conventions encoded as `house-*` policy overlays atop the mechanism atoms. | Phase 4 of Option C. |
+| Stack-specific overlays (`house-site-build-r3f`, `house-site-build-nextjs`, `house-site-build-astro`, `house-site-design-figma`, `house-site-operate-vercel`) | Stack conventions encoded as `house-*` policy overlays atop the mechanism atoms. | Phase 4 of Option C per `docs/ARCHITECTURE-OPTIONS-v0.2.md`. |
 | Cross-cutting tools (`performance-budget-author`, `motion-conformance-author`) | Free-standing tool atoms outside any family. | Phase 5 of Option C. |
 | Phase 4 Build ceremonies (sprint planning, working software per sprint, sprint review notes) | Build-phase ceremonies are operator-driven, not skill-driven. | n/a — out of library scope per family Out-of-Scope rows. |
+| Adjacent-awards-body submissions (Webby, FWA, CSSDA, Communication Arts) | `awards-submission-author` (site-operate Tier 3) covers Awwwards as the canonical pattern; adjacent bodies follow but with body-specific criteria. | Operator decides to submit for an adjacent body; pattern adapts from awards-submission-author with per-body deltas documented. |
 
 ---
 
@@ -73,18 +86,21 @@ operators sequence the atoms manually.
 
 ## Coverage Matrix Status
 
-Last verification: 2026-05-09 (v0.3.0).
+Last verification: 2026-05-09 (v0.4.0).
 
 | Family | Atoms | Router | Health |
 |---|---|---|---|
 | `site-build` | 16 (6 Tier 1, 5 Tier 2, 5 Tier 3) | `site-build` v0.1.2 | All 17 healthy; drift 0.0%–8.8% |
-| `site-design` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-design` v0.1.0 | All 15 fresh; audit in P2.6 |
+| `site-design` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-design` v0.1.0 | All 15 healthy; drift 0.0%–9.1% |
+| `site-operate` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-operate` v0.1.0 | All 15 fresh; audit in P3.6 |
 
-Total: **32 skills** (30 atoms + 2 routers). All in-family
-deferred queues are empty (no Specced-Not-Yet-Built rows in
-either family's coverage.md).
+Total: **47 skills** (44 atoms + 3 routers). All three families'
+in-family deferred queues are empty (no Specced-Not-Yet-Built
+rows in any family's coverage.md). The library now covers the
+full 7-phase methodology spine plus Awwwards-tier additions
+across creative + polish + awards.
 
-Tier transitions since last verification: site-design family
+Tier transitions since last verification: site-operate family
 bootstrapped from scratch; all 14 atoms authored at v0.1.0.
 
 ---
