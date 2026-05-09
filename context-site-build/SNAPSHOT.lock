@@ -11,8 +11,8 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.4.0"
-generated: "2026-05-09"
+snapshot_version: "0.5.0"
+generated: "2026-05-08"
 plugin: "context-site-build"
 
 skills:
@@ -274,3 +274,251 @@ skills:
     archetype: atom
     path: "skills/awards-submission-author/SKILL.md"
     health: "healthy"
+
+  # ============================================================
+  # v0.5.0 — Phase 4 stack-specific policy overlays (21)
+  # ============================================================
+  # Authored as the maximalist Phase 4 build per
+  # docs/ARCHITECTURE-OPTIONS-v0.2.md. All 21 are ahead-of-trigger
+  # (per A56 discipline note in coverage.md "v0.5.0–v1.0.0 Ahead-
+  # of-Trigger Note"). User explicitly approved maximalist scope
+  # 2026-05-08.
+
+  # ----- Combo A "React-cinematic" (Next.js × 3) -----
+  house-site-build-nextjs:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-build-nextjs/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - srs-author@0.1.1
+      - adr-author@0.1.1
+      - master-schedule-author@0.1.0
+      - runbook-author@0.1.1
+      - threat-model-author@0.1.0
+  house-site-design-nextjs:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-nextjs/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - motion-language-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+  house-site-operate-nextjs:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-nextjs/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+      - conformance-statement-author@0.1.0
+
+  # ----- Combo B "Vue/Nuxt-cinematic" (Nuxt × 3) -----
+  house-site-build-nuxt:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-build-nuxt/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - srs-author@0.1.1
+      - adr-author@0.1.1
+      - master-schedule-author@0.1.0
+      - runbook-author@0.1.1
+      - threat-model-author@0.1.0
+  house-site-design-nuxt:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-nuxt/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - motion-language-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+  house-site-operate-nuxt:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-nuxt/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+      - conformance-statement-author@0.1.0
+
+  # ----- Combo C "Astro-static-with-WebGL-islands" (Astro × 3) -----
+  house-site-build-astro:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-build-astro/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - srs-author@0.1.1
+      - adr-author@0.1.1
+      - master-schedule-author@0.1.0
+      - runbook-author@0.1.1
+      - threat-model-author@0.1.0
+  house-site-design-astro:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-astro/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - motion-language-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+  house-site-operate-astro:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-astro/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+      - conformance-statement-author@0.1.0
+
+  # ----- Combo D "Svelte/SvelteKit, performance-pure" (SvelteKit × 3) -----
+  house-site-build-sveltekit:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-build-sveltekit/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - srs-author@0.1.1
+      - adr-author@0.1.1
+      - master-schedule-author@0.1.0
+      - runbook-author@0.1.1
+      - threat-model-author@0.1.0
+  house-site-design-sveltekit:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-sveltekit/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - motion-language-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+  house-site-operate-sveltekit:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-sveltekit/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+      - conformance-statement-author@0.1.0
+
+  # ----- Webflow visual-editor combo (Webflow × 3) -----
+  house-site-build-webflow:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-build-webflow/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - srs-author@0.1.1
+      - adr-author@0.1.1
+      - master-schedule-author@0.1.0
+      - runbook-author@0.1.1
+      - threat-model-author@0.1.0
+  house-site-design-webflow:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-webflow/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - motion-language-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+  house-site-operate-webflow:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-webflow/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+      - conformance-statement-author@0.1.0
+
+  # ----- Cross-stack overlays (motion + a11y) -----
+  house-site-design-motion:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-motion/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - motion-language-author@0.1.0
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+  house-site-design-a11y:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-a11y/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - a11y-annotations-author@0.1.0
+      - motion-language-author@0.1.0
+      - component-states-matrix-author@0.1.0
+
+  # ----- Design-tool overlay (Figma) -----
+  house-site-design-figma:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-design-figma/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - design-tokens-author@0.1.0
+      - design-system-author@0.1.0
+      - engineering-handoff-spec-author@0.1.0
+      - component-states-matrix-author@0.1.0
+
+  # ----- Hosting-platform overlays (Vercel + Cloudflare + Netlify) -----
+  house-site-operate-vercel:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-vercel/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+  house-site-operate-cloudflare:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-cloudflare/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
+  house-site-operate-netlify:
+    version: "0.1.0"
+    archetype: policy
+    path: "skills/house-site-operate-netlify/SKILL.md"
+    health: "fresh"
+    depends_on:
+      - runbook-author@0.1.1
+      - launch-comms-author@0.1.0
+      - optimization-loop-author@0.1.0
+      - optimization-backlog-author@0.1.0
