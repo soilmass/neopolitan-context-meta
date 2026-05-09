@@ -16,6 +16,136 @@ Rolled back, Security.
 
 ---
 
+## [0.3.0] - 2026-05-09
+
+### Added — site-design family bootstrap (14 atoms + 1 router; library v0.2.0 → v0.3.0)
+
+Phase 2 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`. The
+`site-design` family is bootstrapped from scratch covering Phase 3
+Design + the Awwwards-tier upstream creative phases the SOP doesn't
+have as named deliverables (mood board, art direction, concept,
+motion language) per `docs/research/E2-agency-methodologies.md`'s
+synthesis of ~20 top agency methodologies.
+
+#### Family — site-design
+
+Per-family router + 14 atoms across 3 tiers. Authority is
+composite: the SOP §6 (Phase 3 Design) plus the Awwwards-tier
+research synthesis. Family bootstrap walked all 6 stages of
+`family-bootstrap`; bootstrap artifacts at
+`.bootstrap/site-design-{intake,capabilities,taxonomy}.md`; family
+coverage.md at `skills/site-design/coverage.md`.
+
+#### Router — `site-design` (v0.1.0, archetype: router)
+
+Routing Table covers all 14 in-family atoms; Disambiguation
+Protocol covers ~14 atom-pair disambiguations including
+cross-family pairs (concept vs vision, design-system vs
+design-philosophy, discovery-tick vs persona-author/ost-author).
+
+#### Tier 1 — Essential creative + design-system spine (7)
+
+- **`mood-board-author`** (atom, v0.1.0) — Mood Board + curated
+  Reference list with critique. Lusion's Phase 1 of their
+  three-phase methodology. The Awwwards-tier deliverable that
+  enshrines visual exploration as a billable, sign-offable phase.
+- **`art-direction-author`** (atom, v0.1.0) — Art Direction
+  document. Defended visual language synthesized from the mood
+  board: named palette (often two-color per Awwwards convention),
+  type system, motion vocabulary, photography/illustration
+  direction. Used as a named, billable phase by Active Theory,
+  Lusion, Bonhomme, Locomotive, Build in Amsterdam, Mathematic,
+  Dogstudio, Immersive Garden.
+- **`concept-author`** (atom, v0.1.0) — Concept document.
+  Creative thesis + narrative + lore + defended creative
+  territory. Distinct from vision (business-outcome focused) by
+  being creative-direction focused.
+- **`motion-language-author`** (atom, v0.1.0) — Motion Language
+  document. Durations, easings, choreography rules, motion
+  tokens, per-interaction motion contracts, prefers-reduced-motion
+  policy, performance budget for motion.
+- **`design-tokens-author`** (atom, v0.1.0) — DTCG JSON →
+  Style Dictionary v4 → CSS-vars + Tailwind v4 @theme + TS
+  types pipeline. 8 token categories (color/type/spacing/radius/
+  shadow/motion/z-index/breakpoints).
+- **`component-states-matrix-author`** (atom, v0.1.0) —
+  Per-component 9-state matrix. Visual / behavior / a11y row per
+  state. Refuses "ready" until all states filled.
+- **`engineering-handoff-spec-author`** (atom, v0.1.0) —
+  Engineering Handoff Spec. Bundles tokens + matrices +
+  motion language + a11y annotations into the Phase 3 close
+  contract from Design to Engineering. Refuses "throw it over
+  the wall" hand-offs without product-trio evidence.
+
+#### Tier 2 — Specialist (5)
+
+- **`concept-prototyping-author`** (atom, v0.1.0) — Concept
+  prototype in 3D / runtime tools (Houdini / C4D / vvvv /
+  WebGL / R3F / Unity / Unreal / Blender). Lusion's Phase 2.
+  Tests technical + visual + dynamic feasibility before brief
+  is signed.
+- **`wireframe-author`** (atom, v0.1.0) — Wireframes across
+  three fidelities (lo-fi / mid-fi / hi-fi) per Hello Monday's
+  3-fidelity ladder + SOP §6.2.
+- **`prototype-author`** (atom, v0.1.0) — Clickable prototype
+  for usability testing top 3-5 user tasks (SOP §6.3.1).
+- **`usability-synthesis-author`** (atom, v0.1.0) — Usability
+  test design + synthesis with Sev-1 → Sev-4 issue ranking
+  (SOP §6.3.2 + §6.3.3).
+- **`a11y-annotations-author`** (atom, v0.1.0) —
+  Per-component accessibility annotations on hi-fi designs
+  (SOP §6.4.5). Maps WCAG 2.2 success criteria.
+
+#### Tier 3 — Long tail (2)
+
+- **`design-system-author`** (atom, v0.1.0) — Full design
+  system documentation. Atomic Design hierarchy, per-component
+  owner + version + deprecation + contribution model, content
+  guidelines, internationalization, Storybook reference (SOP
+  §6.4 full).
+- **`discovery-tick-author`** (atom, v0.1.0) — Phase 4 weekly
+  continuous-discovery synthesis (SOP §7.5 + §2.3). Pulls
+  interview / analytics / support / A/B signal into 1-page memo
+  with 1–3 backlog candidates in hypothesis form.
+
+### Changed — bookkeeping
+
+- **`SNAPSHOT.lock`** v0.2.0 → v0.3.0: 15 new entries (1 router
+  + 14 atoms at v0.1.0 / fresh).
+- **Library `coverage.md`** updated: site-design promoted from
+  Domains Deferred to Domains Claimed; Coverage Matrix Status
+  reflects 32 skills total (16 site-build + 14 site-design + 2
+  routers).
+- **Library `CHANGELOG.md`** — this entry.
+- **`plugin.json`** v0.2.0 → v0.3.0 (MINOR — adding new family
+  + 14 skills + 1 router per VERSIONING-POLICY).
+- **`marketplace.json`** plugin row v0.2.0 → v0.3.0.
+- **`.bootstrap/`** — 3 new files: `site-design-intake.yaml`,
+  `site-design-capabilities.json`, `site-design-taxonomy.md`
+  (the family-bootstrap Stages 1-3 artifacts).
+
+### Notes
+
+- All 14 atoms grounded composite — primary in
+  `site-build-procedure.md` v2.0 §6, secondary in the v0.7.0
+  Awwwards-tier research (`docs/research/`).
+- 4 of the 7 Tier 1 atoms (`mood-board-author`,
+  `art-direction-author`, `concept-author`, `motion-language-
+  author`) are **Awwwards-tier additions with no user-invocable
+  peer** — they encode named phases agencies use that the SOP
+  doesn't have as named deliverables. The remaining atoms have
+  `draft-*` user-invocable peers.
+- Cross-family relationships documented: `site-design` atoms
+  cite `site-build` atoms (vision-author, persona-author,
+  design-philosophy-author) by stable name; `site-build` atoms
+  remain unchanged.
+- Drift audit + iteration deferred to P2.6 (separate task);
+  initial validate-metadata.py PASSED for all 32 skills.
+- Pre-existing v0.2.0 findings (B1–B8 / A57–A64) carry forward
+  unchanged.
+
+---
+
 ## [0.2.0] - 2026-05-09
 
 ### Added — Tier 2/3 atom completion (10 new atoms; library v0.1.2 → v0.2.0)

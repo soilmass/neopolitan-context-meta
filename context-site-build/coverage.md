@@ -1,11 +1,17 @@
 # context-site-build Coverage
 
-Last verification: 2026-05-08 (initial bootstrap; no skills yet).
+Last verification: 2026-05-09 (v0.3.0 — site-design family
+bootstrapped; library now hosts 2 families = 32 skills total).
 
-The library claims one super-domain — **site-build methodology** —
-broken into seven phase-aligned families. Each family corresponds
-to one phase of the documented SOP and produces the deliverables
-for that phase.
+Previous verification: 2026-05-09 (v0.2.0 — site-build family
+Tier 2/3 completion; 16 atoms + 1 router).
+
+Previous verification: 2026-05-08 (v0.1.0–v0.1.2 — initial library
++ site-build Tier 1 + self-review).
+
+The library claims the **site-build methodology** super-domain,
+authoring it across multiple phase-aligned families. Each family
+covers a coherent slice of the 7-phase methodology.
 
 Per the meta-pipeline's `ARCHITECTURE.md` §"Coverage Discipline",
 silent gaps are the failure mode this document exists to prevent.
@@ -16,11 +22,14 @@ silent gaps are the failure mode this document exists to prevent.
 
 | Domain | Family | Coverage |
 |---|---|---|
-| (none yet) | — | bootstrap families via family-bootstrap |
+| Methodology spine — Phase 1 (Discovery) + Phase 2 (Requirements) + Phase 5/6 (Hardening + Launch spine) + Phase 7 (Post-launch spine) + cross-phase change control | `site-build` | 16 atoms (6 Tier 1, 5 Tier 2, 5 Tier 3) + 1 router. Authored v0.1.0–v0.2.0. |
+| Phase 3 Design + Awwwards-tier creative phases (mood board, art direction, concept, motion language) + Phase 4 continuous discovery synthesis | `site-design` | 14 atoms (7 Tier 1, 5 Tier 2, 2 Tier 3) + 1 router. Authored v0.3.0. |
 
-No families bootstrapped yet. Each entry in **Domains Deferred**
-below has an explicit build trigger; the first to fire becomes the
-first claimed family.
+The two families are siblings within `context-site-build`. They
+cross-reference at phase boundaries (e.g., `design-philosophy-author`
+in `site-build` Tier 3 hands off to `site-design`'s Tier 1 atoms;
+`art-direction-author` in `site-design` cites `vision-author` and
+`persona-author` from `site-build`).
 
 ---
 
@@ -28,9 +37,10 @@ first claimed family.
 
 | Domain | Why deferred | Build trigger |
 |---|---|---|
-| `site-build` | Not yet bootstrapped | First Phase-N deliverable (any of: vision / persona / SRS / ADR / runbook / baseline-report / etc.) needs an audited, conformant skill |
-
-(Per finding B2 / A58: each individual phase has fewer than the 10 capabilities required by `family-bootstrap` Stage 2's gate; the natural cut for a methodology domain is **one family with phase-organized tiers**, not one family per phase. The authority — site-build-procedure.md — describes a single methodology with ~30+ deliverables across 7 phases.)
+| `site-operate` | Phase 5 specialist (a11y conformance), Phase 6 launch comms, Phase 7 long-tail (stabilization report, hypercare digest, monthly / quarterly / annual reports, diagnostic sweep, AEO baseline, optimization loop / backlog, win-regression) plus the Awwwards-tier polish + awards phases. Coheres as a family but not yet bootstrapped. | Phase 3 of Option C per `docs/ARCHITECTURE-OPTIONS-v0.2.md` — operator decision after Phase 2 lands. |
+| Stack-specific overlays (`house-site-build-r3f`, `house-site-build-nextjs`, `house-site-build-astro`, `house-site-design-figma`) | Stack conventions encoded as `house-*` policy overlays atop the mechanism atoms. | Phase 4 of Option C. |
+| Cross-cutting tools (`performance-budget-author`, `motion-conformance-author`) | Free-standing tool atoms outside any family. | Phase 5 of Option C. |
+| Phase 4 Build ceremonies (sprint planning, working software per sprint, sprint review notes) | Build-phase ceremonies are operator-driven, not skill-driven. | n/a — out of library scope per family Out-of-Scope rows. |
 
 ---
 
@@ -49,19 +59,33 @@ first claimed family.
 
 ## Cross-Domain Orchestrators
 
-None at v0.1.0. When two phase-aligned families both claim
-deliverables (e.g., `discovery` produces personas, `requirements`
-references them), a cross-domain orchestrator may be authored via
-the meta-pipeline's `cross-domain-orchestrator-author`.
+None at v0.3.0. The two families (`site-build` + `site-design`)
+cross-reference at phase boundaries via per-atom Handoffs sections,
+but no orchestrator skill yet bundles a multi-family workflow.
 
-Build trigger: ≥2 families exist AND a workflow spans both.
+Build trigger: a recurring multi-family workflow with ≥3 stages
+emerges (e.g., a "phase-1-to-3 walk" that runs vision-author →
+persona-author → kpi-author → ost-author → mood-board-author →
+art-direction-author → concept-author in sequence). Until then,
+operators sequence the atoms manually.
 
 ---
 
 ## Coverage Matrix Status
 
-No skills yet — fresh library (will populate after first
-family-bootstrap run).
+Last verification: 2026-05-09 (v0.3.0).
+
+| Family | Atoms | Router | Health |
+|---|---|---|---|
+| `site-build` | 16 (6 Tier 1, 5 Tier 2, 5 Tier 3) | `site-build` v0.1.2 | All 17 healthy; drift 0.0%–8.8% |
+| `site-design` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-design` v0.1.0 | All 15 fresh; audit in P2.6 |
+
+Total: **32 skills** (30 atoms + 2 routers). All in-family
+deferred queues are empty (no Specced-Not-Yet-Built rows in
+either family's coverage.md).
+
+Tier transitions since last verification: site-design family
+bootstrapped from scratch; all 14 atoms authored at v0.1.0.
 
 ---
 
