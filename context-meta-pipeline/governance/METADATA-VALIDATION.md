@@ -133,7 +133,39 @@ If a skill includes `references/` files:
 
 - Each reference file must be under 1000 lines.
 - Files over 300 lines must have a table of contents at the top.
-- References must not chain (no `references/A.md` linking to `references/B.md`). If they do, restructure into a single file or split into separate skills.
+- **References must not chain** (no `references/A.md` linking to `references/B.md` *within the same skill*). If they do, restructure into a single file or split into separate skills. Cross-skill pointers (`other-skill/references/foo.md`) are intentionally allowed; same-skill chaining is not. Surfaced explicitly here per audit finding A61 — operators were violating the rule without realizing it was a rule. The validator catches the violation at PR time with the error: `references must not link to other references in the same skill (per METADATA-VALIDATION.md)`.
+
+---
+
+## What the validator catches at a glance
+
+Single-page summary of every check the validator runs. Errors block merge; warnings inform without blocking. Use this table when authoring a new SKILL.md to know what will get flagged.
+
+| Check | Severity | Source |
+|---|---|---|
+| `name` present, kebab-case, ≤4 segments | error | Universal §"Frontmatter" |
+| `description` present, ≤1024 chars | error | Universal §"Frontmatter" |
+| `description` contains "Do NOT use for" anti-trigger block | error | Universal §"Frontmatter" |
+| `license` present | error | Universal §"Frontmatter" |
+| `metadata.version` valid SemVer | error | Universal §"Frontmatter" |
+| `metadata.changelog` present, mentions current version | error | Universal §"Frontmatter" |
+| Body ≤500 lines | error | Universal §"Body structure" |
+| Required sections present per archetype | error | §"Archetype-Specific Required Sections" |
+| Archetype value is one of the canonical 5 | error | Universal §"Frontmatter" (added v0.6.0) |
+| References ≤1000 lines each | error | §"Reference File Validation" |
+| References over 300 lines have ToC | error | §"Reference File Validation" |
+| **Same-skill reference chaining** (`references/A.md` linking to `references/B.md`) | **error** | §"Reference File Validation" — surfaced as A61 |
+| `metadata.tags` is kebab-case, ≤5 tags | warning (cap) / error (shape) | §"Optional fields" (added v0.7.0) |
+| Description is third-person | warning | §"Description Quality Checks" |
+| Description does not duplicate name | warning | §"Description Quality Checks" |
+| Name segment shaped like version literal | warning | §"v0.2.0 hardening" |
+| Empty required-section content | warning | §"v0.2.0 hardening" |
+| Duplicate H2 sections | warning | §"v0.2.0 hardening" |
+| `metadata.recency_pin` value is `stable` (or warns on novel value) | warning / error | §"v0.6.2 hardening" (added v0.6.2) |
+| Router lists atoms in `## Atoms in This Family` that don't resolve | warning | Router-specific (added v0.4.0) |
+| `depends_on:` pin freshness (same-MAJOR window) | warning / error | Library-wide check (added v0.6.1) |
+
+Severity-blocking errors emit the full "Errors (block merge)" report; warnings appear in a "Warnings (do not block)" block in the same report.
 
 ---
 

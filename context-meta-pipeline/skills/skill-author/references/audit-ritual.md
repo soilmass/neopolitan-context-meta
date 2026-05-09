@@ -162,6 +162,95 @@ immediately"), motivating the Stage 6 advisory audit. The v0.7.x
 context-site-build dogfood reproduced it. The audit-at-Stage-6
 design is correct; this subsection is the operator's first-aid kit.
 
+## Anti-trigger fallback discipline
+
+Surfaced by audit finding A62 (2026-05-08 first real-consumer dogfood
+self-review pass on `context-site-build` v0.1.x — 5 of 6 atoms had
+unactionable anti-triggers).
+
+When the new skill's anti-trigger names a sibling that **doesn't yet
+exist**, the routing fall-through is a dead end — the LLM router
+cannot route to a non-existent skill. Three patterns operators
+attempt; only the third works.
+
+**Anti-pattern 1 — bare future reference:**
+
+```
+Do NOT use for: persona authoring (use persona-author);
+KPI work (use kpi-author).
+```
+
+If `kpi-author` doesn't exist yet, the prompt for "draft a KPI doc"
+hits this anti-trigger, gets routed to `kpi-author`, fails to
+resolve. The user is stuck.
+
+**Anti-pattern 2 — "(when authored)" qualifier:**
+
+```
+Do NOT use for: KPI work (use kpi-author when authored).
+```
+
+Slightly better — surfaces that the skill doesn't exist — but the
+LLM router still can't route. The prompt fails resolution at the
+next step. From the user's perspective, "when authored" reads as
+"never available right now."
+
+**Correct pattern — name the user-invocable peer as the fallback:**
+
+```
+Do NOT use for: KPI work (use kpi-author once built; the
+user-invocable draft-kpi-doc covers it now).
+```
+
+The user has a working path *today* (the user-invocable peer skill
+that exists in their environment), and the meta-pipeline-conformant
+sibling is named for the future. When the future sibling ships, the
+description gets a PATCH bump that drops the qualifier.
+
+### When the sibling is in a different family
+
+For cross-family deferred siblings (e.g., `runbook-author` in
+`site-build` mentioning `launch-comms-author` in a future
+`site-operate` family that doesn't exist):
+
+```
+Do NOT use for: writing the launch communications (handled by the
+future site-operate family; the user-invocable draft-launch-comms
+covers it now).
+```
+
+The framing makes explicit that the sibling is *out-of-scope* for
+this family — not in-family-deferred. See
+`family-bootstrap/references/scope-discipline.md` for the full
+distinction.
+
+### When no user-invocable peer exists
+
+Some Awwwards-tier additions (e.g., `polish-discipline-author`,
+`awards-submission-author`) have no `draft-*` user-invocable peer
+because they encode named phases that aren't in the operator's
+existing user-invocable skill set. For those, the anti-trigger
+acknowledges the gap honestly:
+
+```
+Do NOT use for: polish-phase planning (use polish-discipline-author
+once built; no user-invocable peer exists for this Awwwards-tier
+addition).
+```
+
+The user knows the skill doesn't exist + knows there's no fallback;
+they choose whether to author the skill themselves via `skill-author`
+or skip the deliverable.
+
+### Discipline summary
+
+Every anti-trigger fallback names a path that exists *today*. If
+the named sibling isn't built and no user-invocable peer covers it,
+the anti-trigger acknowledges the gap explicitly rather than leaving
+the user at a routing dead-end. This is the v0.1.2 pattern from the
+context-site-build first-real-consumer dogfood — adopt it on first
+authoring rather than discovering it on review.
+
 ## Scaling notes
 
 Per `ARCHITECTURE.md` §"Routing and Contention":
