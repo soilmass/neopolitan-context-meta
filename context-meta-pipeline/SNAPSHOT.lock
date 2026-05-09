@@ -19,8 +19,8 @@
 # - rolled-back: rollback-skill.py reverted to a prior version
 # - retired: not canonical (also see `retired:` block below if any exist)
 
-snapshot_version: "0.7.0"
-generated: "2026-05-06"
+snapshot_version: "0.7.1"
+generated: "2026-05-08"
 plugin: "context-meta-pipeline"
 
 skills:

@@ -14,12 +14,12 @@ Total skills: 14
 |---|---|---|---|---|
 | [`cross-domain-orchestrator-author`](skills/cross-domain-orchestrator-author/SKILL.md) | tool | 0.1.1 | composition, rare | Authors an orchestrator skill that spans two families *within the same library* (e.g., an incident workflow combining th |
 | [`cross-library-orchestrator`](skills/cross-library-orchestrator/SKILL.md) | orchestrator | 0.1.1 | composition, rare | Authors an orchestrator skill that composes skills from two installed libraries (e.g., a deploy workflow spanning git +  |
-| [`family-bootstrap`](skills/family-bootstrap/SKILL.md) | orchestrator | 0.2.4 | composition, rare | Orchestrates the creation of a complete domain family — router plus Tier 1 atoms plus a per-family coverage.md — through |
+| [`family-bootstrap`](skills/family-bootstrap/SKILL.md) | orchestrator | 0.2.5 | composition, rare | Orchestrates the creation of a complete domain family — router plus Tier 1 atoms plus a per-family coverage.md — through |
 | [`library-audit`](skills/library-audit/SKILL.md) | tool | 0.1.2 | health, weekly | Library-shape health check: composes audit-skill (per-skill gates), coverage-check (coverage.md schema), verify.sh (vers |
 | [`library-bootstrap`](skills/library-bootstrap/SKILL.md) | orchestrator | 0.1.2 | composition, rare | Scaffolds a brand-new consuming library (sibling plugin to the meta-pipeline) — plugin manifest, marketplace.json row, S |
 | [`meta`](skills/meta/SKILL.md) | router | 0.1.1 | router, discoverability, daily-use | Per-domain router for the meta-pipeline cluster. Dispatches operator prompts to one of 13 lifecycle / library / cross-*  |
 | [`skill-audit`](skills/skill-audit/SKILL.md) | tool | 0.2.4 | lifecycle, health, weekly | Runs the four health-gates from MAINTENANCE.md (recency, test pass rate, triggering accuracy, description drift) against |
-| [`skill-author`](skills/skill-author/SKILL.md) | tool | 0.1.7 | lifecycle, daily-use | Authors a single SKILL.md (atom, tool, router, or policy overlay) through four gated stages: intake, ecosystem audit, dr |
+| [`skill-author`](skills/skill-author/SKILL.md) | tool | 0.1.8 | lifecycle, daily-use | Authors a single SKILL.md (atom, tool, router, or policy overlay) through four gated stages: intake, ecosystem audit, dr |
 | [`skill-evaluate`](skills/skill-evaluate/SKILL.md) | tool | 0.1.1 | health, weekly | Runs held-out routing-eval prompts against the live skill descriptions and reports triggering accuracy per skill (Health |
 | [`skill-migrate`](skills/skill-migrate/SKILL.md) | tool | 0.1.2 | lifecycle, rare | Authors a MIGRATION-v<NEW>.md guide when a MAJOR version bump ships. Wraps migration-guide-gen.py to produce the structu |
 | [`skill-policy-overlay`](skills/skill-policy-overlay/SKILL.md) | tool | 0.1.1 | lifecycle, composition | Authors a `house-<domain>-conventions` policy overlay on top of an existing mechanism atom. Produces the policy archetyp |
