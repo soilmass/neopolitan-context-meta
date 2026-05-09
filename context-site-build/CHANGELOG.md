@@ -16,6 +16,112 @@ Rolled back, Security.
 
 ---
 
+## [0.4.0] - 2026-05-09
+
+### Added — site-operate family bootstrap (14 atoms + 1 router; library v0.3.0 → v0.4.0)
+
+Phase 3 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`. The
+`site-operate` family is bootstrapped from scratch covering Phase
+5 a11y conformance + Phase 6 launch communications + Phase 7
+full post-launch operations + Awwwards-tier polish + awards.
+
+#### Family — site-operate
+
+Per-family router + 14 atoms across 3 tiers. Authority is
+composite: SOP §8.2 (Accessibility) + §9 (Phase 6 Launch) + §10
+(Phase 7 Post-Launch) + Awwwards-tier research synthesis (E2 §C.3
+Active Theory polish + §C.6 Ueno's Awards (optional) phase).
+Family bootstrap walked all 6 stages of `family-bootstrap`;
+bootstrap artifacts at
+`.bootstrap/site-operate-{intake,capabilities,taxonomy}.md`;
+family coverage at `skills/site-operate/coverage.md`.
+
+#### Router — `site-operate` (v0.1.0, archetype: router)
+
+Routing Table covers all 14 in-family atoms; Disambiguation
+Protocol covers ~14 atom-pair distinctions including cross-family
+pairs (stabilization vs T+8 baseline, weekly vs monthly across
+families, AEO vs classic SEO, polish vs handoff, conformance vs
+annotations, optimization-backlog vs change-request).
+
+#### Tier 1 — Essential spine (7)
+
+- **`stabilization-report-author`** — 30-day stabilization
+  report at hypercare close (SOP §10.1).
+- **`hypercare-digest-author`** — Daily memo during weeks 1-4
+  (SOP §10.1.1). Tag: `daily-use`.
+- **`launch-comms-author`** — Internal + external + status-page
+  launch communications (SOP §9.4).
+- **`conformance-statement-author`** — WCAG 2.2 conformance
+  statement at Phase 5 close (SOP §8.2.7).
+- **`optimization-backlog-author`** — RICE/ICE-scored
+  prioritized optimization backlog (SOP §10.2.5). Tag: `weekly`.
+- **`optimization-loop-author`** — Single experimentation cycle
+  (SOP §10.3.1). Tag: `weekly`.
+- **`polish-discipline-author`** — Polish phase plan + per-
+  iteration notes (Awwwards-tier addition; research/E2 §C.3
+  Active Theory's "polish taking 80%"). No user-invocable peer.
+
+#### Tier 2 — Specialist (5)
+
+- **`monthly-stakeholder-report-author`** — Monthly consolidation
+  of 4 weekly memos (SOP §10.5.2). Tag: `weekly`.
+- **`quarterly-business-review-author`** — QBR with metrics
+  trends + ROI + competitive + strategic recommendations (SOP
+  §10.5.3).
+- **`win-regression-report-author`** — Win/regression analysis
+  at T+8 (SOP §10.2.4).
+- **`diagnostic-sweep-author`** — Phase-7 diagnostic across 7
+  method areas (SOP §10.2.2).
+- **`aeo-baseline-author`** — AI Search baseline across 5
+  engines (SOP §10.2.3 + §10.3.3).
+
+#### Tier 3 — Long tail (2)
+
+- **`annual-retrospective-author`** — Annual retrospective +
+  roadmap proposal (SOP §10 named in §12).
+- **`awards-submission-author`** — Awwwards / SOTD / SOTM /
+  SOTY submission package (Awwwards-tier addition; research/E2
+  §C.6 Ueno's "Awards (optional)"). No user-invocable peer.
+
+### Changed — bookkeeping
+
+- **`SNAPSHOT.lock`** v0.3.0 → v0.4.0: 15 new entries (1 router
+  + 14 atoms at v0.1.0; health: fresh on initial → healthy after
+  P3.6 audit + drift iteration).
+- **Library `coverage.md`** updated: site-operate promoted from
+  Domains Deferred to Domains Claimed; Coverage Matrix Status
+  reflects 46 skills total (16 site-build + 14 site-design + 14
+  site-operate + 3 routers); Domains Deferred now lists stack
+  overlays (Phase 4 of Option C), cross-cutting tools (Phase 5),
+  Phase 4 build ceremonies (out of scope), and adjacent-awards-
+  body submissions (build trigger via operator decision).
+- **Library `CHANGELOG.md`** — this entry.
+- **`plugin.json`** v0.3.0 → v0.4.0 (MINOR — new family + 14
+  skills + 1 router per VERSIONING-POLICY).
+- **`marketplace.json`** plugin row v0.3.0 → v0.4.0.
+- **`.bootstrap/`** — 2 new files: `site-operate-intake.yaml` +
+  `site-operate-capabilities.json` (taxonomy lives at
+  `skills/site-operate/taxonomy.md`).
+
+### Notes
+
+- All 14 atoms grounded in SOP §8.2 + §9 + §10 with cross-
+  references to research/E2 (Awwwards-tier additions).
+- 12 of 14 atoms have user-invocable peers; 2 are Awwwards-tier
+  additions with no peer (`polish-discipline-author`,
+  `awards-submission-author`).
+- Cross-family relationships documented (site-operate ↔
+  site-build ↔ site-design at Phase 5/6/7 boundaries).
+- Pre-existing v0.3.0 findings (B1–B8 / A57–A64) carry forward
+  unchanged.
+- Library now covers the complete site-build methodology
+  including the Awwwards-tier creative + polish + awards phases.
+  Phase 4 of Option C (stack overlays) and Phase 5 (cross-cutting
+  tools) remain.
+
+---
+
 ## [0.3.0] - 2026-05-09
 
 ### Added — site-design family bootstrap (14 atoms + 1 router; library v0.2.0 → v0.3.0)

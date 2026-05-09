@@ -11,7 +11,7 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.3.0"
+snapshot_version: "0.4.0"
 generated: "2026-05-09"
 plugin: "context-site-build"
 
@@ -190,4 +190,87 @@ skills:
     version: "0.1.0"
     archetype: atom
     path: "skills/discovery-tick-author/SKILL.md"
+    health: "healthy"
+
+  # site-operate family — per-family router (authored v0.4.0)
+  site-operate:
+    version: "0.1.0"
+    archetype: router
+    path: "skills/site-operate/SKILL.md"
+    health: "healthy"
+
+  # site-operate Tier 1 atoms (authored v0.4.0)
+  stabilization-report-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/stabilization-report-author/SKILL.md"
+    health: "healthy"
+  hypercare-digest-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/hypercare-digest-author/SKILL.md"
+    health: "healthy"
+  launch-comms-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/launch-comms-author/SKILL.md"
+    health: "healthy"
+  conformance-statement-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/conformance-statement-author/SKILL.md"
+    health: "healthy"
+  optimization-backlog-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/optimization-backlog-author/SKILL.md"
+    health: "healthy"
+  optimization-loop-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/optimization-loop-author/SKILL.md"
+    health: "healthy"
+  polish-discipline-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/polish-discipline-author/SKILL.md"
+    health: "healthy"
+
+  # site-operate Tier 2 atoms (authored v0.4.0)
+  monthly-stakeholder-report-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/monthly-stakeholder-report-author/SKILL.md"
+    health: "healthy"
+  quarterly-business-review-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/quarterly-business-review-author/SKILL.md"
+    health: "healthy"
+  win-regression-report-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/win-regression-report-author/SKILL.md"
+    health: "healthy"
+  diagnostic-sweep-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/diagnostic-sweep-author/SKILL.md"
+    health: "healthy"
+  aeo-baseline-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/aeo-baseline-author/SKILL.md"
+    health: "healthy"
+
+  # site-operate Tier 3 atoms (authored v0.4.0)
+  annual-retrospective-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/annual-retrospective-author/SKILL.md"
+    health: "healthy"
+  awards-submission-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/awards-submission-author/SKILL.md"
     health: "healthy"
