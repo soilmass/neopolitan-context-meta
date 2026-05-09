@@ -20,9 +20,11 @@
 #   2  invocation problem (not in plugin root, missing files)
 #
 # Usage:
-#   ./scripts/release-tag.sh                  # dry-run; print plan
-#   ./scripts/release-tag.sh --confirm        # actually create the tag
-#   ./scripts/release-tag.sh --output NOTES.md  # write notes to file
+#   ./scripts/release-tag.sh                              # dry-run; print plan
+#   ./scripts/release-tag.sh --confirm                    # actually create the tag
+#   ./scripts/release-tag.sh --confirm --allow-unsigned   # CI/no-GPG bypass
+#   ./scripts/release-tag.sh --confirm --allow-unhealthy  # emergency-tag bypass
+#   ./scripts/release-tag.sh --output NOTES.md            # write notes to file
 
 set -uo pipefail
 
@@ -31,10 +33,19 @@ cd "$ROOT" || { echo "error: cd $ROOT failed" >&2; exit 2; }
 
 CONFIRM=0
 NOTES_OUT=""
+ALLOW_UNSIGNED=0
+ALLOW_UNHEALTHY=0
+# Note: --allow-unsigned and --allow-unhealthy set their booleans here, then
+# are consumed (no-op) by the per-feature parsers below for backward compat.
+# Surfaced as A65 from the v0.7.1 release dogfood (the script claimed to
+# support --allow-unsigned but the first parser shifted all args off before
+# the per-feature parsers could see them, so the flags never took effect).
 while [ $# -gt 0 ]; do
   case "$1" in
     --confirm) CONFIRM=1; shift ;;
     --output) NOTES_OUT="$2"; shift 2 ;;
+    --allow-unsigned) ALLOW_UNSIGNED=1; shift ;;
+    --allow-unhealthy) ALLOW_UNHEALTHY=1; shift ;;
     -h|--help)
       sed -n '2,/^$/p' "$0" | sed 's/^# //;s/^#//'
       exit 0 ;;
@@ -63,12 +74,7 @@ green "  verify.sh exit 0"
 # bypasses for emergency CI tagging.
 echo
 echo "=== Step 1.5: health audits ==="
-ALLOW_UNHEALTHY=0
-for arg in "$@"; do
-  if [ "$arg" = "--allow-unhealthy" ]; then
-    ALLOW_UNHEALTHY=1
-  fi
-done
+# ALLOW_UNHEALTHY is set in the top-level arg parser (per A65 fix).
 
 # Run audit-skill with --write-health (idempotent; only mutates if status changes).
 audit_rc=0
@@ -213,12 +219,7 @@ echo
 echo "=== Step 6: tag ==="
 # v0.7.0: signed-tag enforcement (-as instead of -a) per
 # governance/SKILL-PROVENANCE.md. --allow-unsigned bypasses for CI without GPG.
-ALLOW_UNSIGNED=0
-for arg in "$@"; do
-  if [ "$arg" = "--allow-unsigned" ]; then
-    ALLOW_UNSIGNED=1
-  fi
-done
+# ALLOW_UNSIGNED is set in the top-level arg parser (per A65 fix).
 TAG_FLAGS="-as"
 if [ "$ALLOW_UNSIGNED" -eq 1 ]; then
   TAG_FLAGS="-a"

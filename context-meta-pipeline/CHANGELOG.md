@@ -14,12 +14,14 @@ Format follows the conventions documented in `GOVERNANCE.md`. Categories: Breaki
 
 ## [0.7.1] - 2026-05-08
 
-First real-consumer dogfood findings (A57-A64) shipped. The
-`context-site-build` library was scaffolded via `library-bootstrap`
-+ `family-bootstrap` + `skill-author` × 7+ over 2026-05-06 → 2026-05-08,
-surfacing 8 findings across 4 lifecycle stages. A57-A60 shipped to
-[Unreleased] earlier; A61-A64 ship here. PATCH bump — additive
-documentation + procedure clarifications; no behavior change for
+First real-consumer dogfood findings (A57-A64) plus one release-
+process finding (A65) shipped. The `context-site-build` library was
+scaffolded via `library-bootstrap` + `family-bootstrap` +
+`skill-author` × 7+ over 2026-05-06 → 2026-05-08, surfacing 8
+findings across 4 lifecycle stages; A65 surfaced by the v0.7.1
+release dogfood itself. A57-A60 shipped to [Unreleased] earlier;
+A61-A65 ship here. PATCH bump — additive documentation + procedure
+clarifications + one script bug fix; no behavior change for
 existing skills.
 
 ### Added (A57-A60 — already shipped to [Unreleased]; restated here for the release block)
@@ -99,6 +101,15 @@ existing skills.
   claim the A62 reference update (audit-ritual.md anti-trigger
   fallback subsection).
 
+- **`scripts/release-tag.sh`** — first-parser fix accepting
+  `--allow-unsigned` and `--allow-unhealthy` so the per-feature
+  parsers downstream can see them. Surfaced as A65 by the v0.7.1
+  release dogfood: the script claimed to support `--allow-unsigned`
+  (governance/SKILL-PROVENANCE.md GPG-signing CI bypass) but the
+  strict-reject branch in the first parser fired before the
+  per-feature parser could consume it. Help text updated to show
+  both flags as valid `--confirm` modifiers.
+
 ### Health
 
 - All 14 skills remain `healthy` in SNAPSHOT.lock. Two PATCH bumps:
@@ -112,10 +123,13 @@ existing skills.
 - A57-A64 are findings produced by an **external consumer library**
   (`context-site-build` v0.1.x → v0.4.0), not in-memory dogfood. Per
   `docs/PATH-TO-V1.md` P6, this kind of finding is the load-bearing
-  signal v1.0 has been waiting for.
-- All 8 findings have shipped: A57 (script flag), A58/A59/A60/A61/A62
+  signal v1.0 has been waiting for. A65 is a release-process
+  meta-finding: the v0.7.1 release dogfood exercise itself
+  surfaced a script bug.
+- All 9 findings have shipped: A57 (script flag), A58/A59/A60/A61/A62
   (reference doc updates), A63 (new reference doc), A64 (procedure
-  prose update + per-skill bumps).
+  prose update + per-skill bumps), A65 (release-tag.sh first-parser
+  fix).
 - v1.0 P6 status: **substantively advanced** — one consumer library
   exists with 47+ atoms across 3 families authored + audited. The
   consumer plans 5 more PRs (stack overlays, cross-cutting tools,
