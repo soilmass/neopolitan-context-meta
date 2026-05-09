@@ -1,0 +1,48 @@
+{
+  "_comment": "Stage 2 artifact for family-bootstrap. Capabilities lifted from site-build-procedure.md §8.2 + §9 + §10 plus Awwwards-tier polish + awards from research/E2.",
+  "_authorities": {
+    "primary": {
+      "url": "internal://site-build-procedure.md",
+      "sections": "§8.2 (Accessibility), §9 (Phase 6 Launch), §10 (Phase 7 Post-Launch)",
+      "author": "Edison Steele"
+    },
+    "secondary": {
+      "url": "internal://docs/research/E2-agency-methodologies.md",
+      "title": "Awwwards-tier methodologies (E2 research)"
+    }
+  },
+  "_produced": "2026-05-09",
+  "_total": 14,
+  "_threshold": 10,
+  "capabilities": [
+    {"name": "stabilization-report",          "tier_pref": 1, "description": "30-day stabilization report at end of Phase 7 hypercare window",                                              "primary_cite": "§10.1 + §10.5 implicit"},
+    {"name": "hypercare-digest",              "tier_pref": 1, "description": "Daily hypercare memo during weeks 1-4 — error rate, perf, conversion, hot issues",                            "primary_cite": "§10.1.1"},
+    {"name": "launch-comms",                  "tier_pref": 1, "description": "Launch communications — internal Slack/all-hands + external email/blog/social + status-page entry",          "primary_cite": "§9.4"},
+    {"name": "conformance-statement",         "tier_pref": 1, "description": "WCAG 2.2 Accessibility Conformance Statement at Phase 5 close",                                               "primary_cite": "§8.2.7"},
+    {"name": "optimization-backlog",          "tier_pref": 1, "description": "Prioritized optimization backlog (RICE/ICE-scored) at T+8 weeks; ongoing through Phase 7",                    "primary_cite": "§10.2.5"},
+    {"name": "optimization-loop",             "tier_pref": 1, "description": "Single experimentation cycle (hypothesize → design → build → run → analyze → decide → iterate)",             "primary_cite": "§10.3.1"},
+    {"name": "polish-discipline",             "tier_pref": 1, "description": "Polish phase plan — areas to polish, polish budget, polish gate / readiness criteria",                       "primary_cite": "research/E2 §C.3 (Active Theory \"polish taking 80%\"); SOP implicit"},
+    {"name": "monthly-stakeholder-report",    "tier_pref": 2, "description": "Monthly stakeholder report consolidating 4 weekly memos with deeper qualitative summary",                     "primary_cite": "§10.5.2"},
+    {"name": "quarterly-business-review",     "tier_pref": 2, "description": "Quarterly Business Review — comprehensive metrics + ROI + competitive position + strategic recommendations", "primary_cite": "§10.5.3"},
+    {"name": "win-regression-report",         "tier_pref": 2, "description": "Win/regression report at T+8 — wins, regressions, surprises, stable metrics; share with sponsor + stakeholders","primary_cite": "§10.2.4"},
+    {"name": "diagnostic-sweep",              "tier_pref": 2, "description": "Phase 7 diagnostic sweep — heatmap + funnel + survey + form analytics + page-perf + a11y re-audit",            "primary_cite": "§10.2.2"},
+    {"name": "aeo-baseline",                  "tier_pref": 2, "description": "AI Search baseline — manual prompt testing across ChatGPT / Perplexity / Google AI Overviews / Gemini / Claude","primary_cite": "§10.2.3 + §10.3.3"},
+    {"name": "annual-retrospective",          "tier_pref": 3, "description": "Annual retrospective + roadmap proposal at year mark",                                                       "primary_cite": "§10 Phase 7 (named in §12 Standard Deliverables Index)"},
+    {"name": "awards-submission",             "tier_pref": 3, "description": "Awwwards / SOTD / Honors submission package — case-study writeup, screenshots, video, jury narrative",        "primary_cite": "research/E2 §C.6 (Ueno's Phase 6 \"Awards (optional)\")"},
+    {"name": "content-audit",                 "tier_pref": "out-of-scope", "description": "Phase 7 content audit — top pages refresh, underperformers, internal linking",                  "primary_cite": "§10.3.4 — folds into optimization-backlog-author and ongoing content-team work"},
+    {"name": "performance-trend",             "tier_pref": "out-of-scope", "description": "Phase 7 perf-trend analysis — bundle size growth, third-party scripts, image audit",            "primary_cite": "§10.3.5 — folds into optimization-loop-author and a future performance-budget-author"},
+    {"name": "a11y-maintenance",              "tier_pref": "out-of-scope", "description": "Phase 7 quarterly a11y re-audit + annual full audit",                                            "primary_cite": "§10.3.6 — folds into conformance-statement-author re-issue + a11y-annotations-author for new components"}
+  ],
+  "_tier_cap_check": {
+    "tier_1_count": 7,
+    "tier_1_cap": "6-9",
+    "tier_2_count": 5,
+    "tier_2_cap": "4-7",
+    "tier_3_count": 2,
+    "tier_3_cap": "2-5",
+    "out_of_scope_count": 3,
+    "in_family_total": 14,
+    "in_family_cap": "12-21",
+    "all_pass": true
+  }
+}

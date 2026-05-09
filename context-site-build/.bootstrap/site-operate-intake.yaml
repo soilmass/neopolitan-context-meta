@@ -1,0 +1,73 @@
+# site-operate-intake.yaml — Stage 1 artifact for family-bootstrap
+#
+# Produced: 2026-05-09
+# Operator: edisonsteele@gmail.com
+# Family target: site-operate (within context-site-build library)
+
+domain: site-operate
+
+authority:
+  primary:
+    url: "internal://site-build-procedure.md"
+    path: "/home/edox1/Public/neopolitan/docs/claude-docs/site-build-procedure.md"
+    section: "§8.2 (Accessibility) + §9 (Phase 6 Launch) + §10 (Phase 7 Post-Launch)"
+    author: "Edison Steele"
+    title: "Website & Web Application Build Procedure (v2.0)"
+    visibility: internal
+  secondary:
+    url: "internal://docs/research/SYNTHESIS.md"
+    path: "context-site-build/docs/research/SYNTHESIS.md"
+    title: "Awwwards-Tier Synthesis (E1+E2+E3 research, 2026-05-08)"
+    notes: |
+      Adds two named phases the SOP doesn't have but Awwwards-tier
+      agencies treat as first-class deliverables: Polish (Active
+      Theory's "polish taking 80%") and Awards Submission (Ueno's
+      explicit Phase 6 "Awards (optional)"). These post-design /
+      post-launch phases distinguish award-winning work from
+      generic launch + ongoing-ops work.
+
+scope: >
+  The site-operate family produces the deliverables of Phase 5
+  hardening (a11y conformance only — performance + security live
+  in srs-author NFRs and threat-model-author respectively),
+  Phase 6 launch (launch communications), and Phase 7 post-launch
+  (stabilization, measurement, ongoing optimization, monthly +
+  quarterly + annual reports). Tier 1 covers the every-project
+  spine. Tier 2 covers monthly / quarterly cadence reports plus
+  the Phase 7 measurement specialists (win-regression, diagnostic
+  sweep, AEO baseline). Tier 3 covers the annual cadence + the
+  Awwwards-tier awards submission.
+
+  Out of scope: Phase 5 functional QA / performance verification /
+  security review (those are sprint outputs and threat-model-
+  author's domain); the site-build-Tier-7 atoms already in the
+  site-build family (baseline-report-author, weekly-metric-report-
+  author, change-request-author).
+
+expected_size:
+  tier_1: 7
+  tier_2: 5
+  tier_3: 2
+  total: 14
+
+gate:
+  authority_url: "internal-paths-treated-as-url (B3/A59 convention)"
+  authority_named_author: pass
+  domain_name_regex: pass
+  domain_not_taken: pass         # SNAPSHOT.lock has site-build + site-design; no site-operate
+  scope_paragraph: pass
+  expected_size_within_cap: pass
+
+notes: |
+  - baseline-report-author (Phase 7 §10.2.1) lives in site-build
+    Tier 1 by v0.1.0 decision. Cross-link from this family's
+    measurement atoms (win-regression-report-author cites
+    baseline-report-author as upstream).
+  - weekly-metric-report-author (Phase 7 §10.5.1) lives in
+    site-build Tier 3. monthly-stakeholder-report-author here
+    in site-operate consolidates four weekly memos.
+  - change-request-author (cross-phase §11) lives in site-build
+    Tier 3.
+  - 12 of 14 atoms have user-invocable peers (draft-* skills);
+    2 are Awwwards-tier additions with no peer
+    (polish-discipline-author, awards-submission-author).
