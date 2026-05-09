@@ -33,11 +33,11 @@ skills:
     sha256: "fa8ae45545b22b3f65d083093896351c948ea2dea6be238690cc4053272d682c"
   # Per-skill lifecycle (8)
   skill-author:
-    version: "0.1.7"
+    version: "0.1.8"
     archetype: tool
     path: "skills/skill-author/SKILL.md"
     health: "healthy"
-    sha256: "8108c550a2d773e8a1881530833043a1e654bb0b04f1da148925cb0f3fca35ca"
+    sha256: "8d6b4afb32a8c9a64be8e8078fba5da8b7824f75feba20760f7dbc8866f25a73"
   skill-audit:
     version: "0.2.4"
     archetype: tool
@@ -50,7 +50,7 @@ skills:
     path: "skills/skill-refactor/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
+      - skill-author@0.1.8
       - skill-retire@0.1.4
     sha256: "5dfcdc3ab6d4905d9164388e97385379932da659ecb1ce6cc27edbc2fbcaf20b"
   skill-retire:
@@ -65,7 +65,7 @@ skills:
     path: "skills/skill-migrate/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
+      - skill-author@0.1.8
     sha256: "2dcdcbebf8b1e65eb73a7e770a1cb1c2e97b63949ad6a501b229fd8c3fbc8575"
   skill-evaluate:
     version: "0.1.1"
@@ -79,7 +79,7 @@ skills:
     path: "skills/skill-policy-overlay/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
+      - skill-author@0.1.8
     sha256: "44235fe3a100f663a933b3b4e27624d755d47611b019b3614433158f16112da1"
   skill-snapshot-diff:
     version: "0.1.1"
@@ -102,24 +102,24 @@ skills:
     path: "skills/library-bootstrap/SKILL.md"
     health: "healthy"
     depends_on:
-      - family-bootstrap@0.2.4
+      - family-bootstrap@0.2.5
     sha256: "1964217d6d5c8e9156a63cd06beca7e919ad94b09d826e7420a08e102d38c26a"
   # Composition (3)
   family-bootstrap:
-    version: "0.2.4"
+    version: "0.2.5"
     archetype: orchestrator
     path: "skills/family-bootstrap/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
-    sha256: "13a903da20c3bbb347423bc4c69abb57ade3bd37cab3d201559dd05e513305b6"
+      - skill-author@0.1.8
+    sha256: "0b030564f23b3d36f352c9e2b39e55e20a371fe8655c77d60c36c1b9b6e3fb30"
   cross-domain-orchestrator-author:
     version: "0.1.1"
     archetype: tool
     path: "skills/cross-domain-orchestrator-author/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
+      - skill-author@0.1.8
     sha256: "5568648227f10963baf737a3331766eb96b2ed4cfadf1654421965ef0817d06b"
   cross-library-orchestrator:
     version: "0.1.1"
@@ -127,7 +127,7 @@ skills:
     path: "skills/cross-library-orchestrator/SKILL.md"
     health: "healthy"
     depends_on:
-      - skill-author@0.1.7
+      - skill-author@0.1.8
     sha256: "9ae2bd08cff8533889de2bbc07adae014677b7781a853a8a70de78866050bd33"
 # retired:
 #   <skill-name>:

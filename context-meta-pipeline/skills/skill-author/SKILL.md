@@ -14,11 +14,19 @@ description: >
   policy-archetype intake; this skill handles all other archetypes).
 license: Apache-2.0
 metadata:
-  version: "0.1.7"
+  version: "0.1.8"
   archetype: tool
   tags: [lifecycle, daily-use]
   recency_pin: stable
   changelog: |
+    v0.1.8 — patch: added "Anti-trigger fallback discipline"
+            subsection to references/audit-ritual.md naming the
+            user-invocable-peer fallback pattern; covers the three
+            patterns (bare future reference, "(when authored)"
+            qualifier, the correct user-invocable-peer fallback)
+            and the no-peer case. Surfaced by audit finding A62
+            from context-site-build first-real-consumer dogfood
+            self-review.
     v0.1.7 — patch: metadata.tags declared per the v0.7.0 canonical taxonomy.
     v0.1.6 — patch: metadata.recency_pin: stable declared (v0.6.2 wiring of
             the previously write-only escape hatch). Skill is intentionally
