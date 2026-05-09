@@ -16,6 +16,100 @@ Rolled back, Security.
 
 ---
 
+## [0.2.0] - 2026-05-09
+
+### Added — Tier 2/3 atom completion (10 new atoms; library v0.1.2 → v0.2.0)
+
+Phase 1 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`. The
+10 Tier 2/3 atoms specced in `skills/site-build/taxonomy.md` are
+now built. The site-build family is feature-complete for the
+methodology spine; out-of-scope rows in family coverage.md remain
+for the `site-design` and `site-operate` families queued in
+later phases of the v0.2.x expansion plan.
+
+#### Tier 2 — Specialist atoms (5)
+
+- **`kpi-author`** (atom, v0.1.0) — Phase 1 — KPI & Success Metrics
+  document per SOP §4.2.6. Per KPI: definition, baseline, target
+  (time-bound), owner, measurement method. Mixes leading + lagging
+  indicators. Refuses vanity metrics.
+- **`risk-register-author`** (atom, v0.1.0) — Phase 1 onward —
+  Risk Register per SOP §4.2.8 + §5.7.3. Six categories
+  (Technical, Commercial, Organizational, Regulatory, Schedule,
+  External). Uses the premortem technique. Live spreadsheet.
+- **`threat-model-author`** (atom, v0.1.0) — Phase 2 — STRIDE
+  threat model + security baseline per SOP §5.3.7. Per-component
+  threat enumeration, mitigations, security headers, auth /
+  authorization, secret management, supply chain, vulnerability
+  disclosure.
+- **`privacy-plan-author`** (atom, v0.1.0) — Phase 2 — Privacy &
+  Compliance Plan + DPIA scaffold per SOP §5.6. Multi-jurisdiction
+  (GDPR, CCPA/CPRA, Quebec Law 25, LGPD, DPDP, PIPL). Data flow
+  map, lawful basis, consent UX, cookie audit, DSAR handling,
+  sub-processor list, breach notification.
+- **`master-schedule-author`** (atom, v0.1.0) — Phase 2 — Master
+  Schedule + Budget plan per SOP §5.7.1 + §5.7.2. Milestones,
+  dependencies, critical path, resource allocation, 10-20%
+  contingency. Re-baseline trigger on Major CR approval.
+
+#### Tier 3 — Long-tail atoms (5)
+
+- **`ost-author`** (atom, v0.1.0) — Phase 1 sketch / Phase 2
+  refinement — Opportunity Solution Tree per SOP §4.2.7.
+  Outcome → opportunities (rooted in persona pains/JTBD) →
+  candidate solutions with RICE-style scoring placeholders.
+- **`stakeholder-map-author`** (atom, v0.1.0) — Phase 1 —
+  Stakeholder Map + RACI per SOP §3 + §4.2.1. Influence-vs-
+  interest grid; named decision-makers; escalation path.
+- **`design-philosophy-author`** (atom, v0.1.0) — Phase 3 — one-
+  page Design Philosophy per SOP §6.1. Brand expression goals,
+  audience attributes, tone, constraints, inspirations *with
+  critique*, anti-references.
+- **`weekly-metric-report-author`** (atom, v0.1.0) — Phase 7 —
+  weekly metric memo per SOP §10.5.1. Status, KPIs, ops,
+  experiments, content, issues, asks. ≤1 page.
+- **`change-request-author`** (atom, v0.1.0) — cross-phase —
+  single Change Request per SOP §11.1. Form fields, impact
+  assessment, classification (Minor/Moderate/Major), routed
+  decision-maker, captured outcome.
+
+#### Changed — bookkeeping
+
+- **`site-build` router** v0.1.1 → v0.1.2: Routing Table extended
+  from 6 to 16 rows (now covers all in-family atoms);
+  Disambiguation Protocol extended for the new atom pairs;
+  "Atoms in This Family" no longer has Specced-Not-Yet-Built
+  rows.
+- **`SNAPSHOT.lock`** v0.1.2 → v0.2.0: 10 new skill rows
+  (Tier 2 + Tier 3 atoms at v0.1.0, health: `fresh`);
+  pre-existing Tier 1 atoms unchanged at v0.1.1 / `healthy`.
+- **`coverage.md` (family-level)** updated: Tier 2 and Tier 3
+  promoted from Specced/Deferred to "In Scope (Tier 2)" /
+  "In Scope (Tier 3)"; Specced section now empty (16 atoms
+  built); Out of Scope retained verbatim for the `site-design`
+  and `site-operate` family deferrals.
+- **`plugin.json`** v0.1.2 → v0.2.0 (MINOR — adding new skills
+  per VERSIONING-POLICY).
+- **`marketplace.json`** plugin row v0.1.2 → v0.2.0.
+
+#### Notes
+
+- All 10 atoms grounded in the operator's
+  `site-build-procedure.md` v2.0 SOP (canonical path read at
+  P1.1). Each atom cites its specific SOP section in description
+  + References.
+- Each atom's anti-trigger pattern names the user-invocable peer
+  (`draft-kpi-doc`, `draft-risk-register`, etc.) as the fallback
+  per the v0.1.2 self-review pattern (B6/A62).
+- 5 of 10 atoms cite their existing v0.1.x sibling explicitly in
+  Handoffs ("From the user-invocable `draft-X` — peer skill").
+- Drift audit + iteration deferred to P1.5 (separate task);
+  initial validate-metadata.py PASSED for all 17 skills.
+- Pre-existing v0.1.x findings (B1–B8 / A57–A64) carry forward
+  unchanged.
+
+---
+
 ## [0.1.2] - 2026-05-08
 
 ### Changed — self-review pass on the v0.1.1 family (PATCH bump for all 7 skills)

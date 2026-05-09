@@ -2,22 +2,31 @@
 name: site-build
 description: >
   Routes site-build deliverable-authoring prompts to the right atom in
-  the site-build family. Dispatches between vision-author / persona-
-  author / srs-author / adr-author / runbook-author / baseline-report-
-  author (Tier 1) plus the Tier 2 / 3 specialist atoms when they exist.
-  Use when the operator names a phase deliverable but no specific
-  atom — e.g., "draft the vision", "write requirements", "we need a
-  runbook". Do NOT use for: meta-pipeline lifecycle work (use the
-  meta router in context-meta-pipeline); domains other than site-
-  build (use that domain's router); authoring a skill (use skill-
-  author); auditing a skill (use skill-audit); bootstrapping a new
-  library (use library-bootstrap).
+  the site-build family. Dispatches across all 16 atoms covering
+  Phase 1 discovery (vision / persona / kpi / ost / stakeholder /
+  risk register), Phase 2 requirements (srs / adr / threat model /
+  privacy / master schedule), Phase 3 design (design philosophy),
+  Phase 5/6 hardening + launch (runbook), Phase 7 post-launch
+  (baseline report / weekly report), and cross-phase change control.
+  Use when the operator names a deliverable but no specific atom —
+  e.g., "draft the vision", "write requirements", "we need a runbook",
+  "log a change request". Do NOT use for: meta-pipeline lifecycle
+  work (use the meta router in context-meta-pipeline); domains other
+  than site-build (use that domain's router); authoring a skill (use
+  skill-author); auditing a skill (use skill-audit); bootstrapping a
+  new library (use library-bootstrap).
 license: Apache-2.0
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
   archetype: router
   tags: [router, daily-use]
   changelog: |
+    v0.1.2 — patch: 10 Tier 2/3 atoms now built (v0.2.0 of library);
+            Routing Table extended to cover all 16 in-family atoms.
+            "Atoms in This Family" no longer has Specced-Not-Yet-
+            Built rows. Disambiguation Protocol extended for the
+            new atoms. Description rewritten to enumerate the
+            full atom set.
     v0.1.1 — patch: Routing Table no longer includes deferred Tier 2/3
             atoms (B8/A64) — 10 of 16 rows previously pointed at
             unbuilt skills, polluting routing-eval signal. Deferred
@@ -38,17 +47,18 @@ that owns the artifact.
 
 ## When to Use
 
-- The operator names a deliverable (vision, persona, SRS, ADR,
-  runbook, baseline report, …) without specifying which atom should
+- The operator names a deliverable (vision, persona, KPI, OST,
+  stakeholder map, risk register, SRS, ADR, threat model, privacy
+  plan, master schedule, design philosophy, runbook, baseline report,
+  weekly report, change request) without specifying which atom should
   produce it.
 - The operator describes a phase (Phase 1 discovery, Phase 2
-  requirements, Phase 5/6 hardening + launch, Phase 7 post-launch)
-  and the next deliverable to produce isn't named.
+  requirements, Phase 3 design, Phase 5/6 hardening + launch, Phase 7
+  post-launch) and the next deliverable to produce isn't named.
 - The operator says "draft the …", "write the …", "we need a …" for
   any artifact in the site-build SOP.
 - The operator asks "which skill should I use to author X" where X
-  is one of the 16 atoms claimed by this family (Tier 1 / 2 / 3 in
-  `taxonomy.md`).
+  is one of the 16 atoms claimed by this family.
 
 ## When NOT to Use
 
@@ -70,20 +80,32 @@ that owns the artifact.
 |---|---|
 | Project vision / value proposition / why-the-project-exists | `vision-author` |
 | Persona for one audience segment | `persona-author` |
-| Software requirements / FR + NFR / spec | `srs-author` |
+| KPI / measurement contract / success metrics | `kpi-author` |
+| Opportunity Solution Tree / persona pains → opportunities → solutions | `ost-author` |
+| Stakeholder map / RACI / decision matrix | `stakeholder-map-author` |
+| Risk register / premortem / risk × likelihood × impact | `risk-register-author` |
+| Software Requirements Specification / FR + NFR / spec | `srs-author` |
 | Single architectural decision / ADR / record-this-decision | `adr-author` |
+| Threat model / STRIDE / security baseline | `threat-model-author` |
+| Privacy plan / DPIA / consent management | `privacy-plan-author` |
+| Master schedule / budget / critical path | `master-schedule-author` |
+| Design philosophy / brand expression / tone | `design-philosophy-author` |
 | Deployment / incident / launch runbook | `runbook-author` |
 | Post-launch baseline report at T+8 weeks | `baseline-report-author` |
+| Weekly metric memo for Sponsor + product trio | `weekly-metric-report-author` |
+| Change request / scope / schedule / budget change | `change-request-author` |
 
-The 10 Tier 2 / 3 atoms documented in `taxonomy.md` are not yet
-built. Prompts for those intents fall through to the user-invocable
-peers in the operator's environment (`draft-kpi-doc`,
-`draft-risk-register`, `draft-threat-model`, `draft-privacy-plan`,
-`draft-master-schedule`, `draft-ost`, `draft-stakeholder-map`,
-`draft-design-philosophy`, `weekly-metric-report`,
-`draft-change-request`). When a Tier 2 / 3 atom gets built via
-`skill-author`, this router's Routing Table picks it up at the
-PATCH bump.
+The 16 atoms cover the methodology spine of the site-build SOP.
+Phases 3 (Design specialists beyond design-philosophy), Phase 4
+(continuous discovery), Phase 5 (a11y conformance), Phase 6 (launch
+comms), and Phase 7 long-tail (stabilization, hypercare, win-
+regression, optimization-loop, monthly / quarterly / annual reports)
+are out of scope for this family — see `coverage.md` Out of Scope
+for the future `site-design` and `site-operate` families that will
+absorb them. User-invocable peers exist for those out-of-scope
+deliverables (`draft-design-system-tokens`, `discovery-tick`,
+`draft-conformance-statement`, `draft-launch-comms`,
+`draft-stabilization-report`, etc.).
 
 ## Disambiguation Protocol
 
@@ -93,49 +115,96 @@ When two atoms could plausibly handle a prompt:
   artifact; persona is per-segment evidence-backed. If the prompt
   describes the project, route to `vision-author`. If the prompt
   describes a user, route to `persona-author`.
+- **Vision vs KPI**: vision is qualitative success criteria; KPI is
+  measurable thresholds. "Why this project exists" → vision; "how
+  we'll know it succeeded numerically" → KPI.
+- **Persona vs stakeholder map**: persona = end-user segments;
+  stakeholder map = internal decision-makers and external
+  influencers. Don't conflate.
+- **OST vs SRS**: OST is opportunities → candidate solutions
+  (working artifact, refined throughout); SRS is the locked
+  functional + non-functional spec. Solutions in the OST become
+  candidate FRs in the SRS only after pruning.
 - **SRS vs ADR**: SRS captures FR/NFR rows; ADR captures one
   architectural decision. If the prompt names a *requirement* or
   *acceptance criterion*, route to `srs-author`. If the prompt
   names a *choice between alternatives*, route to `adr-author`.
-- **Runbook vs ADR**: ADR records the decision (e.g., "we deploy via
-  canary"); runbook records the procedure (e.g., "the canary deploy
-  steps are 1, 2, 3 with rollback at step 2"). Decision → ADR;
-  procedure → runbook.
-- **Runbook vs baseline report**: runbook is forward-looking (what
-  to do); baseline report is backward-looking (what happened).
-- **Baseline report vs Tier 3 reports**: baseline is the T+8-week
-  snapshot. Weekly / monthly / QBR / annual are different cadences
-  with different audiences (handed off to deferred Tier 3 atoms).
-- **When the prompt spans phases**: ask the operator which deliverable
-  they're producing right now. The router does not fan out across
-  multiple deliverables.
+- **Threat model vs risk register**: threat model is security-
+  focused (STRIDE per component); risk register is strategic
+  (commercial, organizational, regulatory, schedule). Both
+  cross-link when a risk overlaps a threat.
+- **Threat model vs privacy plan**: threat model is attacker-
+  capability focused; privacy plan is lawful-basis + data-flow
+  focused. Both overlap on PII handling.
+- **Risk register vs change request**: risk register tracks what
+  *might* go wrong; change request tracks what's *being* changed.
+  A risk firing may trigger a CR.
+- **Master schedule vs change request**: master schedule is the
+  baseline plan; change requests can re-baseline it. Major CRs
+  hand off to `master-schedule-author` for the re-baseline.
+- **Runbook vs ADR**: ADR records the decision (e.g., "we deploy
+  via canary"); runbook records the procedure (e.g., "the canary
+  deploy steps are 1, 2, 3 with rollback at step 2"). Decision
+  → ADR; procedure → runbook.
+- **Runbook vs baseline report**: runbook is forward-looking
+  (what to do); baseline report is backward-looking (what
+  happened).
+- **Baseline report vs weekly report**: baseline is the T+8-week
+  one-time snapshot; weekly is the recurring memo. Different
+  cadences, different depths, different audiences.
+- **Baseline report vs out-of-scope reports**: monthly /
+  quarterly / annual / win-regression / stabilization reports
+  belong to the future `site-operate` family. User-invocable
+  peers cover them now.
+- **Design philosophy vs vision**: vision is business-outcome
+  focused; design philosophy is visual / experiential focused.
+  Both exist and cross-reference.
+- **When the prompt spans phases**: ask the operator which
+  deliverable they're producing right now. The router does not
+  fan out across multiple deliverables.
 
 ## Atoms in This Family
 
-Tier 1 (built; routed):
+All 16 atoms are built and live (v0.2.0 of library).
+
+**Phase 1 — Discovery & Strategy:**
 
 - `vision-author`
 - `persona-author`
+- `kpi-author`
+- `ost-author`
+- `stakeholder-map-author`
+- `risk-register-author`
+
+**Phase 2 — Requirements & Architecture:**
+
 - `srs-author`
 - `adr-author`
-- `runbook-author`
-- `baseline-report-author`
-
-Tier 2 (Specced, Not Yet Built — see `taxonomy.md`):
-
-- `kpi-author`
-- `risk-register-author`
 - `threat-model-author`
 - `privacy-plan-author`
 - `master-schedule-author`
 
-Tier 3 (Specced, Not Yet Built — see `taxonomy.md`):
+**Phase 3 — Design (spine only):**
 
-- `ost-author`
-- `stakeholder-map-author`
 - `design-philosophy-author`
+
+**Phase 5 / 6 — Hardening + Launch (spine only):**
+
+- `runbook-author`
+
+**Phase 7 — Post-Launch (spine only):**
+
+- `baseline-report-author`
 - `weekly-metric-report-author`
+
+**Cross-phase:**
+
 - `change-request-author`
+
+Other Phase 3 / 4 / 5 / 6 / 7 deliverables are out-of-scope for
+this family (see `coverage.md` Out of Scope) and will live in
+future `site-design` and `site-operate` families. User-invocable
+peers cover them now.
 
 ## Self-Audit
 
@@ -147,6 +216,7 @@ Before declaring a routing decision:
   current prompt.
 - If two atoms could fit, the **Disambiguation Protocol** above
   was consulted and the choice is justified.
-- If the prompt is for a deferred atom, the operator is told
-  explicitly that the atom is Specced, Not Yet Built (vs silently
-  routing to the wrong place).
+- If the prompt is for an out-of-scope deliverable (Phase 3 design
+  specialist, Phase 4/5/6/7 long-tail), the operator is told
+  explicitly that this family doesn't cover it and pointed at the
+  user-invocable peer or the future family.
