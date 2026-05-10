@@ -12,7 +12,36 @@ Rolled back, Security.
 
 ## [Unreleased]
 
-(empty — v1.0.0-rc1 closed the prior block.)
+PATCH-level content fix during the v1.0.0-rc1 30-day stability
+hold. Per `docs/VERSIONING-POLICY.md`, PATCH content fixes during
+the hold do NOT restart the clock; only MAJOR bumps would.
+
+### Changed
+
+- **References sections rewritten on 7 cross-cutting atoms** —
+  surfaced as B11 by a smoke-read pass during the rc1 hold. The
+  cross-cutting atoms (`performance-budget-author`,
+  `motion-conformance-author`, `analytics-instrumentation-author`,
+  `aeo-schema-author`, `i18n-strategy-author`,
+  `error-monitoring-setup-author`, `release-discipline-author`)
+  had cited `references/*.md` file paths in their atom-archetype-
+  required References section that don't exist in the repo. The
+  44 family atoms handle this correctly with the v0.7.0
+  speculative-skill convention ("No external `references/*.md`
+  files yet — first real authoring run will produce a template
+  worth promoting"). The cross-cutting atoms now match this
+  honest convention.
+
+  No SKILL.md behavior change; no schema change. Per-skill
+  versions remain at v0.1.0 (description-only fix). All 75
+  skills remain `healthy`. The rc1 candidacy is unaffected.
+
+### Notes
+
+- This is the first finding from the smoke-test discipline
+  recommended (not gating) in the plan's §Verification. Validates
+  the smoke-test as a useful discipline before v1.0.0 promotion;
+  surfaced a real gap that would have shipped to v1.0.0 otherwise.
 
 ---
 

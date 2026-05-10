@@ -136,12 +136,9 @@ the `aeo-schema-spec` and `aeo-baseline-author`.
 
 ## References
 
-- `references/schema-org-types.md` — the per-page-type Schema.org
-  shape mappings + Zod schema templates.
-- `references/json-ld-generators.md` — TypeScript template for
-  the `src/lib/schema/<type>.ts` generators with framework-
-  specific server-side injection.
-- `references/aeo-conventions.md` — AI-search citation discipline
-  conventions (question-answer structure, Author / dateModified
-  properties, canonical-URL discipline) + per-engine quirks
-  (Perplexity / ChatGPT-search / Gemini).
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (the per-page-type
+Schema.org shape mappings, the JSON-LD generator templates, the
+AI-search citation conventions per engine). Per the v0.7.0
+speculative-skill convention, the absence is flagged here rather
+than papered over.

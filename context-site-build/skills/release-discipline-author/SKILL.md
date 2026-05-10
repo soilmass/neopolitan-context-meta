@@ -139,11 +139,8 @@ definitions).
 
 ## References
 
-- `references/flag-tool-comparison.md` — LaunchDarkly / Statsig /
-  PostHog / Vercel Edge Config / Cloudflare KV comparison + per-
-  tool cost + per-stack SDK availability.
-- `references/canary-template.md` — per-stack canary config
-  template (Vercel Edge Config flag + Next.js middleware;
-  Cloudflare traffic-splitting; etc.).
-- `references/go-no-go-checklist.md` — pre / during / post
-  deploy gates with rationale citations.
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (the feature-flag tool
+comparison, the per-stack canary configuration template, the
+go/no-go checklist). Per the v0.7.0 speculative-skill convention,
+the absence is flagged here rather than papered over.
