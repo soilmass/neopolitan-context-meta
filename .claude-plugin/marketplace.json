@@ -6,7 +6,7 @@
     {
       "name": "context-meta-pipeline",
       "source": "./context-meta-pipeline",
-      "version": "0.7.1",
+      "version": "0.7.2",
       "license": "Apache-2.0",
       "description": "Five-skill lifecycle pipeline (skill-author, family-bootstrap, skill-audit, skill-refactor, skill-retire) plus governance docs and Python validators. Skills that govern skills.",
       "keywords": ["skills", "meta", "governance", "library", "pipeline", "lifecycle"]

@@ -145,11 +145,31 @@ offenders on fresh atoms:
   why / how" become drift tokens.
 - **Filler structure words** ("structured", "around", "during"). They
   read smoothly in descriptions but rarely echo in bodies.
+- **YAML folded-scalar mid-word hyphen wraps** (added per audit
+  finding A66 from the `context-site-build` v1.0.0-rc1 audit pass —
+  14 of 75 skills initially failed; the dominant cause was this).
+  When a description authored in a `description: >` (folded) block
+  wraps mid-word at a hyphen — e.g.,
+  ```yaml
+  description: >
+    ... Free-
+    standing atom ...
+  ```
+  YAML's folded-scalar parser joins lines with a space, producing
+  `Free- standing` rather than `Free-standing`. The tokenizer then
+  splits on the `-` differently and the description tokens
+  `Free-standing` (body) and `Free` + `standing` (parsed
+  description) diverge. Fix: format the description so no line ends
+  mid-word at a hyphen. The hard rule: a line break inside the
+  folded scalar must be at a SPACE boundary, never at a hyphen
+  inside a hyphenated word. Anti-pattern check: if any line in the
+  `description:` block ends with `-`, you're at risk.
 
 **The fix is almost always to tighten the description**, not to
 inflate the body. Descriptions should use the same vocabulary as the
 body (`compose`, `assign`, `aggregate`, `cite`) rather than abstract
-synonyms (`set`, `make`, `cover`, `handle`).
+synonyms (`set`, `make`, `cover`, `handle`). For the YAML-wrap
+issue, reflow the description so line breaks fall at spaces.
 
 If a fresh family produces N atoms and >50% fail the drift gate, the
 issue is usually a shared abstract-description-template that diverges
@@ -159,8 +179,11 @@ the gate will pass after one or two passes.
 This pattern was first observed in the v0.4.0 family-bootstrap
 dogfood ("8 of 9 freshly-bootstrapped skills failed the drift gate
 immediately"), motivating the Stage 6 advisory audit. The v0.7.x
-context-site-build dogfood reproduced it. The audit-at-Stage-6
-design is correct; this subsection is the operator's first-aid kit.
+context-site-build dogfood reproduced it; the v1.0.0-rc1 audit pass
+on context-site-build reproduced it again at scale (14 of 75 skills)
+and surfaced the YAML folded-scalar wrap as the dominant cause —
+codified above per A66. The audit-at-Stage-6 design is correct;
+this subsection is the operator's first-aid kit.
 
 ## Anti-trigger fallback discipline
 
