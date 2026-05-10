@@ -127,12 +127,11 @@ inputs and feed the wcag-conformance-adjacent specifications.
 
 ## References
 
-- `references/budget-tables.md` — the canonical per-page-type tables
-  with rationale citations to E3 §1.3.
-- `references/ci-enforcement-template.md` — the
-  `.github/workflows/bundle-check.yml` template + size-limit
-  configuration + Lighthouse CI configuration.
-- `references/three-js-budgets.md` — WebGL-specific budgets
-  (draw calls, lights-with-shadows, GPU texture VRAM with KTX2,
-  the HTML-LCP-then-canvas pattern, Active Theory + Lusion +
-  Igloo + 14islands documented practices).
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (canonical per-page-type
+budget tables, the CI enforcement template, and three.js-specific
+budgets). Per the v0.7.0 speculative-skill convention, the absence
+is flagged here rather than papered over. The canonical evidence
+base is `docs/research/E3-technical-conventions.md` §1.3 (Tinder's
+documented public budget; Active Theory + Lusion + Igloo +
+14islands documented practices).

@@ -134,10 +134,8 @@ web-app i18n-spec lives at `docs/i18n-spec.md`.
 
 ## References
 
-- `references/locale-routing.md` — sub-path / sub-domain / domain
-  comparison + the SEO/CDN/cookie tradeoffs.
-- `references/rtl-strategy.md` — when to support RTL, the design-
-  system implications, the testing matrix.
-- `references/tms-comparison.md` — Crowdin / Lokalise / Phrase /
-  Smartling per-tool pros/cons + CMS integration matrix +
-  per-stack SDK availability.
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (locale-routing comparison,
+RTL strategy, TMS comparison + per-stack SDK availability). Per
+the v0.7.0 speculative-skill convention, the absence is flagged
+here rather than papered over.

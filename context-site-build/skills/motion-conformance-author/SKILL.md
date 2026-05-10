@@ -130,11 +130,15 @@ methodology and across all 5 stack combos.
 
 ## References
 
-- `references/wcag-coverage-table.md` — the criterion-by-criterion
-  table with failure modes + commitments + axe-core test mapping.
-- `references/reduced-motion-patterns.md` — the three patterns
-  with per-pattern code examples for the 5 stack combos (covered
-  via `house-site-design-motion` per-stack overlays as
-  cross-references).
-- `references/manual-test-plan.md` — keyboard / screen-reader /
-  forced-colors / contrast schedule + tooling.
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (the canonical
+hard-disable plus soft-degrade plus alternative-experience
+patterns; the per-stack code; the manual keyboard plus screen-
+reader test plan this atom writes alongside the spec). The WCAG
+criterion-by-
+criterion coverage table, the three reduced-motion patterns with
+per-stack code examples, the manual test plan). Per the v0.7.0
+speculative-skill convention, the absence is flagged here rather
+than papered over. The canonical evidence base is
+`docs/research/E3-technical-conventions.md` §4 (a11y reality on
+motion-heavy sites).

@@ -124,9 +124,10 @@ weekly metric reports.
 
 ## References
 
-- `references/event-namespace.md` — the canonical event-name
-  namespace with per-event property schemas.
-- `references/zod-templates.md` — the Zod schema templates per
-  common event shape.
-- `references/privacy-matrix.md` — per-tool privacy-posture
-  matrix sourced from E3 §5 wider-stack-notes.
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (the canonical event-name
+namespace, the Zod schema templates, the per-tool privacy-posture
+matrix). Per the v0.7.0 speculative-skill convention, the absence
+is flagged here rather than papered over. The canonical evidence
+base is `docs/research/E3-technical-conventions.md` §5 (wider
+stack notes — analytics privacy posture).

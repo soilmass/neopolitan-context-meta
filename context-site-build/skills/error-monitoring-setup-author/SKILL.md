@@ -140,9 +140,8 @@ host-specific observability commands.
 
 ## References
 
-- `references/tool-selection.md` — Sentry / Datadog / Honeycomb /
-  Bugsnag per-tool pros/cons + per-stack SDK availability.
-- `references/sli-templates.md` — per-SLI definition template
-  with default thresholds + the rationale citations.
-- `references/pii-discipline.md` — what's allowed / forbidden /
-  hashed in error context; before-send hook templates per SDK.
+No external `references/*.md` files yet — first real authoring run
+will produce templates worth promoting (per-tool selection
+comparison, the SLI definition templates, the PII discipline +
+before-send hook templates). Per the v0.7.0 speculative-skill
+convention, the absence is flagged here rather than papered over.
