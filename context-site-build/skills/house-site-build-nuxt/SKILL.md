@@ -165,12 +165,12 @@ Cross-cutting concerns (perf budget, motion conformance, analytics
 spec, error monitoring, release discipline) defer to dedicated atoms
 per A62 anti-trigger fallback:
 
-- Performance-budget enforcement — use `performance-budget-author`
-  once built; the user-invocable `draft-perf-budget` covers it now.
+- Performance-budget enforcement — use `performance-budget-author`;
+   the user-invocable `draft-perf-budget` covers it now.
 - Motion-a11y conformance — use `motion-conformance-author` once
   built; the user-invocable `draft-motion-conformance` covers it now.
-- Analytics event taxonomy — use `analytics-instrumentation-author`
-  once built; the user-invocable `draft-analytics-spec` covers it now.
+- Analytics event taxonomy — use `analytics-instrumentation-author`;
+   the user-invocable `draft-analytics-spec` covers it now.
 
 ## See Also
 

@@ -193,13 +193,13 @@ Cross-cutting concerns (perf budget, motion conformance) defer
 to dedicated atoms per A62 anti-trigger fallback:
 
 - Performance-budget enforcement (CI gating, per-page-type
-  budgets) — use `performance-budget-author` once built; the
+  budgets) — use `performance-budget-author`; the
   user-invocable `draft-perf-budget` covers it now.
 - Motion-a11y conformance (WCAG 2.2 motion criteria) — use
-  `motion-conformance-author` once built; the user-invocable
+  `motion-conformance-author`; the user-invocable
   `draft-motion-conformance` covers it now.
 - Analytics event taxonomy (verb_noun naming, schema validation) —
-  use `analytics-instrumentation-author` once built; the user-
+  use `analytics-instrumentation-author`; the user-
   invocable `draft-analytics-spec` covers it now.
 
 ## See Also

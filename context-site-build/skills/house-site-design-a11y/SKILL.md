@@ -172,7 +172,7 @@ alone are misrepresenting the standard.
 WCAG 2.2 motion-criteria conformance enforcement (CI gates,
 component-level conformance attestation) defers to
 `motion-conformance-author` (PR #7 / v0.6.0). Per A62 anti-trigger
-fallback: use `motion-conformance-author` once built; the user-
+fallback: use `motion-conformance-author`; the user-
 invocable `draft-motion-conformance` covers it now.
 
 ## See Also

@@ -180,19 +180,19 @@ Cross-cutting concerns defer to dedicated atoms per A62 anti-trigger
 fallback:
 
 - Performance budgets enforced in CI — use
-  `performance-budget-author` once built; the user-invocable
+  `performance-budget-author`; the user-invocable
   `draft-perf-budget` covers it now.
 - WCAG 2.2 motion-criteria conformance — use
-  `motion-conformance-author` once built; the user-invocable
+  `motion-conformance-author`; the user-invocable
   `draft-motion-conformance` covers it now.
 - Analytics event taxonomy + Zod schema validation — use
-  `analytics-instrumentation-author` once built; the user-invocable
+  `analytics-instrumentation-author`; the user-invocable
   `draft-analytics-spec` covers it now.
 - Error monitoring tool selection + instrumentation conventions — use
-  `error-monitoring-setup-author` once built; the user-invocable
+  `error-monitoring-setup-author`; the user-invocable
   `draft-observability-spec` covers it now.
 - Release flag + canary + rollback automation — use
-  `release-discipline-author` once built; the user-invocable
+  `release-discipline-author`; the user-invocable
   `draft-release-plan` covers it now.
 
 ## See Also
