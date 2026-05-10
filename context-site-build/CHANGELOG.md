@@ -16,6 +16,167 @@ Rolled back, Security.
 
 ---
 
+## [0.5.0] - 2026-05-08
+
+Phase 4 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`.
+**MINOR bump** — 21 new stack-specific policy overlays authored
+across 5 stack families (Next.js / Nuxt / Astro / SvelteKit /
+Webflow × 3) + 2 cross-stack overlays (motion / a11y) + 1 design-
+tool overlay (Figma) + 3 hosting overlays (Vercel / Cloudflare /
+Netlify). Library version 0.4.0 → 0.5.0; `snapshot_version`
+0.4.0 → 0.5.0; `plugin.json` + root `marketplace.json` bumped.
+
+### ⚠ Discipline-shift disclosure
+
+This release ships **21 ahead-of-trigger policy overlays** —
+the largest single ahead-of-trigger commitment in this library
+to date. Per `context-meta-pipeline` audit finding **A56** (the
+v0.7.0 discipline-shift commitment), ahead-of-trigger work
+requires explicit operator approval matching the v0.7.0
+disclosure pattern.
+
+The trigger that has not fired (per the meta-pipeline's
+`docs/PATH-TO-V1.md` P4): "≥2 tiers of `house-*` overlays
+exist on the same mechanism atom." Zero `house-*` overlays
+existed before this PR; the maximalist Phase 4 scope was chosen
+explicitly by the operator on 2026-05-08.
+
+**Disclosure pattern**:
+1. Each overlay's SKILL.md body begins with a top-of-body
+   `> pre-trigger build (v0.5.0)` quote-block marker.
+2. `coverage.md` "v0.5.0–v1.0.0 Ahead-of-Trigger Note" section
+   documents the cumulative discipline shift, the operator
+   approval, and the discipline-restoration commitment.
+3. Audit-finding ledger entry **B9** captures the operator
+   approval + the v1.0.x restoration boundary.
+
+**Discipline-restoration commitment for v1.0.x and beyond**:
+After v1.0.0 ships, no new atoms or overlays will be authored
+without an organic build trigger firing on a real consumer
+project. Library growth post-v1.0 is consumer-driven, not
+speculation-driven.
+
+### Added — 21 stack-specific policy overlays
+
+#### Stack-family combos (15)
+
+For each of 5 canonical Awwwards-tier stacks (per E3 §5), three
+overlays — one per consuming family. Each overlay applies on top
+of 5 mechanism atoms in its family with stack-specific conventions
+(SRS NFRs, ADR catalogs, sprint cadence, deploy verbs, threat
+surfaces / design-system tooling, motion stack, 3D library,
+component conventions / runbook deploy verbs, observability,
+release discipline).
+
+- **Combo A "React-cinematic" (Next.js × 3)**:
+  `house-site-build-nextjs`, `house-site-design-nextjs`,
+  `house-site-operate-nextjs`. Vercel + Sanity + R3F + drei +
+  GSAP + Motion + Storybook + Chromatic.
+- **Combo B "Vue/Nuxt-cinematic" (Nuxt × 3)**:
+  `house-site-build-nuxt`, `house-site-design-nuxt`,
+  `house-site-operate-nuxt`. Nuxt 3 + Tailwind + Pinia + TresJS +
+  GSAP + Vue native transitions + Histoire.
+- **Combo C "Astro-static-with-WebGL-islands" (Astro × 3)**:
+  `house-site-build-astro`, `house-site-design-astro`,
+  `house-site-operate-astro`. Astro 4+ + islands architecture +
+  content collections + vanilla Three.js or R3F island + GSAP +
+  Lenis (hero-island-only) + tighter bundle budgets.
+- **Combo D "Svelte/SvelteKit, performance-pure" (SvelteKit × 3)**
+  — the Igloo Inc Site of the Year 2024 combo.
+  `house-site-build-sveltekit`, `house-site-design-sveltekit`,
+  `house-site-operate-sveltekit`. SvelteKit 2+ + adapter-driven +
+  vanilla Three.js + GSAP + Svelte native transitions + Histoire +
+  strictest bundle budgets.
+- **Webflow visual-editor (× 3)**:
+  `house-site-build-webflow`, `house-site-design-webflow`,
+  `house-site-operate-webflow`. Webflow Designer + Variables +
+  Components + Logic + custom-code embed boundary; SRS gets a
+  "What NOT to do in Webflow" anti-pattern section because the
+  platform ceiling is load-bearing.
+
+#### Cross-stack overlays (2)
+
+- **`house-site-design-motion`** — stack-agnostic motion
+  conventions (motion-token schema, library selection per use case,
+  scene-scoping discipline, Loom-link anti-pattern explicitly
+  rejected).
+- **`house-site-design-a11y`** — WCAG 2.2 motion-criteria coverage
+  (2.1.1 / 2.2.2 / 2.3.3 / 2.4.7 / 2.5.7 / 2.5.8); the three
+  prefers-reduced-motion patterns; focus-visible parity for custom
+  cursors; lite-mode alternative experience pattern; honest 30-40%
+  automated-tooling caveat. Pairs with `motion-conformance-author`
+  (PR #7 / v0.6.0).
+
+#### Design-tool overlay (1)
+
+- **`house-site-design-figma`** — canonical Figma Variables →
+  Tokens Studio → DTCG JSON → Style Dictionary v4 → CSS vars +
+  Tailwind v4 + TS pipeline; Component Properties as the API
+  contract; Figma Variants encode the 9-state matrix; motion-spec
+  via Theatre.js / Lottie / Rive in Storybook (NOT Loom links).
+
+#### Hosting-platform overlays (3)
+
+Stack-agnostic hosting-platform overlays composing with the
+framework-specific operate overlays:
+
+- **`house-site-operate-vercel`** — vercel CLI deploy verbs;
+  preview-per-PR via Git integration; ISR + Edge Functions via
+  Vercel revalidation primitives; Vercel Blob + Cloudinary + Mux
+  for assets; Web Analytics + Speed Insights for field RUM;
+  KV + Postgres + Edge Config + Blob state stores; vercel.json
+  cron jobs.
+- **`house-site-operate-cloudflare`** — wrangler CLI deploy verbs;
+  Pages vs Workers selection rules; R2 (S3-compatible, no egress) +
+  KV + D1 + Durable Objects + Queues storage primitives; Cache
+  Rules + Page Rules cache strategy; Workers Analytics Engine for
+  custom metrics; Cron Triggers.
+- **`house-site-operate-netlify`** — netlify CLI deploy verbs;
+  deploy contexts (production / deploy-preview / branch-deploy)
+  for preview-per-PR; Functions vs Edge Functions selection;
+  Netlify Blobs + Forms + Identity first-class services; build-
+  plugin extensibility model.
+
+### Cross-PR references (per A62 anti-trigger fallback)
+
+Several overlays reference cross-cutting atoms scheduled for PR #7
+(library v0.6.0). Per A62 anti-trigger fallback discipline, those
+references use the user-invocable peer fallback pattern. When PR
+#7 ships, a follow-up commit (or PR #8 cleanup) will update the
+overlay descriptions to drop the qualifiers.
+
+The cross-PR atoms cited:
+- `performance-budget-author` (PR #7)
+- `motion-conformance-author` (PR #7)
+- `analytics-instrumentation-author` (PR #7)
+- `aeo-schema-author` (PR #7)
+- `i18n-strategy-author` (PR #7)
+- `error-monitoring-setup-author` (PR #7)
+- `release-discipline-author` (PR #7)
+
+### Health
+
+- All 21 overlays validate clean (`validate-metadata.py` exit 0;
+  policy archetype; 4 required sections present); marked `fresh`
+  in SNAPSHOT.lock pending the first audit pass (PR #9).
+- All 47 prior atoms + 3 routers remain `healthy`.
+- `verify.sh` 4/4 green.
+
+### Naming + structure
+
+- Overlay names sit at the regex 4-segment cap
+  (`house-site-build-nextjs` etc.). Logical decomposition:
+  `<context>-<compound-domain>-<aspect>` where the compound domain
+  is `site-build` / `site-design` / `site-operate` (the consuming
+  family). The naming spec's "policy = 3-segment" guidance is
+  loosened here because the family names are themselves 2-segment
+  compounds.
+- `.bootstrap/stack-overlays-intake.yaml` — Stage 1 artifact for
+  the per-overlay `skill-policy-overlay` procedure; lists all 21
+  overlays with their applies_on_top_of mechanism atoms.
+
+---
+
 ## [0.4.0] - 2026-05-09
 
 ### Added — site-operate family bootstrap (14 atoms + 1 router; library v0.3.0 → v0.4.0)

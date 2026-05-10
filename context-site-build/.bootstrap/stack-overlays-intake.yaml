@@ -1,0 +1,456 @@
+# stack-overlays-intake.yaml
+#
+# Stage 1 artifact for `skill-policy-overlay` × 21, authored in PR #6
+# (feat/site-stack-overlays). Produces the `house-site-{build,design,
+# operate}-<stack>` overlays plus the cross-stack and design-tool
+# overlays per docs/ARCHITECTURE-OPTIONS-v0.2.md Phase 4.
+#
+# This is the planning artifact — Stage 1 of the per-overlay
+# `skill-policy-overlay` procedure. Stage 2 (authoring), Stage 3
+# (depends_on wiring), and Stage 4 (override semantics) are
+# performed per-overlay in their SKILL.md files.
+#
+# Discipline note (per A56): all 21 overlays are ahead-of-trigger
+# (no consumer project has hit the trigger "≥2 tiers of `house-*`
+# overlays exist on the same mechanism atom" from PATH-TO-V1.md
+# P4). User explicitly approved the maximalist scope on 2026-05-08;
+# disclosure lands in coverage.md "v0.5.0–v1.0.0 Ahead-of-Trigger
+# Note" section + each overlay's top-of-file comment marker.
+#
+# Source authorities cited per overlay:
+# - docs/research/E1-awwwards-judging-and-winners.md (combos A-D)
+# - docs/research/E3-technical-conventions.md §1, §2, §3, §4, §6
+# - docs/research/SYNTHESIS.md
+#
+# Naming convention: all overlays match the regex
+# ^[a-z][a-z0-9]*(?:-[a-z0-9]+){0,3}$ at the 4-segment cap.
+# Policy section in references/naming.md documents 3-segment as
+# canonical; the v0.5.0 overlays use 4 because the consuming
+# family names (`site-build`, `site-design`, `site-operate`)
+# are themselves 2-segment compound domain names — `house-` +
+# `<2-segment-family>` + `<aspect>` = 4 hyphen-separated tokens
+# that map to 3 logical components.
+
+policy_overlays:
+
+  # ============================================================
+  # 5 stack families × 3 overlays each = 15
+  # ============================================================
+
+  # ----- Next.js (3) — Combo A "React-cinematic" -----
+
+  - name: house-site-build-nextjs
+    family_consumed: site-build
+    applies_on_top_of:
+      - srs-author
+      - adr-author
+      - master-schedule-author
+      - runbook-author
+      - threat-model-author
+    conventions_summary: >
+      Next.js App Router on Vercel; TypeScript strict; React Server
+      Components default; Sanity GROQ for CMS; Vercel Blob for assets;
+      Resend + Loops for email; Plausible/PostHog for analytics.
+    override_behavior_summary: >
+      Fail loudly if mechanism atoms missing. Stack rules apply only
+      when the operator has confirmed Combo A; otherwise the overlay
+      stays inert.
+
+  - name: house-site-design-nextjs
+    family_consumed: site-design
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - motion-language-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      DTCG → Style Dictionary v4 → CSS variables + Tailwind v4 @theme
+      + TypeScript types; React Three Fiber + drei + @react-three/
+      postprocessing for 3D; GSAP + ScrollTrigger for marketing motion;
+      Motion (Framer Motion) for app UI; Lenis via @14islands/r3f-
+      scroll-rig; Storybook 8/9 + Chromatic.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Tokens pipeline is the
+      hard contract; component states matrix is auto-generated from
+      Storybook stories.
+
+  - name: house-site-operate-nextjs
+    family_consumed: site-operate
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+      - conformance-statement-author
+    conventions_summary: >
+      Vercel deployment with ISR + Edge Functions + Vercel Web
+      Analytics + Speed Insights; preview-deploy-per-PR; ≤30s rollback
+      via Vercel CLI; Sentry for error monitoring; Lighthouse CI gating
+      INP/LCP/CLS budgets; axe-core CI for a11y conformance.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Hosting-specific deploy
+      verbs (vercel deploy, vercel rollback) replace generic patterns;
+      runbook templates inherit but specialize.
+
+  # ----- Nuxt (3) — Combo B "Vue/Nuxt-cinematic" -----
+
+  - name: house-site-build-nuxt
+    family_consumed: site-build
+    applies_on_top_of:
+      - srs-author
+      - adr-author
+      - master-schedule-author
+      - runbook-author
+      - threat-model-author
+    conventions_summary: >
+      Nuxt 3 + Tailwind + Pinia + TypeScript; Storyblok or Sanity CMS;
+      Vercel or Netlify hosting; auto-imports for composables; server
+      routes for API; modules over plugins (where module exists).
+    override_behavior_summary: >
+      Fail loudly if mechanism atoms missing.
+
+  - name: house-site-design-nuxt
+    family_consumed: site-design
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - motion-language-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      DTCG → Style Dictionary v4 → CSS vars + Tailwind v4 @theme;
+      TresJS for 3D (Vue wrapper around Three.js); GSAP for marketing
+      motion; Vue native transitions for UI; Histoire (Vue-native
+      Storybook alternative) for component dev.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  - name: house-site-operate-nuxt
+    family_consumed: site-operate
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+      - conformance-statement-author
+    conventions_summary: >
+      Nitro server presets target the chosen host (vercel/netlify/
+      cloudflare-pages); ISR via Nitro routeRules; preview deploys via
+      host integration; Sentry for errors; Lighthouse CI; axe-core CI.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  # ----- Astro (3) — Combo C "Astro-static-with-WebGL-islands" -----
+
+  - name: house-site-build-astro
+    family_consumed: site-build
+    applies_on_top_of:
+      - srs-author
+      - adr-author
+      - master-schedule-author
+      - runbook-author
+      - threat-model-author
+    conventions_summary: >
+      Astro + Vite + Tailwind + PostCSS; islands architecture (React/
+      Vue/Svelte islands only where needed); content collections for
+      static content; Sanity for CMS-driven projects; static-by-default
+      with selective hydration.
+    override_behavior_summary: >
+      Fail loudly if mechanism atoms missing. Astro's >50% CWV pass
+      rate (Web Almanac 2023) is the load-bearing reason for the
+      static-by-default discipline; SRS NFRs reflect this.
+
+  - name: house-site-design-astro
+    family_consumed: site-design
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - motion-language-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      DTCG → Style Dictionary v4 → CSS vars + Tailwind v4 @theme;
+      vanilla Three.js + Alien.js for 3D, or React island with R3F
+      where React justified; GSAP + Lenis (Lenis only on hero islands,
+      not long-form content); Howler for audio; Storybook or Ladle.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  - name: house-site-operate-astro
+    family_consumed: site-operate
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+      - conformance-statement-author
+    conventions_summary: >
+      Static build → Vercel/Netlify/Cloudflare Pages; SSR adapters
+      only when justified (most marketing sites stay static); Sentry
+      browser SDK; Lighthouse CI; axe-core CI. Per-page-type budgets
+      tighter than Combo A because Astro's static-first model affords
+      it.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  # ----- SvelteKit (3) — Combo D "Svelte/SvelteKit, performance-pure" -----
+
+  - name: house-site-build-sveltekit
+    family_consumed: site-build
+    applies_on_top_of:
+      - srs-author
+      - adr-author
+      - master-schedule-author
+      - runbook-author
+      - threat-model-author
+    conventions_summary: >
+      SvelteKit + Vite + Tailwind + TypeScript; adapter chosen at
+      build (vercel / netlify / cloudflare / node); Sanity or Hygraph
+      CMS; form actions over fetch; preload data via load functions;
+      progressive enhancement first.
+    override_behavior_summary: >
+      Fail loudly if mechanism atoms missing. Performance-pure brand
+      means SRS NFRs lock JS budget tighter than Combo A.
+
+  - name: house-site-design-sveltekit
+    family_consumed: site-design
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - motion-language-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      DTCG → Style Dictionary v4 → CSS vars + Tailwind v4 @theme;
+      vanilla Three.js (Svelte-Cubed less mature than R3F/TresJS) for
+      3D; GSAP + Svelte's native crossfade/flip for UI motion;
+      Histoire or Storybook for component dev.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  - name: house-site-operate-sveltekit
+    family_consumed: site-operate
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+      - conformance-statement-author
+    conventions_summary: >
+      Adapter-based deploy targets; Sentry browser SDK with SvelteKit
+      hooks; Lighthouse CI; axe-core CI; field RUM (Plausible) ties
+      to the strictest of the four CWV target sets per the brand
+      promise.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  # ----- Webflow (3) — no-code/visual editor combo -----
+
+  - name: house-site-build-webflow
+    family_consumed: site-build
+    applies_on_top_of:
+      - srs-author
+      - adr-author
+      - master-schedule-author
+      - runbook-author
+      - threat-model-author
+    conventions_summary: >
+      Webflow Designer + CMS + Memberships (where applicable); custom
+      code embed for animations only; Logic for low-code workflows;
+      external API integrations via Webflow Apps; client billing
+      Workspace structure.
+    override_behavior_summary: >
+      Fail loudly if mechanism atoms missing. SRS gets a special
+      "what NOT to do in Webflow" section because the platform's
+      ceiling shapes feasibility differently from code-first stacks.
+
+  - name: house-site-design-webflow
+    family_consumed: site-design
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - motion-language-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      Webflow Variables (the platform's token system) as the source
+      of truth; Tokens Studio sync via Webflow Variables API where
+      possible (gap surfaced); GSAP via custom code embed for
+      cinematic motion; Webflow Components for the design system;
+      Style Guide page as the rendered system.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Design-tokens-author
+      output transforms into Webflow Variables import format rather
+      than DTCG JSON.
+
+  - name: house-site-operate-webflow
+    family_consumed: site-operate
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+      - conformance-statement-author
+    conventions_summary: >
+      Webflow hosting (the platform's CDN); domain wiring + SSL via
+      Webflow; staging via Webflow's two-environment model (Designer
+      + Published); rollback via Backups; analytics via Webflow
+      Analytics or Plausible; a11y conformance via axe DevTools
+      manual audits (no Webflow-native CI).
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing.
+
+  # ============================================================
+  # Cross-stack overlays = 2
+  # ============================================================
+
+  - name: house-site-design-motion
+    family_consumed: site-design
+    cross_stack: true
+    applies_on_top_of:
+      - motion-language-author
+      - design-tokens-author
+      - design-system-author
+    conventions_summary: >
+      R3F + drei + GSAP + Lenis vs vanilla Three.js conventions; motion
+      tokens in the design system (motion-duration-{fast,medium,slow},
+      motion-ease-{out,in-out,bounce}); GSAP timelines as motion spec
+      where engineer-led; Theatre.js where motion-designer-led; Lottie/
+      Rive for designer-authored micro-animations; ScrollTrigger
+      gsap.context discipline for scene scoping.
+    override_behavior_summary: >
+      Fail loudly when motion-language-author absent. This overlay
+      is stack-agnostic — applies to any of the 5 frontend stacks
+      (Next.js / Nuxt / Astro / SvelteKit / Webflow) when motion
+      sophistication exceeds the per-stack overlay's coverage.
+
+  - name: house-site-design-a11y
+    family_consumed: site-design
+    cross_stack: true
+    applies_on_top_of:
+      - a11y-annotations-author
+      - motion-language-author
+      - component-states-matrix-author
+    conventions_summary: >
+      WCAG 2.2 motion-criteria coverage (2.1.1, 2.2.2, 2.3.3, 2.4.7,
+      2.5.7, 2.5.8); three flavours of prefers-reduced-motion (hard-
+      disable / soft-degrade / alternative experience); focus-visible
+      parity for any custom cursor; keyboard scroll bindings on
+      scroll-jacked sites; lite-mode alternative experience pattern
+      for cinematic hero replacements; axe-core + Lighthouse CI; honest
+      30-40% automated coverage caveat.
+    override_behavior_summary: >
+      Fail loudly when a11y-annotations-author absent. Pairs with
+      motion-conformance-author (Tier 1 atom in PR #7) — this overlay
+      adds the per-component a11y patterns the cross-cutting tool
+      cannot encode generically.
+
+  # ============================================================
+  # Design-tool overlay = 1
+  # ============================================================
+
+  - name: house-site-design-figma
+    family_consumed: site-design
+    design_tool: true
+    applies_on_top_of:
+      - design-tokens-author
+      - design-system-author
+      - engineering-handoff-spec-author
+      - component-states-matrix-author
+    conventions_summary: >
+      Figma + Variables + Auto Layout + Component Properties as source
+      of truth for tokens and component specs; Tokens Studio plugin
+      exports DTCG JSON to repo; @tokens-studio/sd-transforms bridges
+      to Style Dictionary v4; Storybook is the design-review surface
+      against live tokens; motion specs go via Theatre.js or Lottie/
+      Rive in Storybook (NOT Loom links — they decay).
+    override_behavior_summary: >
+      Fail loudly when design-tokens-author absent. Hand-coded
+      tailwind.config with hex values is an explicit anti-pattern;
+      tokens MUST flow Figma → Tokens Studio → DTCG JSON → Style
+      Dictionary → CSS vars + Tailwind @theme + TS types.
+
+  # ============================================================
+  # Hosting overlays = 3
+  # ============================================================
+
+  - name: house-site-operate-vercel
+    family_consumed: site-operate
+    hosting: true
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+    conventions_summary: >
+      Vercel deployment with preview-per-PR; ISR via revalidate /
+      revalidateTag / on-demand revalidation; Edge Functions vs
+      Serverless Functions selection rules; Vercel Blob for assets;
+      Vercel Web Analytics + Speed Insights; environment variable
+      management via Vercel CLI; cron jobs via vercel.json; KV +
+      Postgres + Edge Config when state needed.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Vercel-specific deploy
+      verbs (vercel deploy, vercel rollback, vercel env) replace
+      generic patterns; the runbook templates this rather than
+      replicating.
+
+  - name: house-site-operate-cloudflare
+    family_consumed: site-operate
+    hosting: true
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+    conventions_summary: >
+      Cloudflare Pages for static + Functions; Workers for compute;
+      R2 for object storage (S3-compatible, no egress); KV for
+      key-value; Durable Objects for stateful coordination; D1 for
+      SQLite at edge; wrangler CLI for deploys; Cloudflare Web
+      Analytics; Sentry browser SDK; Page Rules for cache strategy.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Cloudflare-specific
+      verbs (wrangler deploy, wrangler rollback) replace generic
+      patterns.
+
+  - name: house-site-operate-netlify
+    family_consumed: site-operate
+    hosting: true
+    applies_on_top_of:
+      - runbook-author
+      - launch-comms-author
+      - optimization-loop-author
+      - optimization-backlog-author
+    conventions_summary: >
+      Netlify deployment with preview-per-PR via deploy contexts;
+      Edge Functions for streaming/personalization; Netlify Blobs
+      for object storage; Forms for built-in form handling; Identity
+      for auth (where applicable); Functions for serverless;
+      Lighthouse CI integration; build plugins for additional gates.
+    override_behavior_summary: >
+      Fail loudly when overlaid atom missing. Netlify-specific verbs
+      (netlify deploy, netlify rollback) replace generic patterns.
+
+# ============================================================
+# Cross-references to PR #7 (cross-cutting tools)
+# ============================================================
+#
+# Several overlays reference cross-cutting atoms that don't yet
+# exist (performance-budget-author, motion-conformance-author).
+# Per A62 anti-trigger fallback discipline, those references use
+# the user-invocable peer fallback pattern:
+#
+#   "Do NOT use for: <topic> (use <atom>-author once built; the
+#    user-invocable draft-<topic> covers it now)"
+#
+# When PR #7 ships, a single follow-up commit at the end of PR #7
+# (or deferred to PR #8) updates the overlay descriptions to drop
+# the qualifier.
+
+cross_pr_references:
+  - performance-budget-author    # PR #7
+  - motion-conformance-author    # PR #7
+  - analytics-instrumentation-author  # PR #7
+  - aeo-schema-author            # PR #7
