@@ -33,6 +33,15 @@ metadata:
 
 Free-standing atom that produces the i18n strategy document
 covering routing, RTL, translation tooling, and CMS locale config.
+Output: `docs/i18n-spec.md`. The document considers the legal-
+jurisdiction and GDPR-region content concerns from a tooling angle
+(actual privacy / compliance work belongs to a separate atom). The
+i18n strategy applies across all five stack combos.
+
+The atom belongs outside the family roster. Internationalization
+compliance considerations and content GDPR-region work are out of
+scope (legal-jurisdiction concerns belong to a separate atom). The
+web-app i18n-spec lives at `docs/i18n-spec.md`.
 
 ## When to Use
 

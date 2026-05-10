@@ -11,7 +11,7 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.6.1"
+snapshot_version: "1.0.0-rc1"
 generated: "2026-05-08"
 plugin: "context-site-build"
 
@@ -289,7 +289,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-build-nextjs/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - srs-author@0.1.1
       - adr-author@0.1.1
@@ -300,7 +300,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-nextjs/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -311,7 +311,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-nextjs/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -324,7 +324,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-build-nuxt/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - srs-author@0.1.1
       - adr-author@0.1.1
@@ -335,7 +335,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-nuxt/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -346,7 +346,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-nuxt/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -359,7 +359,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-build-astro/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - srs-author@0.1.1
       - adr-author@0.1.1
@@ -370,7 +370,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-astro/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -381,7 +381,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-astro/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -394,7 +394,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-build-sveltekit/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - srs-author@0.1.1
       - adr-author@0.1.1
@@ -405,7 +405,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-sveltekit/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -416,7 +416,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-sveltekit/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -429,7 +429,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-build-webflow/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - srs-author@0.1.1
       - adr-author@0.1.1
@@ -440,7 +440,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-webflow/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -451,7 +451,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-webflow/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -464,7 +464,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-motion/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - motion-language-author@0.1.0
       - design-tokens-author@0.1.0
@@ -473,7 +473,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-a11y/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - a11y-annotations-author@0.1.0
       - motion-language-author@0.1.0
@@ -484,7 +484,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-design-figma/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - design-tokens-author@0.1.0
       - design-system-author@0.1.0
@@ -496,7 +496,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-vercel/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -506,7 +506,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-cloudflare/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -516,7 +516,7 @@ skills:
     version: "0.1.0"
     archetype: policy
     path: "skills/house-site-operate-netlify/SKILL.md"
-    health: "fresh"
+    health: "healthy"
     depends_on:
       - runbook-author@0.1.1
       - launch-comms-author@0.1.0
@@ -535,34 +535,34 @@ skills:
     version: "0.1.0"
     archetype: atom
     path: "skills/performance-budget-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   motion-conformance-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/motion-conformance-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   analytics-instrumentation-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/analytics-instrumentation-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   aeo-schema-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/aeo-schema-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   i18n-strategy-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/i18n-strategy-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   error-monitoring-setup-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/error-monitoring-setup-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"
   release-discipline-author:
     version: "0.1.0"
     archetype: atom
     path: "skills/release-discipline-author/SKILL.md"
-    health: "fresh"
+    health: "healthy"

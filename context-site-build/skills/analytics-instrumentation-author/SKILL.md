@@ -33,6 +33,13 @@ metadata:
 
 Free-standing atom that produces the analytics event-taxonomy
 spec + the Zod schema definitions for runtime event validation.
+Outputs: `docs/analytics-spec.md` and `src/lib/analytics/events.ts`.
+Feeds the `weekly-metric-report-author` and `kpi-author` workflows.
+Applies across the methodology and across all five stack combos.
+
+The analytics-spec output, the schema validation, and the per-
+project web-app event taxonomy compose. Specification feeds the
+weekly metric reports.
 
 ## When to Use
 

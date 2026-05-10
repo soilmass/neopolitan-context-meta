@@ -1,21 +1,20 @@
 ---
 name: performance-budget-author
 description: >
-  Authors the per-page-type performance-budget specification for a
-  site/web-app project. Writes docs/performance-budget.md plus the CI
-  enforcement template (.github/workflows/bundle-check.yml) covering
-  bundlesize / size-limit / Lighthouse CI gates. Per-page-type
-  budgets — marketing (≤130-170 KB critical JS / ≤300 KB total),
-  WebGL hero (≤200 KB excl. three.js core / ≤600 KB total / ≤100
-  draw calls / HTML-LCP-then-canvas pattern). Cites E3 §1.3 and
-  Tinder's documented public budget. Free-standing atom outside any
-  family. Do NOT use for: actual budget enforcement at CI time
-  (those are runtime tools — bundlesize, size-limit, Lighthouse CI;
-  this atom authors the spec they enforce); designing the SRS NFRs
-  (use srs-author — perf-budget cites those NFRs but writes its own
-  document); WCAG-conformance specification (use motion-conformance-
-  author); analytics event taxonomy (use analytics-instrumentation-
-  author).
+  Produces the per-page-type performance-budget document. Output:
+  `docs/performance-budget.md` and the CI enforcement template at
+  `.github/workflows/bundle-check.yml` (bundlesize, size-limit,
+  Lighthouse CI gates). Per-page-type budget tables for marketing
+  (≤130-170 KB critical-path JS, ≤300 KB total) and WebGL hero
+  (≤200 KB excluding three.js core, ≤600 KB total, ≤100 draw
+  calls, HTML-LCP-then-canvas pattern). Cites E3 §1.3 and
+  Tinder's documented public budget. Free-standing atom — applies
+  across the methodology and across all five stack combos.
+  Do NOT use for: budget enforcement at CI time (runtime tools —
+  bundlesize, size-limit, Lighthouse CI — enforce the spec this
+  atom authors); SRS NFRs (use srs-author — the perf-budget cites
+  the NFRs); WCAG-conformance (use motion-conformance-author);
+  analytics event taxonomy (use analytics-instrumentation-author).
 license: Apache-2.0
 metadata:
   version: "0.1.0"
@@ -37,7 +36,16 @@ metadata:
 Free-standing atom that produces the performance-budget document
 + the CI enforcement template. Not in any family — applies across
 the site-build / site-design / site-operate methodology and across
-all 5 stack combos.
+all 5 stack combos. The document covers per-page-type budget tables,
+the HTML-LCP-then-canvas pattern, the actual CI enforcement template
+(with critical-path JS budgets, total page weight, time-to-
+interactive thresholds), and the WCAG-conformance-adjacent rationale.
+They are read by the analytics-instrumentation-author event taxonomy
+for the perf-related event design, and by the motion-conformance-
+author for the motion-budget alignment.
+
+The atom outputs are read by the analytics taxonomy as event design
+inputs and feed the wcag-conformance-adjacent specifications.
 
 ## When to Use
 

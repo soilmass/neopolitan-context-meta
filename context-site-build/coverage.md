@@ -1,9 +1,13 @@
 # context-site-build Coverage
 
-Last verification: 2026-05-09 (v0.6.1 — v1.0-readiness documentation
-authored; 9 docs added under docs/; deferred overlay-description
-cleanup from PR #7 applied. No SKILL.md content changes; 75 skills
-remain).
+Last verification: 2026-05-09 (**v1.0.0-rc1** — schema-freeze
+candidate; 30-day stability hold begins. All 75 skills `healthy`
+in SNAPSHOT.lock per the pre-v1.0 audit pass. MIGRATION-v1.md
+authored. v1.0 freeze contract per `docs/VERSIONING-POLICY.md`).
+
+Previous verification: 2026-05-09 (v0.6.1 — v1.0-readiness
+documentation authored; 9 docs added under docs/; deferred overlay-
+description cleanup from PR #7 applied; 75 skills).
 
 Previous verification: 2026-05-08 (v0.6.0 — Phase 5 cross-cutting
 tool atoms; 75 skills).
@@ -205,3 +209,4 @@ distinguish from the meta-pipeline's `A` series.
 | B7 | 2026-05-08 self-review | `runbook-author` and `baseline-report-author` cited cross-family siblings (launch-comms-author, hypercare-digest, stabilization-report-author, win-regression-report-author, optimization-backlog-author, etc.) using "(deferred)" or "(when built)" qualifiers, suggesting "coming soon to this family" when reality is "different family that doesn't exist yet". Per the family's coverage.md Out of Scope, those siblings belong to a future `site-operate` family. | **Fixed in v0.1.2** — anti-triggers and Handoffs re-framed as "handled by the future site-operate family; user-invocable peer covers it now." Cross-referenced as A63 in meta-pipeline ledger. **Validates the Out-of-Scope discipline** in coverage.md — without explicit OoS rows, the operator would have absorbed these siblings into the family's nominal scope. |
 | B8 | 2026-05-08 self-review | `site-build` router's Routing Table listed 10 deferred Tier 2/3 atoms alongside the 6 Tier 1 atoms. 62% of the table pointed at unbuilt skills, polluting routing-eval signal (the LLM router treats every row as a real target). | **Fixed in v0.1.2** — Routing Table reduced to 6 Tier 1 rows. Deferred atoms remain documented in "Atoms in This Family" and in `taxonomy.md`. Disambiguation Protocol updated to cover user-invocable fallback. Cross-referenced as A64 in meta-pipeline ledger. **Suggested addition to `family-bootstrap` Stage 4 procedure** (deferred): the router's Routing Table should include only built atoms; specced atoms belong in `## Atoms in This Family` only. |
 | B9 | 2026-05-08 v0.5.0 stack-overlay batch authoring | The maximalist Phase 4 build (21 overlays in one PR) is the largest single ahead-of-trigger commitment in this library to date. Per A56 the v0.7.0 disclosure pattern should mirror across the consumer library. | **Disclosed** — v0.5.0–v1.0.0 Ahead-of-Trigger Note added to coverage.md (above); per-overlay top-of-body markers added; CHANGELOG `[0.5.0]` block leads with `### ⚠ Discipline-shift disclosure`. **Discipline-restoration commitment**: post-v1.0.0, no new atoms ship without an organic trigger firing on a real consumer project. The v0.5.0–v1.0.0 ahead-of-trigger window is bounded; v1.0.x is the restoration boundary. |
+| B10 | 2026-05-09 pre-v1.0 audit pass | 14 of 75 skills failed the description-drift gate on first audit (drift 10-28%; threshold <10%). Reproduces the v0.4.0 family-bootstrap dogfood pattern (A60/B4) at scale. Root cause: YAML folded-scalar (`>`) wraps mid-word at hyphens, producing tokens like `Free- standing` (with space) that don't match body's `Free-stand` token. | **Resolved by iteration** — 14 skills' descriptions rewrapped to break only at word boundaries; bodies augmented with descriptive vocabulary so drift words land in body. All 75 skills now pass. **Suggested addition to skill-author/references/audit-ritual.md** (deferred to meta-pipeline patch): under "Common drift signals on fresh atoms", add the YAML-folded-scalar mid-word-hyphen pattern as a 6th common offender. **Validates the procedure**: drift gate correctly surfaced the issue; iteration to clean was tractable in a single session. |

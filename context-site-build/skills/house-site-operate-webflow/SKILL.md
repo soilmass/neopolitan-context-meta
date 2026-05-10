@@ -33,6 +33,13 @@ metadata:
 Stack overlay encoding launch + post-launch operational conventions
 on the Webflow platform.
 
+This overlay applies on top of the family's mechanism atoms
+with stack-specific or hosting-platform conventions. Composing
+with a per-team overlay, or replacing it with a different family
+overlay independent of this one, is deferred per ARCHITECTURE.md.
+The site-operate family's threat-model and design coverage live
+in their own overlays.
+
 ## Purpose
 
 Encode how runbook, launch comms, optimization loops, and a11y

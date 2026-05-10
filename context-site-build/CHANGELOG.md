@@ -12,7 +12,83 @@ Rolled back, Security.
 
 ## [Unreleased]
 
-(Pending the next release.)
+(empty — v1.0.0-rc1 closed the prior block.)
+
+---
+
+## [1.0.0-rc1] - 2026-05-09
+
+**Schema-freeze candidate**. Begins the 30-day stability hold;
+promotion to v1.0.0 happens after the hold per the v1.0 freeze
+contract in `docs/VERSIONING-POLICY.md`.
+
+### Schema commitments
+
+Per `docs/VERSIONING-POLICY.md` "What's frozen at v1.0.0":
+
+1. **Family count and roster** — 3 families (`site-build`,
+   `site-design`, `site-operate`).
+2. **Archetype set used** — `atom`, `tool`, `router`, `policy`.
+3. **Atom naming convention** — `<deliverable>-author`.
+4. **Overlay naming convention** — `house-<family>-<aspect>`
+   (4 segments at the regex cap).
+5. **Frontmatter required keys** — `name`, `description`,
+   `license`, `metadata.version`, `metadata.archetype`,
+   `metadata.changelog`.
+6. **Per-family `coverage.md` schema** — sections per
+   meta-pipeline `governance/COVERAGE.md`.
+7. **Cross-family handoff vocabulary** — documented in both
+   directions.
+
+### Added
+
+- **`MIGRATION-v1.md`** — authored via the meta-pipeline's
+  `skill-migrate` Stage 1-4 procedure. Documents the v0.6.1 →
+  v1.0.0-rc1 step (zero-breaking; commitment ceremony) and the
+  rc1 → v1.0.0 promotion path.
+
+### Changed
+
+- **`SNAPSHOT.lock`**: `snapshot_version` 0.6.1 → 1.0.0-rc1.
+  All 75 skills' `health` fields now `healthy` (28 transitioned
+  from `fresh` via `audit-skill.py --all --write-health`).
+- **`coverage.md`**: last-verification updated; B10 ledger entry
+  added documenting the drift-iteration discipline.
+- **14 skill descriptions**: tightened to pass the description-
+  drift gate at <10% (the YAML-folded-scalar mid-word-hyphen-wrap
+  issue documented as B10). No SKILL.md behavior changes; per-
+  skill versions remain v0.1.0 because the changes are
+  description-text-only.
+
+### Health
+
+- All 75 skills pass `validate-metadata.py --all` clean.
+- All 75 skills pass `audit-skill.py --all` with no failing gates
+  (drift, recency, banner, dependency-pin freshness all green).
+  Triggering accuracy + eval coverage gates remain `n/a` per the
+  meta-pipeline's deferred routing-eval suite.
+- All 75 skills `healthy` in SNAPSHOT.lock.
+- `verify.sh` 4/4 green.
+
+### 30-day stability hold
+
+Promotion to v1.0.0 occurs when:
+- 30 days elapsed without a MAJOR bump.
+- Zero new B-series findings affecting frozen schema.
+- `audit-skill.py --all` returns zero failing gates for 3
+  consecutive runs (per meta-pipeline `docs/PATH-TO-V1.md` adapted
+  to this library).
+
+If a MAJOR bump becomes necessary during the hold, the rc1
+candidacy fails and a new rc-candidate is cut.
+
+### Discipline note (continued from v0.5.0)
+
+Post-v1.0.0, the discipline-restoration commitment from v0.5.0's
+disclosure takes effect: no new atoms or overlays will ship
+without an organic build trigger from a real consumer project.
+The v0.5.0–v1.0.0 ahead-of-trigger window is bounded; v1.0.x and
+beyond are consumer-driven.
 
 ---
 
