@@ -11,7 +11,7 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.6.1"
+snapshot_version: "1.0.0-rc1"
 generated: "2026-05-08"
 plugin: "context-site-build"
 
