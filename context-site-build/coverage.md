@@ -1,9 +1,13 @@
 # context-site-build Coverage
 
-Last verification: 2026-05-08 (v0.5.0 — Phase 4 stack-specific
-policy overlays authored; library now hosts 3 families + 21 stack
-overlays = 68 skills total. **Significant ahead-of-trigger build**;
-see "v0.5.0–v1.0.0 Ahead-of-Trigger Note" section below).
+Last verification: 2026-05-08 (v0.6.0 — Phase 5 cross-cutting tool
+atoms authored; library now hosts 3 families + 21 stack overlays +
+7 cross-cutting atoms = 75 skills total. Continues the v0.5.0
+ahead-of-trigger window per the "v0.5.0–v1.0.0 Ahead-of-Trigger
+Note" section below).
+
+Previous verification: 2026-05-08 (v0.5.0 — Phase 4 stack-specific
+policy overlays; 68 skills).
 
 Previous verification: 2026-05-08 (v0.4.0 — site-operate family
 bootstrapped; library hosts 3 families = 47 skills total).
@@ -35,6 +39,23 @@ silent gaps are the failure mode this document exists to prevent.
 | Methodology spine — Phase 1 (Discovery) + Phase 2 (Requirements) + Phase 5/6 (Hardening + Launch spine) + Phase 7 (Post-launch spine) + cross-phase change control | `site-build` | 16 atoms (6 Tier 1, 5 Tier 2, 5 Tier 3) + 1 router. Authored v0.1.0–v0.2.0. |
 | Phase 3 Design + Awwwards-tier creative phases (mood board, art direction, concept, motion language) + Phase 4 continuous discovery synthesis | `site-design` | 14 atoms (7 Tier 1, 5 Tier 2, 2 Tier 3) + 1 router. Authored v0.3.0. |
 | Phase 5 a11y conformance + Phase 6 launch communications + Phase 7 full (stabilization, hypercare, optimization, monthly + quarterly + annual reports) + Awwwards-tier polish + awards | `site-operate` | 14 atoms (7 Tier 1, 5 Tier 2, 2 Tier 3) + 1 router. Authored v0.4.0. |
+
+### Cross-cutting tool atoms (7, v0.6.0)
+
+Free-standing atoms outside any family — they apply across the
+methodology and across all 5 stack combos. Per
+`docs/ARCHITECTURE-OPTIONS-v0.2.md` Phase 5. Same A56 ahead-of-
+trigger framing as v0.5.0.
+
+| Atom | Output | Cross-references |
+|---|---|---|
+| `performance-budget-author` | `docs/performance-budget.md` + `.github/workflows/bundle-check.yml` template | Cited by all 15 stack-family build/design/operate overlays |
+| `motion-conformance-author` | `docs/05-hardening/motion-conformance.md` + axe-core CI config + manual test plan | Pairs with `house-site-design-a11y` (cross-stack overlay); feeds `conformance-statement-author` |
+| `analytics-instrumentation-author` | `docs/analytics-spec.md` + `src/lib/analytics/events.ts` | Cited by `kpi-author`, all 15 stack operate overlays |
+| `aeo-schema-author` | `docs/aeo-schema-spec.md` + `src/lib/schema/<type>.ts` generators | Cited by `aeo-baseline-author`; cited by all 15 stack overlays for JSON-LD injection pattern |
+| `i18n-strategy-author` | `docs/i18n-spec.md` | Cited when target audience is multi-locale; cited by `aeo-schema-author` for hreflang |
+| `error-monitoring-setup-author` | `docs/observability-spec.md` + `src/lib/telemetry.ts` | Cited by `runbook-author` (incident); feeds `release-discipline-author` thresholds |
+| `release-discipline-author` | `docs/release-plan.md` + `deploy/feature-flags.yml` | Cited by `master-schedule-author`; cites `error-monitoring-setup-author` SLI thresholds |
 
 ### Stack-specific policy overlays (21, v0.5.0)
 
@@ -72,7 +93,7 @@ cross-reference at phase boundaries:
 
 | Domain | Why deferred | Build trigger |
 |---|---|---|
-| Cross-cutting tools (`performance-budget-author`, `motion-conformance-author`, `analytics-instrumentation-author`, `aeo-schema-author`, `i18n-strategy-author`, `error-monitoring-setup-author`, `release-discipline-author`) | Free-standing tool atoms outside any family. | Phase 5 of Option C per `docs/ARCHITECTURE-OPTIONS-v0.2.md`; planned for v0.6.0 (PR #7). |
+| Documentation walkthroughs + example outputs | Operator-facing onboarding documentation lets a second consumer use the library without internal hand-holding. | Phase post-Phase-5 per `docs/ARCHITECTURE-OPTIONS-v0.2.md`; planned for v0.6.1 (PR #8). |
 | Phase 4 Build ceremonies (sprint planning, working software per sprint, sprint review notes) | Build-phase ceremonies are operator-driven, not skill-driven. | n/a — out of library scope per family Out-of-Scope rows. |
 | Adjacent-awards-body submissions (Webby, FWA, CSSDA, Communication Arts) | `awards-submission-author` (site-operate Tier 3) covers Awwwards as the canonical pattern; adjacent bodies follow but with body-specific criteria. | Operator decides to submit for an adjacent body; pattern adapts from awards-submission-author with per-body deltas documented. |
 
@@ -146,21 +167,22 @@ operators sequence the atoms manually.
 
 ## Coverage Matrix Status
 
-Last verification: 2026-05-08 (v0.5.0).
+Last verification: 2026-05-08 (v0.6.0).
 
-| Family | Atoms | Router | Health |
+| Family / bucket | Atoms | Router | Health |
 |---|---|---|---|
-| `site-build` | 16 (6 Tier 1, 5 Tier 2, 5 Tier 3) | `site-build` v0.1.2 | All 17 healthy; drift 0.0%–8.8% |
-| `site-design` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-design` v0.1.0 | All 15 healthy; drift 0.0%–9.1% |
-| `site-operate` | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-operate` v0.1.0 | All 15 fresh; audit pending |
-| **Stack overlays** | 21 (15 stack-family + 2 cross-stack + 1 design-tool + 3 hosting) | n/a | All 21 fresh; audit pending |
+| `site-build` family | 16 (6 Tier 1, 5 Tier 2, 5 Tier 3) | `site-build` v0.1.2 | All 17 healthy; drift 0.0%–8.8% |
+| `site-design` family | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-design` v0.1.0 | All 15 healthy; drift 0.0%–9.1% |
+| `site-operate` family | 14 (7 Tier 1, 5 Tier 2, 2 Tier 3) | `site-operate` v0.1.0 | All 15 fresh; audit pending |
+| Stack-specific policy overlays | 21 (15 stack-family + 2 cross-stack + 1 design-tool + 3 hosting) | n/a | All 21 fresh; audit pending |
+| **Cross-cutting tool atoms** | 7 (perf / motion-conformance / analytics / AEO / i18n / observability / release) | n/a | All 7 fresh; audit pending |
 
-Total: **68 skills** (44 atoms + 3 routers + 21 policy overlays).
+Total: **75 skills** (51 atoms + 3 routers + 21 policy overlays).
 All three families' in-family deferred queues remain empty.
 
-Tier transitions since last verification: 21 stack-specific policy
-overlays authored at v0.1.0; library version bumped to v0.5.0
-(MINOR — new skills).
+Tier transitions since last verification: 7 cross-cutting tool atoms
+authored at v0.1.0; library version bumped to v0.6.0 (MINOR — new
+skills).
 
 ---
 

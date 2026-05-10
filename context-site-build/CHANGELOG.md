@@ -16,6 +16,120 @@ Rolled back, Security.
 
 ---
 
+## [0.6.0] - 2026-05-08
+
+Phase 5 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`.
+**MINOR bump** — 7 new free-standing cross-cutting tool atoms
+covering perf budget, motion-a11y conformance, analytics
+instrumentation, AEO schema, i18n strategy, error monitoring +
+observability, and release discipline. Library version 0.5.0 →
+0.6.0; `snapshot_version` 0.5.0 → 0.6.0; `plugin.json` + root
+`marketplace.json` bumped.
+
+### ⚠ Discipline-shift disclosure (continued from v0.5.0)
+
+This release continues the v0.5.0 ahead-of-trigger window per
+the `coverage.md` "v0.5.0–v1.0.0 Ahead-of-Trigger Note" section.
+The cross-cutting atoms ship per the maximalist Phase 5 scope
+(7 atoms) the operator approved on 2026-05-08; the build triggers
+("first consumer hits perf-crisis", "first consumer hits motion-
+a11y crisis", etc.) have not fired.
+
+Each atom carries a `> pre-trigger build (v0.6.0)` quote-block
+marker. The discipline-restoration commitment for v1.0.x onward
+remains in force.
+
+### Added — 7 cross-cutting tool atoms
+
+#### Phase 5 base (2)
+
+- **`performance-budget-author`** — per-page-type budget tables
+  (marketing ≤130-170 KB critical JS / WebGL hero ≤200 KB excl.
+  three.js core / ≤100 draw calls); HTML-LCP-then-canvas pattern;
+  CI enforcement template (.github/workflows/bundle-check.yml +
+  bundlesize + size-limit + Lighthouse CI). Cites E3 §1.3 (Tinder
+  170 KB main JS public budget; Awwwards-tier WebGL reality).
+  Output: `docs/performance-budget.md` + workflow template.
+
+- **`motion-conformance-author`** — WCAG 2.2 motion-criteria
+  coverage table (2.1.1 / 2.2.2 / 2.3.3 / 2.4.7 / 2.5.7 / 2.5.8);
+  three prefers-reduced-motion patterns; focus-visible parity for
+  custom cursors; keyboard scroll bindings; lite-mode alternative-
+  experience pattern; axe-core CI + manual test plan; honest 30-
+  40% automated-tooling caveat. Pairs with `house-site-design-a11y`
+  (PR #6). Output: `docs/05-hardening/motion-conformance.md` +
+  axe-core config + manual test plan.
+
+#### Research-surfaced atoms (2)
+
+- **`analytics-instrumentation-author`** — event-taxonomy spec +
+  Zod schemas (verb_noun snake_case naming; per-event tool routing
+  across GA4 / PostHog / Plausible / Fathom; server-side tagging
+  conventions; privacy-posture matrix; common-properties contract
+  with release / tenant / user_role / session_id /
+  experiment_bucket). Output: `docs/analytics-spec.md` +
+  `src/lib/analytics/events.ts`.
+
+- **`aeo-schema-author`** — Schema.org / JSON-LD spec per page
+  type (Organization / WebSite / Product / Article / FAQ / HowTo +
+  others); Rich Results Test CI integration; AI-search citation
+  discipline (Perplexity / ChatGPT-search / Gemini); AEO baseline
+  metric set; OpenGraph + Twitter Card mapping. Output:
+  `docs/aeo-schema-spec.md` + `src/lib/schema/<type>.ts` generators.
+
+#### Discipline-pulled atoms (3)
+
+- **`i18n-strategy-author`** — locale routing strategy (sub-path /
+  sub-domain / domain); locale-fallback chain; RTL strategy + CSS
+  Logical Properties discipline; TMS tool selection (Crowdin /
+  Lokalise / Phrase / Smartling); CMS locale config (Sanity /
+  Storyblok / Webflow / Hygraph); per-locale launch checklist.
+  Output: `docs/i18n-spec.md`.
+
+- **`error-monitoring-setup-author`** — tool selection (Sentry /
+  Datadog / Honeycomb / Bugsnag); instrumentation conventions
+  (service / env / release / tenant tags); SLI definitions
+  (latency p95, error rate, availability); release-marker wiring;
+  PII discipline; custom-metric template (THREE.WebGLRenderer.info
+  when WebGL in use). Output: `docs/observability-spec.md` +
+  `src/lib/telemetry.ts`.
+
+- **`release-discipline-author`** — feature-flag tool selection
+  (LaunchDarkly / Statsig / PostHog / Vercel Edge Config /
+  Cloudflare KV); canary strategy (10% → 50% → 100% over 24h);
+  blue-green when canary insufficient; rollback automation tied to
+  SLI thresholds; go/no-go checklist (pre / during / post deploy
+  gates); deferred-flag cleanup discipline; release-cadence
+  guidance. Output: `docs/release-plan.md` + `deploy/feature-
+  flags.yml`.
+
+### Changed
+
+- One-character description trim on `motion-conformance-author`
+  (was 1025 chars; cap is 1024). Wording adjusted to fit the cap
+  without losing the load-bearing capabilities listed.
+
+### Health
+
+- All 7 atoms validate clean (`validate-metadata.py` exit 0; atom
+  archetype; 6 required sections present); marked `fresh` in
+  SNAPSHOT.lock pending the v1.0-rc1 audit pass (PR #9).
+- All 21 stack overlays + 47 prior atoms / routers remain
+  `healthy` / `fresh` per their prior state.
+- `verify.sh` 4/4 green.
+
+### Cross-PR overlay updates (deferred)
+
+The 21 stack overlays from v0.5.0 cite these atoms via the A62
+anti-trigger fallback pattern (`use X-author once built; the user-
+invocable draft-X covers it now`). With these atoms now built, the
+overlay descriptions can drop the qualifiers. That cleanup is
+deferred to PR #8 (v1.0-readiness documentation; the docs explain
+the canonical citation pattern, after which the overlay descriptions
+get the trim).
+
+---
+
 ## [0.5.0] - 2026-05-08
 
 Phase 4 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`.

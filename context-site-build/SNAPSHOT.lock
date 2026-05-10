@@ -11,7 +11,7 @@
 #
 # Health states: fresh | healthy | flagged | unhealthy | rolled-back | retired
 
-snapshot_version: "0.5.0"
+snapshot_version: "0.6.0"
 generated: "2026-05-08"
 plugin: "context-site-build"
 
@@ -522,3 +522,47 @@ skills:
       - launch-comms-author@0.1.0
       - optimization-loop-author@0.1.0
       - optimization-backlog-author@0.1.0
+
+  # ============================================================
+  # v0.6.0 — Phase 5 cross-cutting tool atoms (7)
+  # ============================================================
+  # Free-standing atoms outside any family. Per
+  # docs/ARCHITECTURE-OPTIONS-v0.2.md Phase 5. Same A56 ahead-of-
+  # trigger framing as v0.5.0 — see coverage.md "v0.5.0–v1.0.0
+  # Ahead-of-Trigger Note" section.
+
+  performance-budget-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/performance-budget-author/SKILL.md"
+    health: "fresh"
+  motion-conformance-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/motion-conformance-author/SKILL.md"
+    health: "fresh"
+  analytics-instrumentation-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/analytics-instrumentation-author/SKILL.md"
+    health: "fresh"
+  aeo-schema-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/aeo-schema-author/SKILL.md"
+    health: "fresh"
+  i18n-strategy-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/i18n-strategy-author/SKILL.md"
+    health: "fresh"
+  error-monitoring-setup-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/error-monitoring-setup-author/SKILL.md"
+    health: "fresh"
+  release-discipline-author:
+    version: "0.1.0"
+    archetype: atom
+    path: "skills/release-discipline-author/SKILL.md"
+    health: "fresh"
