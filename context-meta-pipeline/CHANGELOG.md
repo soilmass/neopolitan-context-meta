@@ -8,7 +8,52 @@ Format follows the conventions documented in `GOVERNANCE.md`. Categories: Breaki
 
 ## [Unreleased]
 
-(empty — v0.7.1 closed the prior block.)
+(empty — v0.7.2 closed the prior block.)
+
+---
+
+## [0.7.2] - 2026-05-09
+
+PATCH release — single audit-finding patch (A66) surfaced by the
+`context-site-build` v1.0.0-rc1 audit pass. No behavior changes;
+additive documentation only.
+
+### Added
+
+- **`skills/skill-author/references/audit-ritual.md`** — under
+  "Common drift signals on fresh atoms", added a 6th drift cause:
+  YAML folded-scalar mid-word hyphen wraps. The `context-site-build`
+  v1.0.0-rc1 audit pass reproduced the drift-gate-failure pattern at
+  scale (14 of 75 skills initially failed), and identified this as
+  the dominant cause: `description: >` block scalars that wrap
+  mid-word at hyphens produce stems like `Free- standing` (with
+  embedded space) that don't match the body's `Free-standing`
+  token. The reference now documents:
+  - the failure mode (YAML-fold-with-space behavior),
+  - the anti-pattern check (any line ending with `-` is at risk),
+  - the fix (line breaks at SPACE boundaries only).
+
+  Surfaced as A66.
+
+### Health
+
+- All 14 skills remain `healthy`. One PATCH bump:
+  `skill-author` 0.1.8 → 0.1.9. No SKILL.md body content changed
+  beyond the metadata.changelog entry; the actual change is in the
+  reference doc.
+
+### Notes
+
+- A66 is the first finding produced by a real **v1.0-rc1 audit
+  pass** on a consumer library. Reproduces (and refines) the
+  v0.4.0/v0.7.1 drift-gate-failure pattern documented in A60/B4.
+  The reference-doc addition is small but high-leverage — future
+  consumer libraries authoring at scale will hit this without the
+  documentation.
+- `context-site-build` consumer is at v1.0.0-rc1; 30-day stability
+  hold begins 2026-05-09; v1.0.0 promotion expected ~2026-06-08.
+  This v0.7.2 patch lands during that hold and is independent of
+  the rc1 candidacy (no schema change).
 
 ---
 

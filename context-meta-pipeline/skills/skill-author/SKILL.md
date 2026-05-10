@@ -14,11 +14,22 @@ description: >
   policy-archetype intake; this skill handles all other archetypes).
 license: Apache-2.0
 metadata:
-  version: "0.1.8"
+  version: "0.1.9"
   archetype: tool
   tags: [lifecycle, daily-use]
   recency_pin: stable
   changelog: |
+    v0.1.9 — patch: references/audit-ritual.md "Common drift signals
+            on fresh atoms" gains a 6th drift cause — YAML folded-
+            scalar mid-word hyphen wraps. Surfaced by audit finding
+            A66 from the context-site-build v1.0.0-rc1 audit pass:
+            14 of 75 skills initially failed the drift gate; the
+            dominant cause was descriptions wrapping mid-word at
+            hyphens inside YAML `description: >` blocks (folded
+            scalars join lines with spaces, breaking hyphenation).
+            The reference now documents the anti-pattern check
+            ("if any line ends with `-`, you're at risk") and the
+            fix (line breaks at SPACE boundaries only).
     v0.1.8 — patch: added "Anti-trigger fallback discipline"
             subsection to references/audit-ritual.md naming the
             user-invocable-peer fallback pattern; covers the three
