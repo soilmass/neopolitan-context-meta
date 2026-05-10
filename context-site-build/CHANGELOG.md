@@ -36,12 +36,28 @@ the hold do NOT restart the clock; only MAJOR bumps would.
   versions remain at v0.1.0 (description-only fix). All 75
   skills remain `healthy`. The rc1 candidacy is unaffected.
 
+- **`comms-plan-author` citations qualified on 2 atoms** —
+  surfaced as B12 by a programmatic citation-gap scan. 3 atoms
+  (`runbook-author`, `vision-author`, `weekly-metric-report-author`)
+  cited the non-existent `comms-plan-author` skill.
+  `weekly-metric-report-author` already qualified it as
+  `(deferred sibling)` (the correct v0.7.0 speculative-skill
+  pattern); the other 2 cited it bare. Now both updated to
+  `(deferred — no atom for general comms-plans yet; user-invocable
+  draft-comms-plan covers it if available, otherwise resolve
+  offline)`. Same PATCH-level discipline as B11.
+
 ### Notes
 
-- This is the first finding from the smoke-test discipline
-  recommended (not gating) in the plan's §Verification. Validates
-  the smoke-test as a useful discipline before v1.0.0 promotion;
-  surfaced a real gap that would have shipped to v1.0.0 otherwise.
+- B11 surfaced from a smoke-read pass; B12 surfaced from a
+  programmatic citation-gap scan (drift gate detects token
+  mismatch; the scan detects skill-name resolution mismatch).
+  Both validate the `recommended (not gating)` smoke-test
+  discipline in the plan's §Verification — real v1.0
+  quality-bar gaps caught before promotion.
+- Other cited-but-not-built skill names checked: `seo-strategy-author`
+  (cited from `aeo-schema-author`) is already correctly framed as
+  "or a future X if dedicated tool needed" — no fix needed.
 
 ---
 

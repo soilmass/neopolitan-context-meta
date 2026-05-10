@@ -106,9 +106,12 @@ Phase 1 — produce the project's Vision & Value Proposition document.
   carry over the existing vision verbatim where applicable; the
   authoring is then an alignment exercise rather than a synthesis.
 - **Multiple competing vision drafts exist** (different stakeholders
-  authored their own). Halt; this is a `stakeholder-map-author` /
-  `comms-plan-author` problem first. Resolve stakeholder consensus
-  before vision-author runs.
+  authored their own). Halt; this is a `stakeholder-map-author`
+  problem first (and a deferred `comms-plan-author` problem — no
+  atom for general comms-plans yet; the user-invocable
+  `draft-comms-plan` covers it if available, otherwise resolve
+  the consensus offline). Resolve stakeholder consensus before
+  vision-author runs.
 
 ## References
 

@@ -110,8 +110,11 @@ Phase 5 / 6 — produce one runbook (deployment, incident, or launch).
   shared runbook with an environment-keyed parameter table if they
   don't.
 - **On-call coverage is unstaffed at the planned launch time**. Halt;
-  this is a `comms-plan-author` / `stakeholder-map-author` problem
-  before this atom can author honestly.
+  this is a `stakeholder-map-author` problem (and a deferred
+  `comms-plan-author` problem — no atom for general comms-plans
+  yet; the user-invocable `draft-comms-plan` covers it if
+  available, otherwise resolve offline) before this atom can
+  author honestly.
 
 ## References
 
