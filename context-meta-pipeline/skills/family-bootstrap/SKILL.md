@@ -14,11 +14,20 @@ description: >
   archiving skills (use skill-retire).
 license: Apache-2.0
 metadata:
-  version: "0.2.4"
+  version: "0.2.5"
   archetype: orchestrator
   tags: [composition, rare]
   recency_pin: stable
   changelog: |
+    v0.2.5 — patch: Stage 4 procedure prose clarifies that routers'
+            Routing Tables list only built atoms; deferred Tier 2/3
+            atoms appear in the "Atoms in This Family" section only
+            (audit finding A64 from context-site-build first-real-
+            consumer dogfood). Added new reference doc
+            `references/scope-discipline.md` distinguishing
+            in-family-deferred (Specced, Not Yet Built) from
+            out-of-scope (handled by future or different family)
+            (audit finding A63).
     v0.2.4 — patch: metadata.tags declared per the v0.7.0 canonical taxonomy.
     v0.2.3 — patch: metadata.recency_pin: stable declared (v0.6.2 wiring).
     v0.2.2 — patch: description anti-triggers extended (A24/A25 from v0.5.2
@@ -192,12 +201,28 @@ separate audits per atom. See `skill-author` SKILL.md Stage 2 for the
 "When invoked from family-bootstrap" note.
 
 The router is hand-authored as a separate `skill-author` call with
-archetype=`router`. Its Routing Table lists every Tier 1 atom; its
-"Atoms in This Family" section names them.
+archetype=`router`. **The Routing Table lists only Tier 1 atoms that
+are actually built** — never deferred Tier 2/3 atoms or specced-but-
+not-yet-authored entries. The `## Atoms in This Family` section is
+the place specced atoms appear (organized by tier with explicit
+"Tier 2 (Specced, Not Yet Built)" / "Tier 3 (Deferred)" headers per
+the family's `taxonomy.md`).
+
+This split was added in v0.2.5 per audit finding A64. The
+context-site-build v0.1.0 router shipped with 10 of 16 Routing Table
+rows pointing at unbuilt Tier 2/3 atoms — pollutes routing-eval
+signal because the LLM router treats every row as a real target
+and routes prompts to dead ends. v0.1.2 dropped the deferred rows
+from the table; the convention is now codified here.
+
+When Tier 2/3 atoms get authored later (via `skill-author` directly,
+not another `family-bootstrap` run), the router's Routing Table is
+extended at PATCH bump time to include them. The "Atoms in This
+Family" section gets the matching tier-header line removed.
 
 **Gate:** every delegated `skill-author` invocation passed. Router has
 all required sections (Routing Table, Disambiguation Protocol, Atoms in
-This Family).
+This Family). Routing Table lists only built atoms (per A64).
 
 ### Stage 5 — Weaving
 

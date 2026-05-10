@@ -8,14 +8,23 @@ Format follows the conventions documented in `GOVERNANCE.md`. Categories: Breaki
 
 ## [Unreleased]
 
-First real-consumer dogfood findings (A57-A60) and fixes. The
-`context-site-build` library was scaffolded via `library-bootstrap`
-+ `family-bootstrap` + `skill-author` × 7 on 2026-05-08, surfacing 4
-findings across 3 lifecycle stages. P6 in `docs/PATH-TO-V1.md` moves
-from "blocked on consumer library" to "consumer library exists; first
-audit + refactor + retire pass pending."
+(empty — v0.7.1 closed the prior block.)
 
-### Added
+---
+
+## [0.7.1] - 2026-05-08
+
+First real-consumer dogfood findings (A57-A64) plus one release-
+process finding (A65) shipped. The `context-site-build` library was
+scaffolded via `library-bootstrap` + `family-bootstrap` +
+`skill-author` × 7+ over 2026-05-06 → 2026-05-08, surfacing 8
+findings across 4 lifecycle stages; A65 surfaced by the v0.7.1
+release dogfood itself. A57-A60 shipped to [Unreleased] earlier;
+A61-A65 ship here. PATCH bump — additive documentation + procedure
+clarifications + one script bug fix; no behavior change for
+existing skills.
+
+### Added (A57-A60 — already shipped to [Unreleased]; restated here for the release block)
 
 - **`validate-metadata.py:--allow-empty`** — opt-in flag that returns
   exit 0 with a notice when `skills/` is empty under `--all`.
@@ -31,6 +40,33 @@ audit + refactor + retire pass pending."
   methodology into one family per phase, falling below Stage 2's
   ≥10-capability gate on most phases. Documents the
   one-family-with-phase-organized-tiers pattern.
+
+### Added (A61-A64 — new in v0.7.1)
+
+- **`governance/METADATA-VALIDATION.md`** — added "What the validator
+  catches at a glance" summary table; strengthened wording on the
+  no-chained-`references/<other>.md` cross-reference rule. Surfaced as
+  A61 from the `context-site-build` v0.1.x dogfood self-review pass
+  (newly authored references nearly violated the chained-reference
+  rule because the rule was buried in prose).
+
+- **`skills/skill-author/references/audit-ritual.md`** — added
+  "Anti-trigger fallback discipline" subsection naming the user-
+  invocable-peer fallback pattern. Covers three patterns (bare future
+  reference, "(when authored)" qualifier, and the correct user-
+  invocable-peer fallback) plus the no-peer case. Surfaced as A62
+  from the same v0.1.x self-review (5 of 6 atoms had unactionable
+  anti-triggers naming siblings that didn't yet exist).
+
+- **`skills/family-bootstrap/references/scope-discipline.md`** — new
+  reference doc distinguishing Case 1 (in-family-deferred / "Specced,
+  Not Yet Built") from Case 2 (out-of-scope / handled by future or
+  different family). Documents vocabulary, operator action per case,
+  why the distinction matters, and worked examples from
+  context-site-build v0.1.x. Surfaced as A63 from the same v0.1.x
+  self-review (atoms in family A referenced siblings in family B
+  using "(deferred)" qualifiers, conflating two genuinely different
+  cases).
 
 ### Changed
 
@@ -52,28 +88,55 @@ audit + refactor + retire pass pending."
   abstract framing) and the fix discipline (tighten description, not
   body).
 
+- **`skills/family-bootstrap/SKILL.md`** — Stage 4 procedure prose
+  clarified: routers' `## Routing Table` lists only Tier 1 atoms that
+  are actually built; specced-but-not-built atoms appear in the
+  `## Atoms in This Family` overview only. Surfaced as A64 from the
+  v0.1.x self-review (the `site-build` family router originally
+  listed every Tier-1+Tier-2+Tier-3 atom regardless of build state,
+  producing a Routing Table that included unauthored skills the LLM
+  router cannot route to). Version bump 0.2.4 → 0.2.5.
+
+- **`skills/skill-author/SKILL.md`** — version bump 0.1.7 → 0.1.8 to
+  claim the A62 reference update (audit-ritual.md anti-trigger
+  fallback subsection).
+
+- **`scripts/release-tag.sh`** — first-parser fix accepting
+  `--allow-unsigned` and `--allow-unhealthy` so the per-feature
+  parsers downstream can see them. Surfaced as A65 by the v0.7.1
+  release dogfood: the script claimed to support `--allow-unsigned`
+  (governance/SKILL-PROVENANCE.md GPG-signing CI bypass) but the
+  strict-reject branch in the first parser fired before the
+  per-feature parser could consume it. Help text updated to show
+  both flags as valid `--confirm` modifiers.
+
 ### Health
 
-- All 14 skills remain `healthy` in SNAPSHOT.lock. No SKILL.md
-  bodies / frontmatter changed in [Unreleased]; only references and
-  one script. Per-skill version bumps deferred to v0.7.1 release.
+- All 14 skills remain `healthy` in SNAPSHOT.lock. Two PATCH bumps:
+  `family-bootstrap` 0.2.4 → 0.2.5 (claims A63 + A64),
+  `skill-author` 0.1.7 → 0.1.8 (claims A62). No SKILL.md body content
+  changed beyond the family-bootstrap Stage 4 prose; no behavior
+  change for existing operator workflows.
 
 ### Notes
 
-- A57-A60 are the first findings produced by an **external consumer
-  library**, not in-memory dogfood. Per `docs/PATH-TO-V1.md` P6, this
-  kind of finding is the load-bearing signal v1.0 has been waiting
-  for.
-- All 4 findings have suggested patches; A57 is shipped, A58/A59/A60
-  shipped as reference doc updates. SKILL.md body / frontmatter
-  changes deferred to v0.7.1 (the per-skill version bumps will mark
-  family-bootstrap → 0.2.5, skill-author → 0.1.8 to claim the
-  reference updates).
-- v1.0 P6 status: **partial** — one consumer library exists with
-  ≥3 atoms authored + audited. Refactor + retire still need real
-  signal (premature on a freshly-bootstrapped family). Per A56's
-  discipline-restoration commitment, manufactured refactor / retire
-  exercises were declined.
+- A57-A64 are findings produced by an **external consumer library**
+  (`context-site-build` v0.1.x → v0.4.0), not in-memory dogfood. Per
+  `docs/PATH-TO-V1.md` P6, this kind of finding is the load-bearing
+  signal v1.0 has been waiting for. A65 is a release-process
+  meta-finding: the v0.7.1 release dogfood exercise itself
+  surfaced a script bug.
+- All 9 findings have shipped: A57 (script flag), A58/A59/A60/A61/A62
+  (reference doc updates), A63 (new reference doc), A64 (procedure
+  prose update + per-skill bumps), A65 (release-tag.sh first-parser
+  fix).
+- v1.0 P6 status: **substantively advanced** — one consumer library
+  exists with 47+ atoms across 3 families authored + audited. The
+  consumer plans 5 more PRs (stack overlays, cross-cutting tools,
+  v1.0-readiness docs, v1.0-rc1 + 30-day hold + v1.0.0 promotion)
+  per its own `architecture-options-v0.2.md`. Refactor + retire
+  still pending real signal; per A56's discipline-restoration
+  commitment, manufactured exercises continue to be declined.
 
 ---
 
