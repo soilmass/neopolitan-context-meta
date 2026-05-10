@@ -1,6 +1,6 @@
 {
   "name": "context-site-build",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Site-build methodology library — skills that draft, audit, and synthesize the deliverables of a 7-phase site/web-app build (discovery → requirements → design → build → hardening → launch → post-launch). Produces opinionated documentation artifacts per a documented SOP. Sibling consumer of context-meta-pipeline.",
   "license": "Apache-2.0",
   "keywords": ["site-build", "methodology", "documentation", "lifecycle", "sop"]

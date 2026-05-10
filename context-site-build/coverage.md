@@ -1,10 +1,12 @@
 # context-site-build Coverage
 
-Last verification: 2026-05-08 (v0.6.0 — Phase 5 cross-cutting tool
-atoms authored; library now hosts 3 families + 21 stack overlays +
-7 cross-cutting atoms = 75 skills total. Continues the v0.5.0
-ahead-of-trigger window per the "v0.5.0–v1.0.0 Ahead-of-Trigger
-Note" section below).
+Last verification: 2026-05-09 (v0.6.1 — v1.0-readiness documentation
+authored; 9 docs added under docs/; deferred overlay-description
+cleanup from PR #7 applied. No SKILL.md content changes; 75 skills
+remain).
+
+Previous verification: 2026-05-08 (v0.6.0 — Phase 5 cross-cutting
+tool atoms; 75 skills).
 
 Previous verification: 2026-05-08 (v0.5.0 — Phase 4 stack-specific
 policy overlays; 68 skills).

@@ -170,10 +170,10 @@ Cross-cutting concerns defer to dedicated atoms per A62 anti-trigger
 fallback:
 
 - WCAG 2.2 motion-criteria conformance — use
-  `motion-conformance-author` once built; the user-invocable
+  `motion-conformance-author`; the user-invocable
   `draft-motion-conformance` covers it now.
 - Performance budgets enforced in CI — use
-  `performance-budget-author` once built; the user-invocable
+  `performance-budget-author`; the user-invocable
   `draft-perf-budget` covers it now.
 
 ## See Also

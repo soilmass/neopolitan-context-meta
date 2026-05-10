@@ -16,6 +16,81 @@ Rolled back, Security.
 
 ---
 
+## [0.6.1] - 2026-05-09
+
+PATCH bump — documentation-only release adding 9 v1.0-readiness
+docs + the deferred overlay-description cleanup from PR #7. No
+SKILL.md content/behavior changes; all 21 stack overlays + 7
+cross-cutting atoms remain at v0.1.0.
+
+### Added
+
+- **`docs/GETTING-STARTED.md`** — second-consumer onboarding;
+  pick-a-stack + pick-a-shape + Quickstart for marketing-site on
+  Combo A; two-word summary per atom (cheat sheet); pointers to
+  walkthroughs / map / versioning / troubleshooting / examples.
+
+- **`docs/VERSIONING-POLICY.md`** — SemVer adapted from
+  meta-pipeline's parent template; per-skill + per-library bump
+  tables; v1.0 freeze contract (what's frozen vs not); v1.0+
+  MAJOR-bump mechanics; pre-v1.0 timeline.
+
+- **`docs/LIBRARY-MAP.md`** — visual + textual dependency graph;
+  family roster (3) with phase-organized atoms; cross-family
+  handoff diagram; stack-overlay composition diagram (CSS-cascade
+  override stack); cross-cutting atom relations to overlays;
+  dependency-direction table (DAG; no cycles); per-atom output
+  file paths.
+
+- **`docs/walkthroughs/{marketing-site,e-commerce,web-app,
+  microsite}.md`** — phase-by-phase walkthroughs for the 4
+  canonical project shapes. Each names the atom invocation order +
+  which atoms are skippable for solo-dev variants.
+
+- **`docs/examples/outputs/{vision,srs,art-direction,motion-
+  language,kpi,conformance-statement,optimization-backlog,
+  runbook-deployment}.md`** — anonymized illustrative outputs
+  (8 files) of the most-cited atoms in the walkthroughs. Use as
+  shape reference, not template.
+
+- **`docs/TROUBLESHOOTING.md`** — common errors per atom +
+  per-stack-overlay; drift-gate guidance + anti-trigger fallback
+  patterns + coverage.md gaps + stack-overlay-specific issues +
+  cross-cutting tool atom issues + verify.sh failures + audit-
+  finding (B-series) filing guidance.
+
+### Changed
+
+- **Overlay description cleanup (deferred from PR #7)** —
+  the 21 stack overlays from v0.5.0 cited the 7 cross-cutting
+  atoms via the A62 anti-trigger fallback pattern with the
+  qualifier `(use X-author once built; ...)`. With those atoms
+  now built (v0.6.0), the "once built" qualifier is dropped via
+  bulk edit across 7 overlays. Form: `use X-author; the user-
+  invocable draft-X covers it now)` — both options now exist;
+  draft-X remains the alternative when the atom isn't installed
+  in the operator's environment.
+
+  No per-overlay version bumps for this — it's a clarification
+  not a behavior change; overlay versions remain at 0.1.0.
+  (The library's CHANGELOG-sync gate isn't enforced for this
+  library's verify.sh, unlike the meta-pipeline.)
+
+### Health
+
+- All 75 skills validate clean (`validate-metadata.py --all`).
+- `verify.sh` 4/4 green at v0.6.1.
+
+### Discipline note
+
+This PATCH release does NOT change the v0.5.0–v1.0.0 ahead-of-
+trigger window per `coverage.md`. The discipline-restoration
+commitment for v1.0.x onward remains in force — post-v1.0.0
+new atoms ship only on organic build triggers from real consumer
+projects.
+
+---
+
 ## [0.6.0] - 2026-05-08
 
 Phase 5 of Option C from `docs/ARCHITECTURE-OPTIONS-v0.2.md`.

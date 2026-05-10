@@ -178,7 +178,7 @@ implementation will drift. Document the violation explicitly.
 WCAG 2.2 motion-criteria conformance is OUT OF SCOPE for this
 overlay; that's `house-site-design-a11y` paired with
 `motion-conformance-author` (PR #7 / v0.6.0). Per A62 anti-trigger
-fallback: use `motion-conformance-author` once built; the user-
+fallback: use `motion-conformance-author`; the user-
 invocable `draft-motion-conformance` covers it now.
 
 ## See Also
