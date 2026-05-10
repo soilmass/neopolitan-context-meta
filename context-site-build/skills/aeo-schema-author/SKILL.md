@@ -33,7 +33,16 @@ metadata:
 
 Free-standing atom that produces the Schema.org / JSON-LD
 structured-data specification + the per-page-type generator
-templates.
+templates. Output: `docs/aeo-schema-spec.md` and the
+`src/lib/schema/<type>.ts` generators. The atom covers the AI-search
+engine citation-discipline conventions, the Rich Results Test
+validation gate, and the AEO baseline measurement metric set.
+Applies across the methodology — every page-rendering surface in
+any stack combo emits structured data per this spec.
+
+The AEO measurement standards, conversion gating, and validation
+optimization patterns are free-standing concerns that compose with
+the `aeo-schema-spec` and `aeo-baseline-author`.
 
 ## When to Use
 

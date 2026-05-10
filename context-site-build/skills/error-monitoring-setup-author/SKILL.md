@@ -1,20 +1,20 @@
 ---
 name: error-monitoring-setup-author
 description: >
-  Authors the error-monitoring + observability specification for a
-  site/web-app project. Writes docs/observability-spec.md plus
-  src/lib/telemetry.ts. Codifies tool selection (Sentry / Datadog /
-  Honeycomb / Bugsnag); instrumentation conventions (service / env
-  / release / tenant tags); SLI definitions (latency p95, error
-  rate, availability); release-marker wiring; per-tool privacy +
-  PII handling. Free-standing atom outside any family. Do NOT use
-  for: analytics event taxonomy (use analytics-instrumentation-
-  author — error events live in observability, not analytics);
+  Produces the error-monitoring + observability spec for a site
+  project. Writes docs/observability-spec.md and
+  src/lib/telemetry.ts. Names the tool selection (Sentry, Datadog,
+  Honeycomb, Bugsnag), instrumentation conventions
+  (service, env, release, tenant tags), SLI definitions (latency
+  p95, error rate, availability), release-marker wiring, and
+  per-tool PII discipline. Free-standing atom — applies across
+  the methodology and across all five stack combos. Do NOT use
+  for: analytics event taxonomy (use analytics-instrumentation-author);
   performance budgets in CI (use performance-budget-author);
-  release-flag and rollback automation (use release-discipline-
-  author); per-host operate-overlay observability commands (those
-  cite this spec but live in house-site-operate-{vercel,cloudflare,
-  netlify}).
+  release-flag and rollback automation (use release-discipline-author);
+  per-host operate-overlay observability commands (those cite
+  this spec; they live in house-site-operate-vercel,
+  house-site-operate-cloudflare, or house-site-operate-netlify).
 license: Apache-2.0
 metadata:
   version: "0.1.0"
@@ -34,7 +34,15 @@ metadata:
 > `docs/ARCHITECTURE-OPTIONS-v0.2.md` Phase 5.
 
 Free-standing atom that produces the error-monitoring + observability
-specification + the SDK initialization template.
+specification + the SDK initialization template. Outputs:
+`docs/observability-spec.md` and `src/lib/telemetry.ts`. The atom
+names the tool selection (Sentry, Datadog, Honeycomb, Bugsnag),
+instrumentation conventions including the release-marker wiring,
+SLI definitions including latency p95, and the per-tool PII handling.
+Applies across the methodology and across all five stack combos —
+the `house-site-operate-vercel`, `house-site-operate-cloudflare`,
+and `house-site-operate-netlify` overlays cite this spec for their
+host-specific observability commands.
 
 ## When to Use
 

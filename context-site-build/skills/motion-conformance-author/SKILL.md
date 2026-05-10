@@ -1,22 +1,21 @@
 ---
 name: motion-conformance-author
 description: >
-  Authors the motion-conformance specification covering WCAG 2.2
-  motion criteria (2.1.1 keyboard / 2.2.2 pause-stop-hide / 2.3.3
-  animation-from-interactions / 2.4.7 focus-visible / 2.5.7 dragging-
-  movements / 2.5.8 target-size). Writes docs/05-hardening/motion-
-  conformance.md plus the axe-core CI configuration and the manual
-  keyboard / screen-reader test plan. Codifies three flavours of
-  prefers-reduced-motion (hard-disable / soft-degrade / alternative-
-  experience), focus-visible parity for custom cursors, keyboard
-  scroll bindings, and the lite-mode alternative experience. Free-
-  standing atom outside any family. Do NOT use for: per-component
-  a11y annotations (use a11y-annotations-author); WCAG-EM
-  conformance statement at Phase 5 close (use conformance-statement-
-  author — this atom feeds into it); design-system motion library
-  selection (use motion-language-author); cross-stack motion
-  conventions (use house-site-design-motion or
-  house-site-design-a11y — this atom is the tool both reference).
+  Produces the motion-conformance document covering the six WCAG
+  2.2 motion criteria (2.1.1, 2.2.2, 2.3.3, 2.4.7, 2.5.7, 2.5.8).
+  Writes docs/05-hardening/motion-conformance.md, the axe-core CI
+  configuration, and the manual keyboard plus screen-reader test
+  plan. Names three patterns of prefers-reduced-motion
+  (hard-disable, soft-degrade, alternative-experience),
+  focus-visible parity for custom cursors, keyboard scroll
+  bindings, and the lite-mode alternative experience.
+  Free-standing atom — applies across the methodology and across
+  all five stack combos. Do NOT use for: per-component a11y
+  annotations (use a11y-annotations-author); WCAG-EM conformance
+  statement at Phase 5 close (use conformance-statement-author);
+  design-system motion library selection (use motion-language-author);
+  cross-stack motion conventions (use house-site-design-motion or
+  house-site-design-a11y).
 license: Apache-2.0
 metadata:
   version: "0.1.0"

@@ -35,7 +35,12 @@ metadata:
 
 Free-standing atom that produces the release-discipline specification
 covering feature flags, canary strategy, rollback automation, and the
-go/no-go checklist.
+go/no-go checklist. Outputs: `docs/release-plan.md` and
+`deploy/feature-flags.yml`. Codifies the operational launch ceremonies
+including per-release communication threads. The atom names the
+feature-flag tool choice, the canary rollout shape, and the rollback
+automation thresholds (which read from `observability-spec.md` SLI
+definitions).
 
 ## When to Use
 

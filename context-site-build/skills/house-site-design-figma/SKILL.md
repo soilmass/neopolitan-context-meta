@@ -37,6 +37,14 @@ Design-tool overlay codifying the canonical Figma → DTCG → Style
 Dictionary → multi-output pipeline that has converged across mature
 agency design systems in 2024–2025 (E3 §6.1, §6.6).
 
+This Figma-specific overlay encodes the design-tool-architecture
+pipeline, regardless of which frontend stack the project targets.
+The audit ritual that covers WCAG-conformance, motion-language,
+and engineering-handoff-spec coverage lives in the per-team or
+stack-agnostic overlays (`house-site-design-a11y`, etc.). The
+composition rules, deferred-author cascade, and per-team
+customization rules apply per ARCHITECTURE.md.
+
 ## Purpose
 
 Encode how design tokens and component specs flow from Figma into

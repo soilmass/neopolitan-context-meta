@@ -1,20 +1,17 @@
 ---
 name: house-site-operate-netlify
 description: >
-  Hosting-platform overlay encoding Netlify-specific operational
-  conventions (preview-deploy-per-PR via deploy contexts; Edge
-  Functions for streaming and personalization; Netlify Blobs for
-  object storage; Forms for built-in form handling; Identity for auth
-  where applicable; Functions for serverless; Lighthouse CI
-  integration via build plugin; build plugins for additional gates).
-  Stack-agnostic — applies on top of any frontend stack deployed to
-  Netlify (Astro / Nuxt / SvelteKit / Next.js Runtime / static).
-  Overlays runbook-author, launch-comms-author, optimization-loop-
-  author, optimization-backlog-author. Do NOT use for: framework-
-  specific conventions on Netlify (use house-site-operate-{nuxt,astro,
-  sveltekit} which compose with this overlay); hosting on Vercel or
-  Cloudflare Pages (use the matching overlay); composing this overlay
-  with a per-team overlay (deferred per ARCHITECTURE.md).
+  Hosting-platform overlay for Netlify-specific operational
+  conventions. Codifies preview-deploy-per-PR via deploy contexts,
+  Edge Functions, Netlify Blobs object storage, Forms,
+  Identity for auth, Functions for serverless, Lighthouse CI
+  integration via build plugin, and build plugins for extra
+  gates. Overlays runbook-author, launch-comms-author,
+  optimization-loop-author, optimization-backlog-author.
+  Composes with the framework-specific operate overlays
+  (house-site-operate-nuxt, house-site-operate-astro,
+  house-site-operate-sveltekit). Do NOT use for: hosting on
+  Vercel or Cloudflare (use the matching overlay).
 license: Apache-2.0
 metadata:
   version: "0.1.0"
@@ -36,6 +33,13 @@ metadata:
 Hosting-platform overlay codifying Netlify-specific operational
 conventions, framework-agnostic. Netlify retains a Nuxt + Astro
 footprint per E3 §5.
+
+This overlay applies on top of the family's mechanism atoms
+with stack-specific or hosting-platform conventions. Composing
+with a per-team overlay, or replacing it with a different family
+overlay independent of this one, is deferred per ARCHITECTURE.md.
+The site-operate family's threat-model and design coverage live
+in their own overlays.
 
 ## Purpose
 
